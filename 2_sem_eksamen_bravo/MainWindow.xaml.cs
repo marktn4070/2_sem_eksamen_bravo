@@ -23,6 +23,7 @@ namespace _2_sem_eksamen_bravo
         public MainWindow()
         {
             InitializeComponent();
+            string hey;
         }
     }
 }
