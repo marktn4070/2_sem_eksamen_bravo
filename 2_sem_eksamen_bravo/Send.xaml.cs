@@ -28,7 +28,6 @@ namespace _2_sem_eksamen_bravo
         {
             if((bool)Email.IsChecked || (bool)Sms.IsChecked)
             {
-                
                 if ((bool)Email.IsChecked)
                 {
                     MessageEmulator.EmulateSendEmail(Headline.Text, Subheadline.Text, Message.Text);
@@ -39,7 +38,8 @@ namespace _2_sem_eksamen_bravo
                 }
                 ClearAll();
                 MessageBox.Show("Sendt!");
-            } 
+                MessageEmulator.SaveMessage(Headline.Text, Message.Text); //mangler måske subheadline haha
+            }
             else
             {
                 
