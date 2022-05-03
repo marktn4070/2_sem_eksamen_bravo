@@ -45,11 +45,18 @@ namespace _2_sem_eksamen_bravo
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES ('{0}', '{1}', 1900-01-01)", headline, message), //time placeholder!!!!!, mangler også at sanitize input
+                    string.Format("INSERT INTO Message VALUES ('{0}', '{1}', GETDATE());", headline, message),
                     cnct);
 
-                cnct.Open();
-                //Print(cmd.ExecuteReader());
+                try
+                {
+                    cnct.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    //aasdsad
+                }
             }
             catch (Exception ex)
             {
