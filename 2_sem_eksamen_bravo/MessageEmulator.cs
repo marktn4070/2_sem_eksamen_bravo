@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
@@ -45,8 +46,10 @@ namespace _2_sem_eksamen_bravo
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES ('{0}', '{1}', GETDATE());", headline, message),
+                    string.Format("INSERT INTO Message VALUES (@Headline, @Message, GETDATE());"),
                     cnct);
+                cmd.Parameters.Add(CreateParam("@Headline", headline.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
 
                 try
                 {
@@ -69,6 +72,12 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+        }
+        private static SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
         }
     }
 }
