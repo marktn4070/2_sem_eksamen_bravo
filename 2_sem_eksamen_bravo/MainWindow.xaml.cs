@@ -23,7 +23,13 @@ namespace _2_sem_eksamen_bravo
         public MainWindow()
         {
             InitializeComponent();
-            string hey;
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Send test = new Send();
+            test.Show();
         }
     }
 }
