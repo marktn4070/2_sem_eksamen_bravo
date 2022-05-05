@@ -39,7 +39,7 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static void SaveMessage(string headline, string message)
+        public static void SaveMessage(string headline, string message, bool sms, bool email)
         {
             SqlConnection cnct = null;
             try
