@@ -1,6 +1,7 @@
 CREATE TABLE Message (
     MessageID int IDENTITY(1,1) PRIMARY KEY,
     Headline varchar(200) NOT NULL,
+    Subheadline varchar(200) NOT NULL,
     Text varchar(1500) NOT NULL,
     Time datetime NOT NULL
 ); 
