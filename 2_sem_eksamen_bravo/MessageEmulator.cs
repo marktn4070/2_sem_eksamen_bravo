@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Data;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -38,16 +39,17 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static void SaveMessage(string headline, string message, bool sms, bool email)
+        public static void SaveMessage(string headline, string message)
         {
             SqlConnection cnct = null;
             try
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES ('{0}', '{1}', GETDATE());", headline, message),
+                    string.Format("INSERT INTO Message VALUES (@Headline, @Message, GETDATE());"),
                     cnct);
-
+                cmd.Parameters.Add(CreateParam("@Headline", headline.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
                 try
                 {
                     cnct.Open();
@@ -69,6 +71,12 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+        }
+        private static SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
         }
     }
 }
