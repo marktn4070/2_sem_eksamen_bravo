@@ -16,13 +16,22 @@ using System.Windows.Shapes;
 namespace _2_sem_eksamen_bravo
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
+
+    /// Interaction logic for MainWindow.xamlffff
+
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Send test = new Send();
+            test.Show();
         }
     }
 }
