@@ -21,6 +21,8 @@ namespace _2_sem_eksamen_bravo
 //////
     /// Interaction logic for MainWindow.xamlffff
 ////// master
+    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
+>>>>>>>>> Temporary merge branch 2
     /// </summary>
     public partial class MainWindow : Window
     {
