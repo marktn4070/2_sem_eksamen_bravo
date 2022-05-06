@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace _2_sem_eksamen_bravo
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrg
+    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
     /// </summary>
     public partial class MainWindow : Window
     {
