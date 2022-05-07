@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 
@@ -38,18 +39,27 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static void SaveMessage(string headline, string message)
+        public static void SaveMessage(string headline, string message, bool sms, bool email)
         {
             SqlConnection cnct = null;
             try
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES ('{0}', '{1}', 1900-01-01)", headline, message), //time placeholder!!!!!, mangler også at sanitize input
+                    string.Format("INSERT INTO Message VALUES (@Headline, @Message, GETDATE());"),
                     cnct);
+                cmd.Parameters.Add(CreateParam("@Headline", headline.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
 
-                cnct.Open();
-                //Print(cmd.ExecuteReader());
+                try
+                {
+                    cnct.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    //aasdsad
+                }
             }
             catch (Exception ex)
             {
@@ -62,6 +72,12 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+        }
+        private static SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
         }
     }
 }
