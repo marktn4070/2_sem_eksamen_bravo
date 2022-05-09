@@ -10,7 +10,6 @@ CREATE TABLE Address(
     AddressID int IDENTITY(1,1) PRIMARY KEY,
     Road varchar(21) NOT NULL,
     Zip int NOT NULL,
-    Roadcode int NOT NULL,
     Municipality varchar(21) NOT NULL
 );
 
