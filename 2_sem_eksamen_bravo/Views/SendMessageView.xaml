@@ -8,6 +8,15 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Label FontSize="36" HorizontalAlignment="Center" Content="Send Besked"/>
-            
+
+        <CheckBox Name="Email" Content="Email" Margin="223,95,500,302" />
+        <CheckBox Name="Sms" Content="SMS" Margin="291,95,439,302" RenderTransformOrigin="0.5,0.5" />
+
+        <Button Name="SendButton" Content="Send" Height="30" Width="40" Click="SendButton_Click" Margin="644,322,108,67"/>
+        <Button Name="ClearButton" Content="Clear" Height="30" Width="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="586,321,0,0" Click="ClearButton_Click"/>
+        <TextBox Name="Headline"  Height="60" Width="100" Margin="216,138,476,221"/>
+        <TextBox Name="Subheadline"  Height="60" Width="100" Margin="214,222,478,137"/>
+        <TextBox Name="Message"  Height="60" Width="100" Margin="213,313,479,46"/>
+
     </Grid>
 </UserControl>
