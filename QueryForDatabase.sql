@@ -8,11 +8,10 @@ CREATE TABLE Message (
 
 CREATE TABLE Address(
     AddressID int IDENTITY(1,1) PRIMARY KEY,
-    Road varchar(64) NOT NULL,
+    Road varchar(21) NOT NULL,
     Zip int NOT NULL,
-    City varchar(64) NOT NULL,
     Roadcode int NOT NULL,
-    Municipality int NOT NULL
+    Municipality varchar(21) NOT NULL
 );
 
 CREATE TABLE Customer (
