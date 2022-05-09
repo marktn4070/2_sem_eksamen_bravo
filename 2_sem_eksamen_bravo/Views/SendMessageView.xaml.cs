@@ -24,5 +24,40 @@ namespace _2_sem_eksamen_bravo.Views
         {
             InitializeComponent();
         }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            if ((bool)Email.IsChecked || (bool)Sms.IsChecked)
+            {
+                if ((bool)Email.IsChecked)
+                {
+                    MessageEmulator.EmulateSendEmail(Headline.Text, Subheadline.Text, Message.Text);
+                }
+                if ((bool)Sms.IsChecked)
+                {
+                    MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
+                }
+                MessageEmulator.SaveMessage(Headline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked); //mangler måske subheadline haha
+                ClearAll();
+                MessageBox.Show("Sendt!");
+            }
+            else
+            {
+
+            }
+
+        }
+
+        private void ClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void ClearAll()
+        {
+            Headline.Clear();
+            Subheadline.Clear();
+            Message.Clear();
+        }
     }
 }

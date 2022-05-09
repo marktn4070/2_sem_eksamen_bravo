@@ -32,13 +32,13 @@ namespace _2_sem_eksamen_bravo
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-            // MainContent.Content = "Viewmodel????";
+            //var hej = MainContent.Content;
+            //if (hej == null)
+            //{
+            //    MainContent.Content = new CustomerViewModel();
+            //}
+
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            Send test = new Send();
-            test.Show();
-        }
     }
 }
