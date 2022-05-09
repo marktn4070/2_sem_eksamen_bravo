@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using _2_sem_eksamen_bravo.ViewModels;
+
 
 namespace _2_sem_eksamen_bravo
 {
@@ -29,7 +31,8 @@ namespace _2_sem_eksamen_bravo
         public MainWindow()
         {
             InitializeComponent();
-            
+            DataContext = new MainViewModel();
+            // MainContent.Content = "Viewmodel????";
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
