@@ -39,22 +39,24 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static void SaveMessage(string headline, string message, bool sms, bool email)
+        public static void SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
         {
+            int addedMessagesId = 0;
             SqlConnection cnct = null;
             try
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES (@Headline, @Message, GETDATE());"),
+                    string.Format("INSERT INTO Message VALUES (@Headline, @Subheadline, @Message, GETDATE());"),
                     cnct);
                 cmd.Parameters.Add(CreateParam("@Headline", headline.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@Subheadline", subheadline.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
 
                 try
                 {
                     cnct.Open();
-                    cmd.ExecuteNonQuery();
+                    addedMessagesId = (int)cmd.ExecuteScalar();
                 }
                 catch (Exception ex)
                 {
@@ -72,6 +74,33 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+
+
+            List<int> customerIdsSentTo = new List<int>(); //gemmer liste af dem der har email så de ikke bliver gemt i historikken 2 gange hvis de også har sms
+            try
+            {
+                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                SqlCommand command = new SqlCommand("SELECT * FROM Customer WHERE Registered LIKE 1", cnct); 
+                cnct.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    customerIdsSentTo.Add((int)reader[0]);
+                    SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1})", addedMessagesId, reader[0].ToString()), cnct);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("");
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+
         }
         private static SqlParameter CreateParam(string name, object value, SqlDbType type)
         {

@@ -36,7 +36,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                MessageEmulator.SaveMessage(Headline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked); //mangler måske subheadline haha
+                MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked); //mangler måske subheadline haha
                 ClearAll();
                 MessageBox.Show("Sendt!");
             }
