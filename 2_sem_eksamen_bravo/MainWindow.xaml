@@ -7,7 +7,15 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="TestSendVindue" HorizontalAlignment="Left" Margin="285,127,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+
+
+        <StackPanel Orientation="Horizontal" Width="677" HorizontalAlignment="Center" VerticalAlignment="top" Margin="71,10,45.6,0" >
+            <Button HorizontalAlignment="Center" Margin="10" Width="200" Height="30" Content="Kunder" Command="{Binding UpdateViewCommand}" CommandParameter="Customer" VerticalAlignment="Bottom"/>
+            <Button HorizontalAlignment="Center" Margin="10" Width="200" Height="30" Content="Beskeder" Command="{Binding UpdateViewCommand}" CommandParameter="Messages" VerticalAlignment="Bottom"/>
+            <Button HorizontalAlignment="Center" Margin="10" Width="200" Height="30" Content="Send besked" Command="{Binding UpdateViewCommand}" CommandParameter="SendMessage" VerticalAlignment="Bottom"/>
+        </StackPanel>
+        <ContentControl Name="MainContent" Content="{Binding SelectedViewModel}" Margin="0,80,-0.4,0"/>
+        <!--<Button Content="TestSendVindue" HorizontalAlignment="Left" Margin="285,127,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>-->
 
     </Grid>
 </Window>
