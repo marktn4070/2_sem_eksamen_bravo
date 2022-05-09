@@ -47,7 +47,7 @@ namespace _2_sem_eksamen_bravo
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES (@Headline, @Subheadline, @Message, GETDATE());"),
+                    string.Format("INSERT INTO Message OUTPUT Inserted.MessageID VALUES (@Headline, @Subheadline, @Message, GETDATE());"),
                     cnct);
                 cmd.Parameters.Add(CreateParam("@Headline", headline.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Subheadline", subheadline.Trim(), SqlDbType.NVarChar));
