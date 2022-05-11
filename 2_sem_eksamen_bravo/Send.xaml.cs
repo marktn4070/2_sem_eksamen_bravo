@@ -26,7 +26,7 @@ namespace _2_sem_eksamen_bravo
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            if((bool)Email.IsChecked || (bool)Sms.IsChecked)
+            if(((bool)Email.IsChecked || (bool)Sms.IsChecked) && (Headline.Text != string.Empty && Message.Text != string.Empty))
             {
                 if ((bool)Email.IsChecked)
                 {
