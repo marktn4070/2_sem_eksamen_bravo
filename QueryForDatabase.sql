@@ -3,7 +3,9 @@ CREATE TABLE Message (
     Headline varchar(200) NOT NULL,
     Subheadline varchar(200) NOT NULL,
     Text varchar(1500) NOT NULL,
-    Time datetime NOT NULL
+    Time datetime NOT NULL,
+    Email bit NOT NULL,
+    Sms bit NOT NULL
 ); 
 
 CREATE TABLE Address(
