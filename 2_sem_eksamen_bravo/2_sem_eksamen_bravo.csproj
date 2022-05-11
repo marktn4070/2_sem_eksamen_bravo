@@ -60,7 +60,7 @@
     <Compile Include="Send.xaml.cs">
       <DependentUpon>Send.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SendMessagesViewModel.cs" />
+    <Compile Include="ViewModels\SendMessageViewModel.cs" />
     <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
