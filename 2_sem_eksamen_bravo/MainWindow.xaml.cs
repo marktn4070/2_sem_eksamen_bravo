@@ -12,24 +12,42 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using _2_sem_eksamen_bravo.ViewModels;
+
 
 namespace _2_sem_eksamen_bravo
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+/////// HEAD
+    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
+//////
+    /// Interaction logic for MainWindow.xamlffff
+////// master
+    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
+////// Temporary merge branch 2
     /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
-            
+            DataContext = new MainViewModel();
+            this.MainContent.Content = new ViewModels.CustomerViewModel();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
-            Send test = new Send();
-            test.Show();
+            this.MainContent.Content = new ViewModels.CustomerViewModel();
+        }
+
+        private void Menu_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.MainContent.Content = new ViewModels.MessagesViewModel();
+        }
+
+        private void Menu_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.MainContent.Content = new ViewModels.SendMessageViewModel();
         }
     }
 }

@@ -10,23 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace _2_sem_eksamen_bravo
+namespace _2_sem_eksamen_bravo.Views
 {
     /// <summary>
-    /// Interaction logic for Send.xaml
+    /// Interaction logic for SendMessageView.xaml
     /// </summary>
-    public partial class Send : Window
+    public partial class SendMessageView : UserControl
     {
-        public Send()
+        public SendMessageView()
         {
             InitializeComponent();
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            if(((bool)Email.IsChecked || (bool)Sms.IsChecked) && (Headline.Text != string.Empty && Message.Text != string.Empty))
+            if ((bool)Email.IsChecked || (bool)Sms.IsChecked)
             {
                 if ((bool)Email.IsChecked)
                 {
@@ -36,15 +37,15 @@ namespace _2_sem_eksamen_bravo
                 {
                     MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked);
+                MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked); //mangler måske subheadline haha
                 ClearAll();
                 MessageBox.Show("Sendt!");
             }
             else
             {
-                
+
             }
-            
+
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)

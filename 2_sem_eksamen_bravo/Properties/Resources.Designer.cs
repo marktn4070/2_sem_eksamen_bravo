@@ -36,10 +36,15 @@ namespace _2_sem_eksamen_bravo.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
-            get {
-                if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("_2_sem_eksamen_bravo.Properties.Resources", typeof(Resources).Assembly);
+
+        internal static global::System.Resources.ResourceManager ResourceManager
+        {
+            get
+            {
+                if ((resourceMan == null))
+                {
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("2_sem_eksamen_bravo.Properties.Resources", typeof(Resources).Assembly);
+
                     resourceMan = temp;
                 }
                 return resourceMan;

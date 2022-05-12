@@ -39,45 +39,10 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static void SaveMessage(string headline, string message)
+        public static void SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
         {
-            SqlConnection cnct = null;
-            try
-            {
-                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Message VALUES (@Headline, @Message, GETDATE());"),
-                    cnct);
-                cmd.Parameters.Add(CreateParam("@Headline", headline.Trim(), SqlDbType.NVarChar));
-                cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
-
-                try
-                {
-                    cnct.Open();
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    //aasdsad
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
-            finally
-            {
-                if (cnct != null)
-                {
-                    cnct.Close();
-                }
-            }
+            SQL.SaveMessage(headline, subheadline, message, sms, email);
         }
-        private static SqlParameter CreateParam(string name, object value, SqlDbType type)
-        {
-            SqlParameter param = new SqlParameter(name, type);
-            param.Value = value;
-            return param;
-        }
+       
     }
 }
