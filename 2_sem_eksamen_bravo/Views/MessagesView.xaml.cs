@@ -24,5 +24,10 @@ namespace _2_sem_eksamen_bravo.Views
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

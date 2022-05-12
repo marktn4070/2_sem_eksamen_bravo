@@ -23,7 +23,7 @@ namespace _2_sem_eksamen_bravo
 //////
     /// Interaction logic for MainWindow.xamlffff
 ////// master
-    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
+    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfgkjblj
 ////// Temporary merge branch 2
     /// </summary>
     public partial class MainWindow : Window
@@ -32,13 +32,22 @@ namespace _2_sem_eksamen_bravo
         {
             InitializeComponent();
             DataContext = new MainViewModel();
-            //var hej = MainContent.Content;
-            //if (hej == null)
-            //{
-            //    MainContent.Content = new CustomerViewModel();
-            //}
-
+            this.MainContent.Content = new ViewModels.CustomerViewModel();
         }
 
+        private void Menu_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.MainContent.Content = new ViewModels.CustomerViewModel();
+        }
+
+        private void Menu_Click_2(object sender, RoutedEventArgs e)
+        {
+            this.MainContent.Content = new ViewModels.MessagesViewModel();
+        }
+
+        private void Menu_Click_3(object sender, RoutedEventArgs e)
+        {
+            this.MainContent.Content = new ViewModels.SendMessageViewModel();
+        }
     }
 }
