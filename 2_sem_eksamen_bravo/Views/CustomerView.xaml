@@ -8,6 +8,7 @@
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
     <Grid>
         <Label FontSize="36" HorizontalAlignment="Center" Content="Kunder"/>
-            
+        <Button Content="Opret kunde" HorizontalAlignment="Left" Margin="90,145,0,0" VerticalAlignment="Top" Name="Btn_OpenCreateCustomerWindow" Click="Btn_OpenCreateCustomerWindow_Click"/>
+
     </Grid>
 </UserControl>
