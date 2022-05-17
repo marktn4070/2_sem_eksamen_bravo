@@ -64,7 +64,6 @@
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\SendMessageViewModel.cs" />
     <Compile Include="Views\CreateCustomerView.xaml.cs">
       <DependentUpon>CreateCustomerView.xaml</DependentUpon>
     </Compile>
