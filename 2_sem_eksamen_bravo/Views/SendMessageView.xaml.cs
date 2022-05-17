@@ -27,7 +27,7 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            if ((bool)Email.IsChecked || (bool)Sms.IsChecked)
+            if (((bool)Email.IsChecked || (bool)Sms.IsChecked) && (Headline.Text != string.Empty && Message.Text != string.Empty))
             {
                 if ((bool)Email.IsChecked)
                 {
@@ -37,9 +37,9 @@ namespace _2_sem_eksamen_bravo.Views
                 {
                     MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked); //mangler måske subheadline haha
+                int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked);
                 ClearAll();
-                MessageBox.Show("Sendt!");
+                MessageBox.Show(string.Format("Sendt til {0} modtagere!", howManyReceived));
             }
             else
             {
@@ -47,6 +47,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
 
         }
+
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
         {
