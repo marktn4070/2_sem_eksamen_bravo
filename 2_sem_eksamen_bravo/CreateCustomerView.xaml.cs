@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace _2_sem_eksamen_bravo.Views
+namespace _2_sem_eksamen_bravo
 {
     /// <summary>
     /// Interaction logic for CreateCustomerView.xaml
@@ -24,9 +24,6 @@ namespace _2_sem_eksamen_bravo.Views
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
     }
 }
