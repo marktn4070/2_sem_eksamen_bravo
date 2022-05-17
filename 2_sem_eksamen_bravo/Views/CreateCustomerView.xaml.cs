@@ -10,25 +10,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace _2_sem_eksamen_bravo.Views
 {
     /// <summary>
-    /// Interaction logic for CustomerView.xaml
+    /// Interaction logic for CreateCustomerView.xaml
     /// </summary>
-    public partial class CustomerView : UserControl
+    public partial class CreateCustomerView : Window
     {
-        public CustomerView()
+        public CreateCustomerView()
         {
             InitializeComponent();
         }
 
-        private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            CreateCustomerView vindue = new CreateCustomerView();
-            vindue.Show();
+
         }
     }
 }
