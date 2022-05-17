@@ -12,9 +12,10 @@ namespace _2_sem_eksamen_bravo
 {
     static class SQL
     {
-        public static void SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
         {
             int addedMessagesId = 0;
+            int howManyReceived = 0;
             SqlConnection cnct = null;
             try
             {
@@ -48,31 +49,40 @@ namespace _2_sem_eksamen_bravo
                 }
             }
 
-
             List<int> customerIdsSentTo = new List<int>(); //gemmer liste af dem der har email så de ikke bliver gemt i historikken 2 gange hvis de også har sms
-            try
+            if (email)
             {
-                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand command = new SqlCommand("SELECT * FROM Customer WHERE Registered LIKE 1", cnct);
-                cnct.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                try
+                { 
+                    cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                    SqlCommand command = new SqlCommand("SELECT * FROM Customer WHERE Registered LIKE 1;", cnct);
+                    cnct.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        howManyReceived++;
+                        customerIdsSentTo.Add((int)reader[0]);
+                        SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1});", addedMessagesId, reader[0]), cnct);
+                        addToHistory.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
                 {
-                    customerIdsSentTo.Add((int)reader[0]);
-                    SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1})", addedMessagesId, reader[0].ToString()), cnct);
+                    Console.WriteLine("");
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
                 }
             }
-            catch (Exception ex)
+            if (sms)
             {
-                Console.WriteLine("");
+
             }
-            finally
-            {
-                if (cnct != null)
-                {
-                    cnct.Close();
-                }
-            }
+            return howManyReceived;
         }
 
         private static SqlParameter CreateParam(string name, object value, SqlDbType type)
