@@ -59,6 +59,8 @@ namespace _2_sem_eksamen_bravo.Views
             Headline.Clear();
             Subheadline.Clear();
             Message.Clear();
+            Sms.IsChecked = false;
+            Email.IsChecked = false;
         }
     }
 }
