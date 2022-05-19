@@ -22,7 +22,9 @@ namespace _2_sem_eksamen_bravo.Views
     {
         public SendMessageView()
         {
+            List<string> municipalities = SQL.GetMunicipalities();
             InitializeComponent();
+            Kommune.ItemsSource = municipalities;
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)

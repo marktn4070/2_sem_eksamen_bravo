@@ -90,5 +90,33 @@ namespace _2_sem_eksamen_bravo
             param.Value = value;
             return param;
         }
+
+        public static List<string> GetMunicipalities()
+        {
+            List<string> municipalities = new List<string>();
+            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand command = new SqlCommand("SELECT DISTINCT Municipality FROM Address;", cnct);
+                cnct.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    municipalities.Add(reader[0].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("");
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+            return municipalities;
+        }
     }
 }

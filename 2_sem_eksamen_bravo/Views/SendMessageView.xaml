@@ -31,8 +31,10 @@
         <Label Content="Underoverskrift:" Margin="227,177,0,0" Height="25" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Besked:" Margin="227,231,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Button Content="Send" x:Name="SendButton"  Margin="227,359,0,0" Width="70" Height="35" Click="SendButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14"/>
-
         <Button Content="Nulstil" x:Name="ClearButton" Margin="318,359,0,0" Width="70" Height="35" Click="ClearButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14"/>
+
+        <ComboBox Name="Kommune" Height="50" Width="100" Margin="464,119,236,431"/>
+        <ComboBox Name="Vej" Height="50" Width="100" Margin="590,119,110,431"/>
 
     </Grid>
 </UserControl>
