@@ -118,5 +118,35 @@ namespace _2_sem_eksamen_bravo
             }
             return municipalities;
         }
+        public static List<string> GetRoads(string municipality)
+        {
+            List<string> roads = new List<string>();
+            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    string.Format("SELECT * FROM Address WHERE Municipality LIKE @Mun;"),
+                    cnct);
+                cmd.Parameters.Add(CreateParam("@Mun", municipality, SqlDbType.NVarChar));
+                cnct.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    roads.Add(reader[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("");
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+            return roads;
+        }
     }
 }

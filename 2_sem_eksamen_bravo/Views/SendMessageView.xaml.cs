@@ -64,5 +64,10 @@ namespace _2_sem_eksamen_bravo.Views
             Sms.IsChecked = false;
             Email.IsChecked = false;
         }
+
+        private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
+        }
     }
 }
