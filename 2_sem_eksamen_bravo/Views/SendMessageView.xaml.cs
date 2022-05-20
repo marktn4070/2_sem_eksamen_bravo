@@ -69,5 +69,7 @@ namespace _2_sem_eksamen_bravo.Views
         {
             Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
         }
+
+        
     }
 }

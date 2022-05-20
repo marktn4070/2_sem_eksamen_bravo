@@ -49,5 +49,10 @@ namespace _2_sem_eksamen_bravo
         {
             this.MainContent.Content = new ViewModels.SendMessageViewModel();
         }
+
+        public static void ShowError(Exception ex)
+        {
+            MessageBox.Show(ex.Message);
+        }
     }
 }

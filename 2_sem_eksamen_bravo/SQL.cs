@@ -107,7 +107,7 @@ namespace _2_sem_eksamen_bravo
             }
             catch (Exception ex)
             {
-                Console.WriteLine("");
+                MainWindow.ShowError(ex);
             }
             finally
             {
@@ -137,7 +137,7 @@ namespace _2_sem_eksamen_bravo
             }
             catch (Exception ex)
             {
-                Console.WriteLine("");
+                MainWindow.ShowError(ex);
             }
             finally
             {
