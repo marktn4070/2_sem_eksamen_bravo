@@ -35,13 +35,20 @@ namespace _2_sem_eksamen_bravo.Views
                 {
                     MessageEmulator.EmulateSendEmail(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                if ((bool)Sms.IsChecked)
+                if ((bool)Sms.IsChecked && Vej.SelectedItem != null)
                 {
                     MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked);
-                ClearAll();
-                MessageBox.Show(string.Format("Sendt til {0} modtagere!", howManyReceived));
+                if (((bool)Sms.IsChecked && Vej.SelectedItem != null) || !(bool)Sms.IsChecked)
+                {
+                    int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked, Vej.SelectedItem);
+                    ClearAll();
+                    MessageBox.Show(string.Format("Sendt til {0} modtagere!", howManyReceived));
+                }
+                else
+                {
+                    MessageBox.Show("Område skal specificeres til SMS!");
+                }
             }
             else
             {

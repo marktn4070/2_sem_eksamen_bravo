@@ -11,7 +11,7 @@ namespace _2_sem_eksamen_bravo
 {
     static class SQL
     {
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, object roadName)
         {
             int addedMessagesId = 0;
             int howManyReceived = 0;
@@ -26,19 +26,12 @@ namespace _2_sem_eksamen_bravo
                 cmd.Parameters.Add(CreateParam("@Subheadline", subheadline.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
 
-                try
-                {
-                    cnct.Open();
-                    addedMessagesId = (int)cmd.ExecuteScalar();
-                }
-                catch (Exception ex)
-                {
-                    //aasdsad
-                }
+                cnct.Open();
+                addedMessagesId = (int)cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+
             }
             finally
             {
@@ -48,7 +41,6 @@ namespace _2_sem_eksamen_bravo
                 }
             }
 
-            List<int> customerIdsSentTo = new List<int>(); //gemmer liste af dem der har email så de ikke bliver gemt i historikken 2 gange hvis de også har sms
             if (email)
             {
                 try
@@ -60,7 +52,6 @@ namespace _2_sem_eksamen_bravo
                     while (reader.Read())
                     {
                         howManyReceived++;
-                        customerIdsSentTo.Add((int)reader[0]);
                         SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1});", addedMessagesId, reader[0]), cnct);
                         addToHistory.ExecuteNonQuery();
                     }
@@ -77,9 +68,64 @@ namespace _2_sem_eksamen_bravo
                     }
                 }
             }
-            if (sms)
+            if (sms) //husk ikke gem i historik for dem som er registered email
             {
+                int roadCode = -1;
+                try //get roadcode
+                {
 
+                    SqlCommand cmd = new SqlCommand(
+                   string.Format("SELECT * FROM Address WHERE Road LIKE @Road"),
+                   cnct);
+                    cmd.Parameters.Add(CreateParam("@Road", roadName, SqlDbType.NVarChar));
+                    cnct.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        roadCode = (int)reader[0];
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
+                }
+                try
+                {
+                    cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                    SqlCommand command = null;
+                    if (email) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
+                    {
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 0 AND AddressID LIKE {0};", roadCode), cnct);
+                    }
+                    else 
+                    {
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE AddressID LIKE {0};", roadCode), cnct);
+                    }
+                    cnct.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        howManyReceived++;
+                        SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1});", addedMessagesId, reader[0]), cnct);
+                        addToHistory.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
+                }
             }
             return howManyReceived;
         }

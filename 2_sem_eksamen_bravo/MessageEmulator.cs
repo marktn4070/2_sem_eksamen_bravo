@@ -39,9 +39,9 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, object roadName)
         {
-            return SQL.SaveMessage(headline, subheadline, message, sms, email);
+            return SQL.SaveMessage(headline, subheadline, message, sms, email, roadName);
         }
        
     }
