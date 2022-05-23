@@ -35,9 +35,9 @@
         <Button Content="Nulstil" x:Name="ClearButton" Margin="318,359,0,0" Width="70" Height="35" Click="ClearButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14"/>
 
         <Label Content="Kommune:" Width="70" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,90,330,0"/>
-        <ComboBox Name="Kommune" Height="50" Width="100" Margin="0,119,300,0" HorizontalAlignment="Right" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="False"/>
+        <ComboBox Name="Kommune" Height="50" Width="100" Margin="0,119,300,0" HorizontalAlignment="Right" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="False" IsTextSearchEnabled="True" IsEditable="True"/>
         <Label Content="Vej:" Width="70" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,90,180,0"/>
-        <ComboBox Name="Vej" Height="50" Width="100" Margin="0,119,150,0" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False"/>
+        <ComboBox Name="Vej" Height="50" Width="100" Margin="0,119,150,0" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False" IsTextSearchEnabled="True" IsEditable="True"/>
 
     </Grid>
 </UserControl>
