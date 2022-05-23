@@ -12,13 +12,6 @@
             <Canvas Name="panel11" Height="379" Width="218" Background="White" Margin="0,-163,-380,-216" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 <Canvas Name="panel12" Height="5" Width="180" Background="#2aaae1" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 </Canvas>
-                <Canvas Name="panel13" Height="100" Width="200" Background="#2aaae1" Margin="-1,141,-199,-241" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
-                    <Button Name="button20" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
-                    <Button Name="button21" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
-                    <Button Name="button22" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
-                    <Label Name="label16" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="White" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Bottom" >02-01-2019</Label>
-                    <Label Name="label17" Height="26" Width="164" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="White" Margin="10,25,-174,-51" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Inspirational Gathering</Label>
-                </Canvas>
                 <Canvas Name="panel14" Height="100" Width="200" Margin="-1,248,-199,-348" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                     <Button Name="button23" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
                     <Button Name="button24" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
@@ -35,7 +28,7 @@
                 </Canvas>
                 <Label Name="label22" Height="25" Width="94" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="7,-6,-101,-19" HorizontalAlignment="Right" VerticalAlignment="Bottom" >6th Monday</Label>
             </Canvas>
-            <Canvas Name="panel6" Height="271" Width="218" Background="White" Margin="-98,-163,-120,-108" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+            <Canvas Name="panel6" Height="379" Width="218" Background="White" Margin="-98,-163,-120,-216" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 <Canvas Name="panel7" Height="5" Width="180" Background="#2aaae1" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 </Canvas>
                 <Canvas Name="panel9" Height="100" Width="200" Margin="-1,146,-199,-246" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
@@ -57,13 +50,6 @@
             <Canvas Name="panel1" Height="379" Width="218" Background="White" Margin="-365,-163,147,-216" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 <Canvas Name="panel3" Height="5" Width="180" Background="#2aaae1" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                 </Canvas>
-                <Canvas Name="panel4" Height="100" Width="200" Background="#2aaae1" Margin="-1,141,-199,-241" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
-                    <Button Name="button5" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
-                    <Button Name="button6" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
-                    <Button Name="button7" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
-                    <Label Name="label5" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="White" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Bottom" >02-01-2019</Label>
-                    <Label Name="label6" Height="26" Width="164" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="White" Margin="10,25,-174,-51" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Inspirational Gathering</Label>
-                </Canvas>
                 <Canvas Name="panel5" Height="100" Width="200" Margin="-1,248,-199,-348" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
                     <Button Name="button8" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
                     <Button Name="button9" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Bottom" ></Button>
@@ -81,7 +67,6 @@
                 <Label Name="label2" Height="25" Width="104" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="7,-6,-111,-19" HorizontalAlignment="Right" VerticalAlignment="Bottom" >2nd Thrusday</Label>
             </Canvas>
             <Button Name="button1" Height="23" Width="95" TabIndex="1" Foreground="White" Background="#2aaae1" Click="button1_Click" Margin="-289,-204,194,181" HorizontalAlignment="Right" VerticalAlignment="Bottom" >+ Add New</Button>
-            <Label Name="label1" Height="32" Width="103" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Margin="-380,-206,277,174" HorizontalAlignment="Right" VerticalAlignment="Bottom" >Meetings</Label>
         </Grid>
     </Grid>
 </UserControl>
