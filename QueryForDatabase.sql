@@ -28,7 +28,7 @@ CREATE TABLE Customer (
     Birth date NOT NULL,
     Phone int NOT NULL,
     Email varchar(64) NOT NULL,
-    AddressID int NOT NULL FOREIGN KEY REFERENCES Address(RoadcodeID)
+    RoadcodeID int NOT NULL FOREIGN KEY REFERENCES Address(RoadcodeID)
 );  
 
 CREATE TABLE Message_history (
