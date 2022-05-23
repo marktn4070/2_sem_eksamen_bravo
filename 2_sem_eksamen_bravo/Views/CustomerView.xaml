@@ -19,31 +19,28 @@
 
 
 
-        <!--<Grid x:Name="page_deltager"  Height="600" Width="900" Background="White">
-            <Button Content="Opret &#xD;&#xA;Deltager" Margin="710,78,0,0" Width="70" Height="47" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold"/>
+        <Grid x:Name="page_deltager"  Height="600" Width="900" Background="White">
+            <Button Content="Opret &#xD;&#xA;Deltager" Margin="710,78,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold"/>
 
-            <DataGrid x:Name="datagrid_customer"  HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" AutoGenerateColumns="False" CanUserAddRows="False"
-                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
+            <!--<DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="datagrid_customer_changed" >-->
+            <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
+                IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed">
 
-                <DataGrid.Columns>
+                    <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Width="30" Binding="{Binding C_id}"/>
-
-                    <DataGridTextColumn Header="Navn" Width="104.2" Binding="{Binding C_name}"/>
-
-                    <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding C_mail}"/>
-
-                    <DataGridTextColumn Header="Telefon nr." Width="104.2" Binding="{Binding C_phone}"/>
-
-                    <DataGridTextColumn Header="Adresse" Width="104.2" Binding="{Binding C_address}"/>
-
-                    <DataGridTextColumn Header="Post nr." Width="104.2" Binding="{Binding C_zip}"/>
-
-                    <DataGridTextColumn Header="By" Width="104.2" Binding="{Binding C_city}"/>
+                    <DataGridTextColumn Header="Fornavn" Width="104.2" Binding="{Binding C_firstName}"/>
+                    <DataGridTextColumn Header="Efternavn" Width="104.2" Binding="{Binding C_LastName}"/>
+                    <DataGridTextColumn Header="Registreret" Width="104.2" Binding="{Binding C_Registered}"/>
+                    <DataGridTextColumn Header="Køn" Width="104.2" Binding="{Binding C_Gender}"/>
+                    <DataGridTextColumn Header="Post nr." Width="104.2" Binding="{Binding C_Birth}"/>
+                    <DataGridTextColumn Header="Mobil nummer" Width="104.2" Binding="{Binding C_Phone}"/>
+                    <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding C_Email}"/>
 
                     <DataGridTemplateColumn Header="Opdater">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="btnView" Content="Opdater" Click="btnView_Click" Background="#FF5C5959" Foreground="#FFFFFF" Width="50"/>
+                                <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FF5C5959" Foreground="#FFFFFF" Width="50"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -51,13 +48,13 @@
                     <DataGridTemplateColumn Header="Slet" d:IsLocked="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="btnDelete" Content="Slet" Click="btnDelete_Click_2"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>
+                                <Button Name="btnDelete" Content="Slet" Click="btn_Delete_Click"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
 
                 </DataGrid.Columns>
             </DataGrid>
-        </Grid>-->
+        </Grid>
     </Grid>
 </UserControl>

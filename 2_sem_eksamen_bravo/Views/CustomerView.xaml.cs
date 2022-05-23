@@ -16,6 +16,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 using System.Configuration;
+using System.ComponentModel;
 
 namespace _2_sem_eksamen_bravo.Views
 {
@@ -25,10 +26,11 @@ namespace _2_sem_eksamen_bravo.Views
     public partial class CustomerView : UserControl
     {
 
-        //private List<Customer_strings> Customer_list = new List<Customer_strings>();
+        private List<Customer_strings> Customer_list = new List<Customer_strings>();
         public CustomerView()
         {
             InitializeComponent();
+            LoadGrid_Cusumer();
         }
 
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
@@ -36,15 +38,14 @@ namespace _2_sem_eksamen_bravo.Views
             CreateCustomerView vindue = new CreateCustomerView();
             vindue.Show();
         }
-        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+        SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=HjemIs; Integrated Security=True");
 
+        public CancelEventHandler Closing { get; private set; }
 
-
-
-        //private void Refresh()
-        //{
-        //    datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
-        //}
+        private void Refresh()
+        {
+            datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
+        }
 
 
         private class Customer_strings
@@ -61,99 +62,122 @@ namespace _2_sem_eksamen_bravo.Views
 
 
 
+        private void Clear()
+        {
+            datagrid_customer.SelectedIndex = -1;
+            LoadGrid_Cusumer();
+        }
 
 
-        //public void LoadGrid_Cusumer()
+
+
+
+        public void LoadGrid_Cusumer()
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                DataTable dt = new DataTable();
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                Customer_list.Clear();
+                while (sdr.Read()) Customer_list.Add(new Customer_strings { C_id = sdr[0].ToString(), C_firstName = sdr[1].ToString(), C_LastName = sdr[2].ToString(), C_Registered = sdr[3].ToString(), C_Gender = sdr[4].ToString(), C_Birth = sdr[5].ToString(), C_Phone = sdr[6].ToString(), C_Email = sdr[7].ToString() });
+                Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                if (host != null) host.Close();
+            }
+        }
+
+
+
+        private void datagrid_customer_changed(object sender, SelectionChangedEventArgs e)
+        {
+            int n = datagrid_customer.SelectedIndex;
+        }
+
+
+
+        private void btn_Update_Click(object sender, RoutedEventArgs e)
+        {
+            int n = datagrid_customer.SelectedIndex;
+            if (n >= 0)
+            {
+                string C_id_sting = Customer_list[n].C_id;
+                string C_firstName_sting = Customer_list[n].C_firstName;
+                string C_LastName_sting = Customer_list[n].C_LastName;
+                string C_Registered_sting = Customer_list[n].C_Registered;
+                string C_Gender_sting = Customer_list[n].C_Gender;
+                string C_Birth_sting = Customer_list[n].C_Birth;
+                string C_Phone_sting = Customer_list[n].C_Phone;
+                string C_Email_sting = Customer_list[n].C_Email;
+
+                Update_customer win2 = new Update_customer(C_id_sting, C_firstName_sting, C_LastName_sting, C_Registered_sting, C_Gender_sting, C_Birth_sting, C_Phone_sting, C_Email_sting);
+                win2.Show();
+            }
+        }
+
+
+
+        private SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
+        }
+
+
+
+
+        private void btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            string error = "";
+            string selected_id = Customer_list[datagrid_customer.SelectedIndex].C_id;
+            string selected_name = Customer_list[datagrid_customer.SelectedIndex].C_firstName;
+            int n = datagrid_customer.SelectedIndex;
+
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (Result == MessageBoxResult.Yes)
+            {
+                SqlConnection connection = null;
+                try
+                {
+                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+                    SqlCommand command = new SqlCommand("Delete FROM Participant WHERE C_id = @C_id", connection);
+                    command.Parameters.Add(CreateParam("@C_id", selected_id.Trim(), SqlDbType.NVarChar));
+                    connection.Open();
+                    if (command.ExecuteNonQuery() == 1)
+                    {
+                        Clear();
+                        return;
+                    }
+                    error = "Illegal database operation";
+                }
+                catch (Exception ex)
+                {
+                    error = ex.Message;
+                }
+                finally
+                {
+                    if (connection != null) connection.Close();
+                }
+                MessageBox.Show(error);
+            }
+            else if (Result == MessageBoxResult.No)
+            {
+                LoadGrid_Cusumer();
+            }
+        }
+
+
+        //private void datagrid_customer()
         //{
-        //    try
-        //    {
-        //        SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
-        //        DataTable dt = new DataTable();
-        //        host.Open();
-        //        SqlDataReader sdr = cmd.ExecuteReader();
-        //        Customer_list.Clear();
-        //        while (sdr.Read()) Customer_list.Add(new Customer_strings { C_id = sdr[0].ToString(), C_firstName = sdr[1].ToString(), C_LastName = sdr[2].ToString(), C_Registered = sdr[3].ToString(), C_Gender = sdr[4].ToString(), C_Birth = sdr[5].ToString(), C_Phone = sdr[6].ToString(), C_Email = sdr[6].ToString() });
-        //        Refresh();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //    finally
-        //    {
-        //        if (host != null) host.Close();
-        //    }
+
         //}
-
-
-
-
-
-        //private void btnView_Click(object sender, RoutedEventArgs e)
-        //{
-        //    this.Closing += new System.ComponentModel.CancelEventHandler(Update_runner_opdate);
-        //    this.Close();
-        //}
-
-
-        //private void Update_runner_opdate(object sender, System.ComponentModel.CancelEventArgs e)
-        //{
-        //    int n = datagrid_customer.SelectedIndex;
-        //    if (n >= 0)
-        //    {
-        //        string P_id_sting = Customer_list[n].P_id;
-        //        string P_name_sting = Customer_list[n].P_name;
-        //        string P_mail_sting = Customer_list[n].P_mail;
-        //        string P_phone_sting = Customer_list[n].P_phone;
-        //        string P_address_sting = Customer_list[n].P_address;
-        //        string P_zip_sting = Customer_list[n].P_zip;
-        //        string P_city_sting = Customer_list[n].P_city;
-        //        Update_runner win2 = new Update_runner(P_id_sting, P_name_sting, P_mail_sting, P_phone_sting, P_address_sting, P_zip_sting, P_city_sting);
-        //        win2.Show();
-        //    }
-        //}
-
-
-
-        //private void btnDelete_Click_2(object sender, RoutedEventArgs e)
-        //{
-        //    string error = "";
-        //    string selected_id = Customer_list[datagrid_customer.SelectedIndex].P_id;
-        //    string selected_name = Customer_list[datagrid_customer.SelectedIndex].P_name;
-        //    int n = datagrid_customer.SelectedIndex;
-
-        //    var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
-        //    if (Result == MessageBoxResult.Yes)
-        //    {
-        //        SqlConnection connection = null;
-        //        try
-        //        {
-        //            connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-        //            SqlCommand command = new SqlCommand("Delete FROM Participant WHERE P_id = @P_id", connection);
-        //            command.Parameters.Add(CreateParam("@P_id", selected_id.Trim(), SqlDbType.NVarChar));
-        //            connection.Open();
-        //            if (command.ExecuteNonQuery() == 1)
-        //            {
-        //                Clear();
-        //                return;
-        //            }
-        //            error = "Illegal database operation";
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            error = ex.Message;
-        //        }
-        //        finally
-        //        {
-        //            if (connection != null) connection.Close();
-        //        }
-        //        MessageBox.Show(error);
-        //    }
-        //    else if (Result == MessageBoxResult.No)
-        //    {
-        //        LoadGrid_Runner();
-        //    }
-        //}
-
     }
 }
