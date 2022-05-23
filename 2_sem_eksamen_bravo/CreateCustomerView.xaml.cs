@@ -24,6 +24,9 @@ namespace _2_sem_eksamen_bravo
             InitializeComponent();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }
