@@ -11,8 +11,8 @@
             <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Send Besked"/>
 
         <CheckBox x:Name="Email" Content="Email" Margin="223,95,500,302" VerticalAlignment="Top" Checked="Email_Checked" Unchecked="Email_Checked"/>
-        <CheckBox x:Name="Sms" Content="SMS" Margin="291,95,439,302" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top"/>
-        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="217,70,381,0" VerticalAlignment="Top"  IsEnabled="False"/>
+        <CheckBox x:Name="Sms" Content="SMS" Margin="291,95,439,302" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Checked="GeoChecked" Unchecked="GeoUnchecked"/>
+        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="223,70,381,0" VerticalAlignment="Top"  IsEnabled="False" Checked="GeoChecked" Unchecked="GeoUnchecked"/>
 
         <!--<Button x:Name="SendButton" Content="Send" Height="30" Width="40" Click="SendButton_Click" Margin="644,322,108,67"/>
         <Button x:Name="ClearButton" Content="Clear" Height="30" Width="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="586,321,0,0" Click="ClearButton_Click"/>
@@ -34,9 +34,9 @@
         <Button Content="Send" x:Name="SendButton"  Margin="227,359,0,0" Width="70" Height="35" Click="SendButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" FontSize="14"/>
             <Button Content="Nulstil" x:Name="ClearButton" Margin="318,359,0,0" Width="70" Height="35" Click="ClearButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" FontSize="14"/>
         <Label Content="Vælg vej:" Margin="544,64,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Vælg by:" Margin="421,64,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <ComboBox Name="Kommune" Height="23" Width="100" Margin="421,89,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged"/>
-        <ComboBox Name="Vej" Height="23" Width="100" Margin="544,89,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Content="Vælg kommune:" Margin="421,64,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <ComboBox Name="Kommune" Height="23" Width="100" Margin="421,89,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="False" IsTextSearchEnabled="True" IsEditable="True"/>
+        <ComboBox Name="Vej" Height="23" Width="100" Margin="544,89,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" IsTextSearchEnabled="True" IsEditable="True"/>
 
         </Grid>
 </UserControl>
