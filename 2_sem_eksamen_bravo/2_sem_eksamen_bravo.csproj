@@ -58,8 +58,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\UpdateViewCommand.cs" />
-    <Compile Include="CreateCustomerView.xaml.cs">
-      <DependentUpon>CreateCustomerView.xaml</DependentUpon>
+    <Compile Include="CreateCustomer.xaml.cs">
+      <DependentUpon>CreateCustomer.xaml</DependentUpon>
     </Compile>
     <Compile Include="SQL.cs" />
     <Compile Include="Update_customer.xaml.cs">
@@ -79,7 +79,7 @@
     <Compile Include="Views\CustomerView.xaml.cs">
       <DependentUpon>CustomerView.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateCustomerView.xaml">
+    <Page Include="CreateCustomer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

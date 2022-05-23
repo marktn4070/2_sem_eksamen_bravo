@@ -6,9 +6,6 @@
              xmlns:local="clr-namespace:_2_sem_eksamen_bravo.Views"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
-    <Grid>
-        <Label FontSize="36" HorizontalAlignment="Center" Content="Kunder"/>
-        <Button Content="Opret kunde" HorizontalAlignment="Left" Margin="90,145,0,0" VerticalAlignment="Top" Name="Btn_OpenCreateCustomerWindow" Click="Btn_OpenCreateCustomerWindow_Click"/>
 
 
 
@@ -18,13 +15,14 @@
 
 
 
+    <Grid x:Name="page_deltager" Height="600" Width="800" Background="White">
+            <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunder"/>
 
-        <Grid x:Name="page_deltager"  Height="600" Width="900" Background="White">
-            <Button Content="Opret &#xD;&#xA;Deltager" Margin="710,78,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold"/>
+        <Button Content="Opret &#xD;&#xA;Kunde" Margin="710,24,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold"/>
 
             <!--<DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
                   IsReadOnly="True" SelectionMode="Single" SelectionChanged="datagrid_customer_changed" >-->
-            <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
+            <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,91,0,209" AutoGenerateColumns="False" CanUserAddRows="False"
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed">
 
                     <DataGrid.Columns>
@@ -40,7 +38,7 @@
                     <DataGridTemplateColumn Header="Opdater">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FF5C5959" Foreground="#FFFFFF" Width="50"/>
+                            <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
@@ -56,5 +54,4 @@
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>
-    </Grid>
 </UserControl>

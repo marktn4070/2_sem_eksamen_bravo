@@ -7,10 +7,11 @@
         mc:Ignorable="d"
         Title="Update_customer" Height="450" Width="400">
     <Grid>
+        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opdater kunder"/>
 
-        <Button Content="Anullér" x:Name="Cancel_Btn"  Margin="45,342,0,0" Width="70" Height="45" Click="Cancel_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" RenderTransformOrigin="0.491,0.514" FontSize="14" FontWeight="Bold"/>
-        <Button Content="Nulstil" x:Name="Clear_Btn"  Margin="133,342,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" RenderTransformOrigin="0.491,0.514" FontSize="14" FontWeight="Bold"/>
-        <Button Content="Opdater" x:Name="Update_Btn" Margin="225,342,0,0" Width="70" Height="45" Click="Update_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Anullér" x:Name="Cancel_Btn"  Margin="45,342,0,0" Width="70" Height="45" Click="Cancel_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" RenderTransformOrigin="0.491,0.514" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Nulstil" x:Name="Clear_Btn"  Margin="133,342,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" RenderTransformOrigin="0.491,0.514" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Opdater" x:Name="Update_Btn" Margin="225,342,0,0" Width="70" Height="45" Click="Update_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
         <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,60,0,0" VerticalAlignment="Top" Width="105"/>
         <Label Content="Efternavn" HorizontalAlignment="Left" Margin="40,91,0,0" VerticalAlignment="Top"/>

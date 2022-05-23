@@ -35,7 +35,7 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
         {
-            CreateCustomerView vindue = new CreateCustomerView();
+            CreateCustomer vindue = new CreateCustomer();
             vindue.Show();
         }
         SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=HjemIs; Integrated Security=True");

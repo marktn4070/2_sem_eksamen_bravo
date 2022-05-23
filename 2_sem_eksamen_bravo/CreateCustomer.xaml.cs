@@ -15,16 +15,20 @@ using System.Windows.Shapes;
 namespace _2_sem_eksamen_bravo
 {
     /// <summary>
-    /// Interaction logic for CreateCustomerView.xaml
+    /// Interaction logic for CreateCustomer.xaml
     /// </summary>
-    public partial class CreateCustomerView : Window
+    public partial class CreateCustomer : Window
     {
-        public CreateCustomerView()
+        public CreateCustomer()
         {
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Create_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
 
         }
