@@ -11,7 +11,7 @@ namespace _2_sem_eksamen_bravo
 {
     static class SQL
     {
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, object roadName)
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object roadName)
         {
             int addedMessagesId = 0;
             int howManyReceived = 0;
@@ -41,7 +41,7 @@ namespace _2_sem_eksamen_bravo
                 }
             }
 
-            if (email)
+            if (email && !emailGeo)
             {
                 try
                 { 
@@ -68,7 +68,7 @@ namespace _2_sem_eksamen_bravo
                     }
                 }
             }
-            if (sms) //husk ikke gem i historik for dem som er registered email
+            if (sms || emailGeo) //husk ikke gem i historik for dem som er registered email
             {
                 int roadCode = -1;
                 try //get roadcode

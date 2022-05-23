@@ -39,19 +39,20 @@ namespace _2_sem_eksamen_bravo.Views
                 {
                     MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                if (((bool)Sms.IsChecked && Vej.SelectedItem != null) || !(bool)Sms.IsChecked)
+                if ((((bool)Sms.IsChecked && Vej.SelectedItem != null) || !(bool)Sms.IsChecked) && (bool)EmailGeo.IsChecked && Vej.SelectedItem != null)
                 {
-                    int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked, Vej.SelectedItem);
+                    int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked, (bool)EmailGeo.IsChecked, Vej.SelectedItem);
                     ClearAll();
                     MessageBox.Show(string.Format("Sendt til {0} modtagere!", howManyReceived));
                 }
                 else
                 {
-                    MessageBox.Show("Område skal specificeres til SMS!");
+                    MessageBox.Show("Område skal specificeres til SMS eller geografisk speficik email!");
                 }
             }
             else
             {
+                MessageBox.Show("Mangler at udfylde tekstbox og eller at vælge en besked type");
                 //warning måske lave de dårlige felter røde
             }
 
@@ -77,6 +78,13 @@ namespace _2_sem_eksamen_bravo.Views
             Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
         }
 
-        
+        private void Email_Checked(object sender, RoutedEventArgs e)
+        {
+            if((bool)EmailGeo.IsChecked)
+            {
+                EmailGeo.IsChecked = false;
+            }
+            EmailGeo.IsEnabled = !EmailGeo.IsEnabled;
+        }
     }
 }
