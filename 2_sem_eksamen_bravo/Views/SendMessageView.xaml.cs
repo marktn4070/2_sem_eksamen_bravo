@@ -86,5 +86,21 @@ namespace _2_sem_eksamen_bravo.Views
             }
             EmailGeo.IsEnabled = !EmailGeo.IsEnabled;
         }
+        private void GeoUnchecked(object sender, RoutedEventArgs e)
+        {
+            if (!(bool)EmailGeo.IsChecked && !(bool)Sms.IsChecked)
+            {
+                Kommune.IsEnabled = false;
+                Vej.IsEnabled = false;
+            }
+        }
+        private void GeoChecked(object sender, RoutedEventArgs e)
+        {
+           if (Kommune.IsEnabled == false)
+           {
+                Kommune.IsEnabled = true;
+                Vej.IsEnabled = true;
+            }
+        }
     }
 }

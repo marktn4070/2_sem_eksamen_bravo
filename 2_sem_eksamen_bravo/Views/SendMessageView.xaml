@@ -11,8 +11,8 @@
         <Label FontSize="36" HorizontalAlignment="Center" Content="Send Besked"/>
 
         <CheckBox x:Name="Email" Content="Email" Margin="223,95,500,302" VerticalAlignment="Top" Checked="Email_Checked" Unchecked="Email_Checked"/>
-        <CheckBox x:Name="Sms" Content="SMS" Margin="291,95,439,302" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top"/>
-        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="217,70,381,0" VerticalAlignment="Top"  IsEnabled="False"/>
+        <CheckBox x:Name="Sms" Content="SMS" Margin="291,95,439,302" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Checked="GeoChecked" Unchecked="GeoUnchecked"/>
+        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="223,70,381,0" VerticalAlignment="Top"  IsEnabled="False" Checked="GeoChecked" Unchecked="GeoUnchecked"/>
 
         <!--<Button x:Name="SendButton" Content="Send" Height="30" Width="40" Click="SendButton_Click" Margin="644,322,108,67"/>
         <Button x:Name="ClearButton" Content="Clear" Height="30" Width="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="586,321,0,0" Click="ClearButton_Click"/>
@@ -34,8 +34,10 @@
         <Button Content="Send" x:Name="SendButton"  Margin="227,359,0,0" Width="70" Height="35" Click="SendButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14"/>
         <Button Content="Nulstil" x:Name="ClearButton" Margin="318,359,0,0" Width="70" Height="35" Click="ClearButton_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" FontWeight="Bold" FontSize="14"/>
 
-        <ComboBox Name="Kommune" Height="50" Width="100" Margin="0,119,300,0" HorizontalAlignment="Right" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged"/>
-        <ComboBox Name="Vej" Height="50" Width="100" Margin="0,119,150,0" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+        <Label Content="Kommune:" Width="70" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,90,330,0"/>
+        <ComboBox Name="Kommune" Height="50" Width="100" Margin="0,119,300,0" HorizontalAlignment="Right" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="False"/>
+        <Label Content="Vej:" Width="70" Height="30" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,90,180,0"/>
+        <ComboBox Name="Vej" Height="50" Width="100" Margin="0,119,150,0" HorizontalAlignment="Right" VerticalAlignment="Top" IsEnabled="False"/>
 
     </Grid>
 </UserControl>

@@ -162,6 +162,7 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+            municipalities.Sort();
             return municipalities;
         }
         public static List<string> GetRoads(string municipality)
@@ -192,6 +193,7 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+            roads.Sort();
             return roads;
         }
     }
