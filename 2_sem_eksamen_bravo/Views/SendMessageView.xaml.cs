@@ -52,7 +52,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
             else
             {
-
+                //warning måske lave de dårlige felter røde
             }
 
         }

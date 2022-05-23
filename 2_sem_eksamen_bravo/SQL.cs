@@ -101,11 +101,11 @@ namespace _2_sem_eksamen_bravo
                     SqlCommand command = null;
                     if (email) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
                     {
-                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 0 AND AddressID LIKE {0};", roadCode), cnct);
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 0 AND RoadcodeID LIKE {0};", roadCode), cnct);
                     }
                     else 
                     {
-                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE AddressID LIKE {0};", roadCode), cnct);
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE RoadcodeID LIKE {0};", roadCode), cnct);
                     }
                     cnct.Open();
                     SqlDataReader reader = command.ExecuteReader();
