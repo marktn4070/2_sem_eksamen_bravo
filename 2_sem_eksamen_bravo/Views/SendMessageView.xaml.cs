@@ -71,11 +71,22 @@ namespace _2_sem_eksamen_bravo.Views
             Message.Clear();
             Sms.IsChecked = false;
             Email.IsChecked = false;
+            Vej.ItemsSource = new List<string>();
+            Kommune.SelectedItem = null;
         }
 
         private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
+            if (Kommune.SelectedItem != null)
+            {
+                Vej.IsEnabled = true;
+                Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
+            }
+            else
+            {
+                Vej.IsEnabled = false;
+                Vej.ItemsSource = new List<string>();
+            }
         }
 
         private void Email_Checked(object sender, RoutedEventArgs e)
@@ -99,7 +110,6 @@ namespace _2_sem_eksamen_bravo.Views
            if (Kommune.IsEnabled == false)
            {
                 Kommune.IsEnabled = true;
-                Vej.IsEnabled = true;
             }
         }
     }

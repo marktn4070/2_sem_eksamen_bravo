@@ -198,7 +198,7 @@ namespace _2_sem_eksamen_bravo
             return roads;
         }
 
-        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, int zip, string road) //james
+        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
         {
             int roadCode;
             SqlConnection cnct = null;
@@ -207,8 +207,9 @@ namespace _2_sem_eksamen_bravo
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("SELECT * FROM Address WHERE Zip LIKE {0} AND Road LIKE @Road;", zip),
+                    string.Format("SELECT * FROM Address WHERE Municipality LIKE @Mun AND Road LIKE @Road;"),
                     cnct);
+                cmd.Parameters.Add(CreateParam("@Mun", road.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Road", road.Trim(), SqlDbType.NVarChar));
                 cnct.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -228,6 +229,7 @@ namespace _2_sem_eksamen_bravo
                     cnct.Close();
                 }
             }
+
 
             try
             {

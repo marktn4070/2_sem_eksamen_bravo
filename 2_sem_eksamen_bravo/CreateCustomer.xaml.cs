@@ -23,14 +23,15 @@ namespace _2_sem_eksamen_bravo
         public CreateCustomer()
         {
             InitializeComponent();
+            Kommune.ItemsSource = SQL.GetMunicipalities();
         }
 
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {
             //validation here
             if (FirstName.Text == string.Empty || LastName.Text == string.Empty || Birthday.Text == string.Empty || Birthmonth.Text == string.Empty ||
-                Birthyear.Text == string.Empty || Phone.Text == string.Empty ||Email.Text == string.Empty || Zip.Text == string.Empty 
-                || Road.Text == string.Empty || (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked))
+                Birthyear.Text == string.Empty || Phone.Text == string.Empty ||Email.Text == string.Empty || Kommune.SelectedItem == null
+                || Vej.SelectedItem == null || (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked))
             {
                 MessageBox.Show("En eller flere felter mangler!");
             }
@@ -63,7 +64,7 @@ namespace _2_sem_eksamen_bravo
                 string birth = "";
                 birth = Birthday.Text + "-" + Birthmonth.Text + "-" + Birthyear.Text;
                 string gender = "";
-                SQL.RegisterCustomer(FirstName.Text, LastName.Text, (bool)Registered.IsChecked, gender, birth, int.Parse(Phone.Text), Email.Text, int.Parse(Zip.Text), Road.Text);
+                SQL.RegisterCustomer(FirstName.Text, LastName.Text, (bool)Registered.IsChecked, gender, birth, int.Parse(Phone.Text), Email.Text, Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
             }
         }
         private void Clear_Btn_Click(object sender, RoutedEventArgs e)
@@ -73,7 +74,21 @@ namespace _2_sem_eksamen_bravo
 
         private void ClearAll()
         {
-
+            Vej.ItemsSource = new List<string>();
+            Kommune.SelectedItem = null;
+        }
+        private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (Kommune.SelectedItem != null)
+            {
+                Vej.IsEnabled = true;
+                Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
+            }
+            else
+            {
+                Vej.IsEnabled = false;
+                Vej.ItemsSource = new List<string>();
+            }
         }
     }
 }
