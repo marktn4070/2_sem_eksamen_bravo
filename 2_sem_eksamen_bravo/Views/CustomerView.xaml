@@ -26,14 +26,14 @@
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed">
 
                     <DataGrid.Columns>
-                    <DataGridTextColumn Header="Id" Width="30" Binding="{Binding C_id}"/>
-                    <DataGridTextColumn Header="Fornavn" Width="104.2" Binding="{Binding C_firstName}"/>
-                    <DataGridTextColumn Header="Efternavn" Width="104.2" Binding="{Binding C_LastName}"/>
-                    <DataGridTextColumn Header="Registreret" Width="104.2" Binding="{Binding C_Registered}"/>
-                    <DataGridTextColumn Header="Køn" Width="104.2" Binding="{Binding C_Gender}"/>
-                    <DataGridTextColumn Header="Post nr." Width="104.2" Binding="{Binding C_Birth}"/>
-                    <DataGridTextColumn Header="Mobil nummer" Width="104.2" Binding="{Binding C_Phone}"/>
-                    <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding C_Email}"/>
+                    <DataGridTextColumn Header="Id" Width="70" Binding="{Binding C_id}"/>
+                    <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding C_firstName}"/>
+                    <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding C_LastName}"/>
+                    <DataGridTextColumn Header="Registreret" Width="70" Binding="{Binding C_Registered}"/>
+                    <DataGridTextColumn Header="Køn" Width="70" Binding="{Binding C_Gender}"/>
+                    <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding C_Birth}"/>
+                    <DataGridTextColumn Header="Mobil nr." Width="70" Binding="{Binding C_Phone}"/>
+                    <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding C_Email}"/>
 
                     <DataGridTemplateColumn Header="Opdater">
                         <DataGridTemplateColumn.CellTemplate>

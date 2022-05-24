@@ -41,11 +41,6 @@ namespace _2_sem_eksamen_bravo
 
         }
 
-        private void Cancel_Btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Clear_Btn_Click(object sender, RoutedEventArgs e)
         {
 
