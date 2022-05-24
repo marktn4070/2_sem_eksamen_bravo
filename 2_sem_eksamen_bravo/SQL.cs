@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.IO;
 
 namespace _2_sem_eksamen_bravo
 {
     static class SQL
     {
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object roadName)
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object roadName) //james
         {
             int addedMessagesId = 0;
             int howManyReceived = 0;
@@ -138,7 +137,7 @@ namespace _2_sem_eksamen_bravo
             return param;
         }
 
-        public static List<string> GetMunicipalities()
+        public static List<string> GetMunicipalities() //james
         {
             List<string> municipalities = new List<string>();
             SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -166,7 +165,7 @@ namespace _2_sem_eksamen_bravo
             municipalities.Sort();
             return municipalities;
         }
-        public static List<string> GetRoads(string municipality)
+        public static List<string> GetRoads(string municipality) //james
         {
             List<string> roads = new List<string>();
             SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -198,6 +197,61 @@ namespace _2_sem_eksamen_bravo
             return roads;
         }
 
+        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, int zip, string road) //james
+        {
+            int roadCode;
+            SqlConnection cnct = null;
+
+            try //get roadcode
+            {
+                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                SqlCommand cmd = new SqlCommand(
+                    string.Format("SELECT * FROM Address WHERE Zip LIKE {0} AND Road LIKE @Road;", zip),
+                    cnct);
+                cmd.Parameters.Add(CreateParam("@Road", road.Trim(), SqlDbType.NVarChar));
+                cnct.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    roadCode = (int)reader[0];
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+
+            try
+            {
+                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                SqlCommand cmd = new SqlCommand(
+                    string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, @Gender, GETDATE(), '{0}', '{1}');", registered),
+                    cnct);
+                cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@Gender", gender.Trim(), SqlDbType.NVarChar));
+
+                cnct.Open();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+        }
         public static void AdresseImpoter()
         {
             int vejkode;
