@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -66,6 +67,11 @@ namespace _2_sem_eksamen_bravo
             }
         }
         private void Clear_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void ClearAll()
         {
 
         }
