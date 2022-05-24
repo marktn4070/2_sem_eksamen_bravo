@@ -26,7 +26,44 @@ namespace _2_sem_eksamen_bravo
 
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {
+            //validation here
+            if (FirstName.Text == string.Empty || LastName.Text == string.Empty || Birthday.Text == string.Empty || Birthmonth.Text == string.Empty ||
+                Birthyear.Text == string.Empty || Phone.Text == string.Empty ||Email.Text == string.Empty || Zip.Text == string.Empty 
+                || Road.Text == string.Empty || (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked))
+            {
+                MessageBox.Show("En eller flere felter mangler!");
+            }
+            else
+            {
+                try
+                {
+                    int.Parse(Birthday.Text);
+                    int.Parse(Birthmonth.Text);
+                    int.Parse(Birthyear.Text);
 
+                    if (Birthday.Text.Length == 2 && Birthmonth.Text.Length == 2 && Birthyear.Text.Length == 4)
+                    {
+                        //DateTime.Now.Date
+                        if (int.Parse(Birthday.Text) < 1 || int.Parse(Birthday.Text) > 31 ||  int.Parse(Birthmonth.Text) < 1 || int.Parse(Birthmonth.Text) > 12 || int.Parse(Birthyear.Text) < 1850)
+                        {
+                            MessageBox.Show("Invalid dato!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Dato skal være i format 31-12-2000");
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Dato skal være i format 31-12-2000");
+                }
+                
+                string birth = "";
+                birth = Birthday.Text + "-" + Birthmonth.Text + "-" + Birthyear.Text;
+                string gender = "";
+                SQL.RegisterCustomer(FirstName.Text, LastName.Text, (bool)Registered.IsChecked, gender, birth, int.Parse(Phone.Text), Email.Text, int.Parse(Zip.Text), Road.Text);
+            }
         }
         private void Clear_Btn_Click(object sender, RoutedEventArgs e)
         {
