@@ -11,8 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using System.IO;
-using System.Net.Mail;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -70,16 +70,18 @@ namespace _2_sem_eksamen_bravo
                             int phone = 0;
                             if (Phone.Text.Length == 8 && int.TryParse(Phone.Text.Trim(), out phone))
                             {
-                                MailAddress temp;
-                                if (MailAddress.TryCreate(Email.Text.Trim(), out temp))
+                                Regex emailCheck = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
+                                + "@"
+                                + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$"); 
+                                if (emailCheck.IsMatch(Email.Text.Trim()))
                                 {
+                                    SQL.RegisterCustomer(FirstName.Text.Trim(), LastName.Text.Trim(), (bool)Registered.IsChecked, gender, birth, phone, Email.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
 
                                 }
                                 else
                                 {
-
+                                    MessageBox.Show("Invalid email!");
                                 }
-                                SQL.RegisterCustomer(FirstName.Text, LastName.Text, (bool)Registered.IsChecked, gender, birth, phone, Email.Text, Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
 
                             }
                             else
