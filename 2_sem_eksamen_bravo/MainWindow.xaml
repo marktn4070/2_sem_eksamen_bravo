@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="800" MaxHeight="600" MaxWidth="800">
+        Title="Hjem Is" Height="600" Width="800" MaxHeight="600" MaxWidth="800">
     <Grid Height="600" Width="800" >
 
         <ContentControl Name="MainContent" Content="{Binding SelectedViewModel}" Margin="0,80,-0.4,0"/>
