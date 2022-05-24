@@ -200,7 +200,7 @@ namespace _2_sem_eksamen_bravo
 
         public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
         {
-            int roadCode;
+            int roadCode = 0;
             SqlConnection cnct = null;
 
             try //get roadcode
@@ -230,28 +230,30 @@ namespace _2_sem_eksamen_bravo
                 }
             }
 
-
-            try
+            if (roadCode != 0)
             {
-                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, @Gender, GETDATE(), '{0}', '{1}');", registered),
-                    cnct);
-                cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
-                cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
-                cmd.Parameters.Add(CreateParam("@Gender", gender.Trim(), SqlDbType.NVarChar));
-
-                cnct.Open();
-            }
-            catch (Exception ex)
-            {
-
-            }
-            finally
-            {
-                if (cnct != null)
+                try
                 {
-                    cnct.Close();
+                    cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                    SqlCommand cmd = new SqlCommand(
+                        string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, {1}, {2}, {3}, @Email, {4};", registered, gender, birth, phone, roadCode),
+                        cnct);
+                    cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
+                    cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
+                    cmd.Parameters.Add(CreateParam("@Email", email.Trim(), SqlDbType.NVarChar));
+
+                    cnct.Open();
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
                 }
             }
         }
