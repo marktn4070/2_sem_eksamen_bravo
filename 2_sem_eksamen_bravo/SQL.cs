@@ -252,5 +252,55 @@ namespace _2_sem_eksamen_bravo
                 }
             }
         }
+        public static void AdresseImpoter()
+        {
+            int vejkode;
+            string vejnavn;
+            string kommune;
+            int postnummer;
+            SqlCommand cmd;
+            SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            //skal kigge på addressID (måske bruge kommunekode i stedet for)
+            try
+            {
+                connect.Open();
+                string tjek = string.Empty;
+                string tjek2 = string.Empty;
+                //cmd = new SqlCommand("Delete from Address", connect);
+                //cmd.ExecuteNonQuery();
+                foreach (var line in File.ReadLines(@"C:\dropzone\Vejregister-postdistrikt\Vejregister-postdistrikt.txt", System.Text.Encoding.Default).Skip(1))
+                {
+                    //skal tjekke om det samme vejnavn går igen i databasen
+                    if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
+                    {
+                        vejkode = Convert.ToInt32(line.Substring(0, 11));
+                        vejnavn = line.Substring(31, 20).Trim();
+                        kommune = line.Substring(11, 20).Trim();
+                        postnummer = Convert.ToInt32(line.Substring(60, 4));
+                        cmd = new SqlCommand(string.Format("Insert into Address (RoadcodeID, Road, Zip, Municipality)" +
+                            " Values ('{0}', @Road, '{1}', '{2}')", vejkode, postnummer, kommune), connect);
+                        //cmd = new SqlCommand(string.Format("Insert into Address (Road, Zip, Municipality)" + " Values ('{0}', '{1}', '{2}')", vejnavn, postnummer, kommune), connect);
+                        //skal kun når der er brug for
+                        cmd.Parameters.AddWithValue("@Road", vejnavn);
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    tjek = line.Substring(60, 4);
+                    tjek2 = line.Substring(31, 20);
+                }
+            }
+            //skal ændre exception beskeden (måske som en return)
+            catch (Exception ex)
+            {
+                //MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                if (connect != null)
+                {
+                    connect.Close();
+                }
+            }
+        }
     }
 }
