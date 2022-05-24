@@ -19,11 +19,11 @@ namespace _2_sem_eksamen_bravo
 {
     /// <summary>
 /////// HEAD
-    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfg
+    /// Interaction logic for MainWindow.xaml
 //////
-    /// Interaction logic for MainWindow.xamlffff
+    /// Interaction logic for MainWindow.xaml
 ////// master
-    /// Interaction logic for MainWindow.xamlfffgdfcsdcsggtrgdfgkjblj
+    /// Interaction logic for MainWindow.xaml
 ////// Temporary merge branch 2
     /// </summary>
     public partial class MainWindow : Window
@@ -50,9 +50,9 @@ namespace _2_sem_eksamen_bravo
             this.MainContent.Content = new ViewModels.SendMessageViewModel();
         }
 
-        private void ImportAdresse_Click(object sender, RoutedEventArgs e)
+        public static void ShowError(Exception ex)
         {
-            SQL.AdresseImpoter();
+            MessageBox.Show(ex.Message);
         }
     }
 }

@@ -8,5 +8,6 @@ namespace _2_sem_eksamen_bravo.ViewModels
 {
     class MessagesViewModel : BaseViewModel
     {
+
     }
 }

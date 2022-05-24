@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
-using System.IO;
 
 namespace _2_sem_eksamen_bravo
 {
     static class SQL
     {
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email)
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object roadName)
         {
             int addedMessagesId = 0;
             int howManyReceived = 0;
@@ -27,19 +26,12 @@ namespace _2_sem_eksamen_bravo
                 cmd.Parameters.Add(CreateParam("@Subheadline", subheadline.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Message", message.Trim(), SqlDbType.NVarChar));
 
-                try
-                {
-                    cnct.Open();
-                    addedMessagesId = (int)cmd.ExecuteScalar();
-                }
-                catch (Exception ex)
-                {
-                    //aasdsad
-                }
+                cnct.Open();
+                addedMessagesId = (int)cmd.ExecuteScalar();
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
+
             }
             finally
             {
@@ -49,8 +41,7 @@ namespace _2_sem_eksamen_bravo
                 }
             }
 
-            List<int> customerIdsSentTo = new List<int>(); //gemmer liste af dem der har email så de ikke bliver gemt i historikken 2 gange hvis de også har sms
-            if (email)
+            if (email && !emailGeo)
             {
                 try
                 { 
@@ -61,7 +52,6 @@ namespace _2_sem_eksamen_bravo
                     while (reader.Read())
                     {
                         howManyReceived++;
-                        customerIdsSentTo.Add((int)reader[0]);
                         SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1});", addedMessagesId, reader[0]), cnct);
                         addToHistory.ExecuteNonQuery();
                     }
@@ -78,9 +68,64 @@ namespace _2_sem_eksamen_bravo
                     }
                 }
             }
-            if (sms)
+            if (sms || emailGeo) //husk ikke gem i historik for dem som er registered email
             {
+                int roadCode = -1;
+                try //get roadcode
+                {
 
+                    SqlCommand cmd = new SqlCommand(
+                   string.Format("SELECT * FROM Address WHERE Road LIKE @Road"),
+                   cnct);
+                    cmd.Parameters.Add(CreateParam("@Road", roadName, SqlDbType.NVarChar));
+                    cnct.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        roadCode = (int)reader[0];
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
+                }
+                try
+                {
+                    cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                    SqlCommand command = null;
+                    if (email) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
+                    {
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 0 AND RoadcodeID LIKE {0};", roadCode), cnct);
+                    }
+                    else 
+                    {
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE RoadcodeID LIKE {0};", roadCode), cnct);
+                    }
+                    cnct.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        howManyReceived++;
+                        SqlCommand addToHistory = new SqlCommand(string.Format("INSERT INTO Message_history VALUES ({0}, {1});", addedMessagesId, reader[0]), cnct);
+                        addToHistory.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
+                }
             }
             return howManyReceived;
         }
@@ -92,56 +137,64 @@ namespace _2_sem_eksamen_bravo
             return param;
         }
 
-        public static void AdresseImpoter()
+        public static List<string> GetMunicipalities()
         {
-            int vejkode;
-            string vejnavn;
-            string kommune;
-            int postnummer;
-            SqlCommand cmd;
-            SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-            //skal kigge på addressID (måske bruge kommunekode i stedet for)
+            List<string> municipalities = new List<string>();
+            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                connect.Open();
-                string tjek = string.Empty;
-                string tjek2 = string.Empty;
-                //cmd = new SqlCommand("Delete from Address", connect);
-                //cmd.ExecuteNonQuery();
-                foreach (var line in File.ReadLines(@"C:\dropzone\Vejregister-postdistrikt\Vejregister-postdistrikt.txt", System.Text.Encoding.Default).Skip(1))
+                SqlCommand command = new SqlCommand("SELECT DISTINCT Municipality FROM Address;", cnct);
+                cnct.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
                 {
-                    //skal tjekke om det samme vejnavn går igen i databasen
-                    if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
-                    {
-                        vejkode = Convert.ToInt32(line.Substring(0, 11));
-                        vejnavn = line.Substring(31, 20).Trim();
-                        kommune = line.Substring(11, 20).Trim();
-                        postnummer = Convert.ToInt32(line.Substring(60, 4));
-                        cmd = new SqlCommand(string.Format("Insert into Address (RoadcodeID, Road, Zip, Municipality)" +
-                            " Values ('{0}', @Road, '{1}', '{2}')", vejkode, postnummer, kommune), connect);
-                        //cmd = new SqlCommand(string.Format("Insert into Address (Road, Zip, Municipality)" + " Values ('{0}', '{1}', '{2}')", vejnavn, postnummer, kommune), connect);
-                        //skal kun når der er brug for
-                        cmd.Parameters.AddWithValue("@Road", vejnavn);
-                        cmd.ExecuteNonQuery();
-                    }
-
-                    tjek = line.Substring(60, 4);
-                    tjek2 = line.Substring(31, 20);
+                    municipalities.Add(reader[0].ToString());
                 }
             }
-            //skal ændre exception beskeden (måske som en return)
             catch (Exception ex)
             {
-                //MessageBox.Show(ex.ToString());
+                MainWindow.ShowError(ex);
             }
             finally
             {
-                if (connect != null)
+                if (cnct != null)
                 {
-                    connect.Close();
+                    cnct.Close();
                 }
             }
-
+            municipalities.Sort();
+            return municipalities;
+        }
+        public static List<string> GetRoads(string municipality)
+        {
+            List<string> roads = new List<string>();
+            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand(
+                    string.Format("SELECT * FROM Address WHERE Municipality LIKE @Mun;"),
+                    cnct);
+                cmd.Parameters.Add(CreateParam("@Mun", municipality, SqlDbType.NVarChar));
+                cnct.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    roads.Add(reader[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                MainWindow.ShowError(ex);
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+            roads.Sort();
+            return roads;
         }
     }
 }

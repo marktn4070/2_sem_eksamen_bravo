@@ -6,8 +6,52 @@
              xmlns:local="clr-namespace:_2_sem_eksamen_bravo.Views"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
-    <Grid>
-        <Label FontSize="36" HorizontalAlignment="Center" Content="Kunder"/>
-            
-    </Grid>
+
+
+
+
+
+
+
+
+
+    <Grid x:Name="page_deltager" Height="600" Width="800" Background="White">
+            <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunder"/>
+
+        <Button Content="Opret &#xD;&#xA;Kunde" Margin="710,24,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold"/>
+
+            <!--<DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="datagrid_customer_changed" >-->
+            <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,91,0,209" AutoGenerateColumns="False" CanUserAddRows="False"
+                IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed">
+
+                    <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Width="30" Binding="{Binding C_id}"/>
+                    <DataGridTextColumn Header="Fornavn" Width="104.2" Binding="{Binding C_firstName}"/>
+                    <DataGridTextColumn Header="Efternavn" Width="104.2" Binding="{Binding C_LastName}"/>
+                    <DataGridTextColumn Header="Registreret" Width="104.2" Binding="{Binding C_Registered}"/>
+                    <DataGridTextColumn Header="Køn" Width="104.2" Binding="{Binding C_Gender}"/>
+                    <DataGridTextColumn Header="Post nr." Width="104.2" Binding="{Binding C_Birth}"/>
+                    <DataGridTextColumn Header="Mobil nummer" Width="104.2" Binding="{Binding C_Phone}"/>
+                    <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding C_Email}"/>
+
+                    <DataGridTemplateColumn Header="Opdater">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                            <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTemplateColumn Header="Slet" d:IsLocked="True">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Name="btnDelete" Content="Slet" Click="btn_Delete_Click"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
 </UserControl>
