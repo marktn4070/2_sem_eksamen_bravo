@@ -173,6 +173,11 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
+        private void Search_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
 
         //private void datagrid_customer()
         //{
