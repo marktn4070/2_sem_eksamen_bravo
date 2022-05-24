@@ -57,7 +57,7 @@
 
 
 
-        <ComboBox Name="cb_Search"  Height="23" Width="100" Margin="590,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="False" IsTextSearchEnabled="True" IsEditable="True"/>
+        <ComboBox Name="cb_Search"  Height="23" Width="100" Margin="590,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" IsTextSearchEnabled="True" IsEditable="True"/>
         <Button Content="Søg" Margin="708,102,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
 
 
