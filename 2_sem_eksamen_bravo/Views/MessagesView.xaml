@@ -8,7 +8,17 @@
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
     <Grid Height="600" Width="800" Background="White">
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" Height="50" VerticalAlignment="Top"/>
-        <Grid Height="0" Width="0">
+
+
+
+        <Label Width="50" Height="50" x:Name="string_1" Margin="83,74,667,476"></Label>
+        <Label Width="50" Height="50" x:Name="string_2" Margin="377,74,373,476"></Label>
+        <Label Width="50" Height="50" x:Name="string_3" Margin="649,74,101,476"></Label>
+
+
+
+
+        <!--<Grid Height="0" Width="0">
             <Canvas Name="panel11" Height="379" Width="218" Background="White" Margin="0,-243,-380,-136" HorizontalAlignment="Right" VerticalAlignment="Top" >
                 <Canvas Name="panel12" Height="5" Width="180" Background="#FFCDDAFF" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Top" >
                 </Canvas>
@@ -66,6 +76,6 @@
                 </Canvas>
                 <Label Name="label2" Height="25" Width="104" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="7,-6,-111,-19" HorizontalAlignment="Right" VerticalAlignment="Top" >2nd Thrusday</Label>
             </Canvas>
-        </Grid>
+        </Grid>-->
     </Grid>
 </UserControl>
