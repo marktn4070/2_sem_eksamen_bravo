@@ -209,7 +209,7 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand(
                     string.Format("SELECT * FROM Address WHERE Municipality LIKE @Mun AND Road LIKE @Road;"),
                     cnct);
-                cmd.Parameters.Add(CreateParam("@Mun", road.Trim(), SqlDbType.NVarChar));
+                cmd.Parameters.Add(CreateParam("@Mun", municipality.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Road", road.Trim(), SqlDbType.NVarChar));
                 cnct.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -255,6 +255,26 @@ namespace _2_sem_eksamen_bravo
                         cnct.Close();
                     }
                 }
+            }
+        }
+
+        public static void DeleteCustomer(string customerID)
+        {
+            SqlConnection connection = null;
+            try
+            {
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                SqlCommand command = new SqlCommand("Delete FROM Customer WHERE CustomerID LIKE @C_id", connection);
+                command.Parameters.Add(CreateParam("@C_id", customerID.Trim(), SqlDbType.NVarChar));
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                if (connection != null) connection.Close();
             }
         }
         public static void AdresseImpoter()
