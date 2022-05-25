@@ -31,6 +31,7 @@ namespace _2_sem_eksamen_bravo.Views
         {
             InitializeComponent();
             LoadGrid_Cusumer();
+            cb_LoadName();
         }
 
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
@@ -175,9 +176,13 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-
+            //cb_Search.SelectedItem
         }
 
+        private void cb_LoadName() //Kevin
+        {
+            cb_Search.ItemsSource = SQL.GetCustomerName();
+        }
 
         //private void datagrid_customer()
         //{
