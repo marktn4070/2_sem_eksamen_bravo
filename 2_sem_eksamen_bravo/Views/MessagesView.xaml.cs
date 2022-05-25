@@ -23,6 +23,18 @@ namespace _2_sem_eksamen_bravo.Views
         public MessagesView()
         {
             InitializeComponent();
+
+
+
+            int i = 0;
+            while (i < 5)
+            {
+                string_1.Content = "test sring";
+                i++;
+            }
+
+
+
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
