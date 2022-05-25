@@ -277,42 +277,56 @@ namespace _2_sem_eksamen_bravo
                 if (connection != null) connection.Close();
             }
         }
-        public static void AdresseImpoter()
+        public static void AdresseImpoter() //Kevin
         {
-            int vejkode;
-            string vejnavn;
-            string kommune;
-            int postnummer;
-            SqlCommand cmd;
+            DataTable tbl = new DataTable();
+            tbl.Columns.Add(new DataColumn("RoadcodeID", typeof(int)));
+            tbl.Columns.Add(new DataColumn("Road", typeof(string)));
+            tbl.Columns.Add(new DataColumn("Zip", typeof(int)));
+            tbl.Columns.Add(new DataColumn("Municipality", typeof(string)));
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-            //skal kigge på addressID (måske bruge kommunekode i stedet for)
             try
             {
-                connect.Open();
                 string tjek = string.Empty;
                 string tjek2 = string.Empty;
                 //cmd = new SqlCommand("Delete from Address", connect);
                 //cmd.ExecuteNonQuery();
-                foreach (var line in File.ReadLines(@"C:\dropzone\Vejregister-postdistrikt\Vejregister-postdistrikt.txt", System.Text.Encoding.Default).Skip(1))
+                foreach (string file in Directory.EnumerateFiles(@"C:\dropzone", "*.txt"))
                 {
-                    //skal tjekke om det samme vejnavn går igen i databasen
-                    if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
+                    foreach (var line in File.ReadLines(file, System.Text.Encoding.Default).Skip(1))
                     {
-                        vejkode = Convert.ToInt32(line.Substring(0, 11));
-                        vejnavn = line.Substring(31, 20).Trim();
-                        kommune = line.Substring(11, 20).Trim();
-                        postnummer = Convert.ToInt32(line.Substring(60, 4));
-                        cmd = new SqlCommand(string.Format("Insert into Address (RoadcodeID, Road, Zip, Municipality)" +
-                            " Values ('{0}', @Road, '{1}', '{2}')", vejkode, postnummer, kommune), connect);
-                        //cmd = new SqlCommand(string.Format("Insert into Address (Road, Zip, Municipality)" + " Values ('{0}', '{1}', '{2}')", vejnavn, postnummer, kommune), connect);
-                        //skal kun når der er brug for
-                        cmd.Parameters.AddWithValue("@Road", vejnavn);
-                        cmd.ExecuteNonQuery();
-                    }
 
-                    tjek = line.Substring(60, 4);
-                    tjek2 = line.Substring(31, 20);
+                        //Den her condition tal kan måske være bedre (kigge på pdf om det)
+                        if (1000000000 > Convert.ToInt64(line.Substring(0, 11)))
+                        {
+                            if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
+                            {
+                                DataRow dr = tbl.NewRow();
+                                dr["RoadcodeID"] = Convert.ToInt32(line.Substring(0, 11));
+                                dr["Road"] = line.Substring(31, 20).Trim();
+                                dr["Zip"] = Convert.ToInt32(line.Substring(60, 4));
+                                dr["Municipality"] = line.Substring(11, 20).Trim();
+
+                                tbl.Rows.Add(dr);
+                            }
+
+                            tjek = line.Substring(60, 4);
+                            tjek2 = line.Substring(31, 20);
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
                 }
+                SqlBulkCopy objbulk = new SqlBulkCopy(connect);
+                objbulk.DestinationTableName = "Address";
+                objbulk.ColumnMappings.Add("RoadcodeID", "RoadcodeID");
+                objbulk.ColumnMappings.Add("Road", "Road");
+                objbulk.ColumnMappings.Add("Zip", "Zip");
+                objbulk.ColumnMappings.Add("Municipality", "Municipality");
+                connect.Open();
+                objbulk.WriteToServer(tbl);
             }
             //skal ændre exception beskeden (måske som en return)
             catch (Exception ex)
@@ -326,6 +340,35 @@ namespace _2_sem_eksamen_bravo
                     connect.Close();
                 }
             }
+        }
+
+        public static List<string> GetCustomerName()
+        {
+            List<string> Names = new List<string>();
+            SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                connect.Open();
+                SqlCommand cmd = new SqlCommand(string.Format("SELECT FirstName, LastName FROM Customer;", connect));
+                cmd.Connection = connect;
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Names.Add(reader[0].ToString() + " " + reader[1].ToString());
+                }
+            }
+            catch (Exception ex)
+            {
+                //MainWindow.ShowError(ex);
+            }
+            finally
+            {
+                if (connect != null)
+                {
+                    connect.Close();
+                }
+            }
+            return Names;
         }
     }
 }

@@ -55,7 +55,7 @@ namespace _2_sem_eksamen_bravo
             MessageBox.Show(ex.Message);
         }
 
-        private void ImpoterAddresser_Click(object sender, RoutedEventArgs e)
+        private void ImpoterAddresser_Click(object sender, RoutedEventArgs e) //Kevin
         {
             SQL.AdresseImpoter();
         }
