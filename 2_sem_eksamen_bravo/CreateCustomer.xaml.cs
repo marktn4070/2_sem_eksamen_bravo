@@ -19,7 +19,7 @@ namespace _2_sem_eksamen_bravo
     /// <summary>
     /// Interaction logic for CreateCustomer.xaml
     /// </summary>
-    public partial class CreateCustomer : Window
+    public partial class CreateCustomer : Window //james
     {
         public CreateCustomer()
         {
@@ -76,7 +76,7 @@ namespace _2_sem_eksamen_bravo
                                 if (emailCheck.IsMatch(Email.Text.Trim()))
                                 {
                                     SQL.RegisterCustomer(FirstName.Text.Trim(), LastName.Text.Trim(), (bool)Registered.IsChecked, gender, birth, phone, Email.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
-
+                                    ClearAll();
                                 }
                                 else
                                 {
@@ -112,6 +112,17 @@ namespace _2_sem_eksamen_bravo
         {
             Vej.ItemsSource = new List<string>();
             Kommune.SelectedItem = null;
+            FirstName.Text = "";
+            LastName.Text = "";
+            Phone.Text = "";
+            Email.Text = "";
+            Birthday.Text = "";
+            Birthmonth.Text = "";
+            Birthyear.Text = "";
+            Male.IsChecked = false;
+            Female.IsChecked = false;
+            Other.IsChecked = false;
+            Registered.IsChecked = false;
         }
         private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

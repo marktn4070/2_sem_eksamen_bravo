@@ -104,6 +104,12 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
         {
+            //check under
+            Update();
+        }
+
+        private void Update()
+        {
             int n = datagrid_customer.SelectedIndex;
             if (n >= 0)
             {
@@ -120,7 +126,6 @@ namespace _2_sem_eksamen_bravo.Views
                 win2.Show();
             }
         }
-
 
 
         private SqlParameter CreateParam(string name, object value, SqlDbType type)
@@ -146,8 +151,8 @@ namespace _2_sem_eksamen_bravo.Views
                 SqlConnection connection = null;
                 try
                 {
-                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                    SqlCommand command = new SqlCommand("Delete FROM Participant WHERE C_id = @C_id", connection);
+                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                    SqlCommand command = new SqlCommand("Delete FROM Customer WHERE CustomerID LIKE @C_id", connection);
                     command.Parameters.Add(CreateParam("@C_id", selected_id.Trim(), SqlDbType.NVarChar));
                     connection.Open();
                     if (command.ExecuteNonQuery() == 1)
