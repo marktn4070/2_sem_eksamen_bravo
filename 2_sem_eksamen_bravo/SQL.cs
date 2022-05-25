@@ -198,17 +198,18 @@ namespace _2_sem_eksamen_bravo
             return roads;
         }
 
-        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, int zip, string road) //james
+        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
         {
-            int roadCode;
+            int roadCode = 0;
             SqlConnection cnct = null;
 
             try //get roadcode
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand(
-                    string.Format("SELECT * FROM Address WHERE Zip LIKE {0} AND Road LIKE @Road;", zip),
+                    string.Format("SELECT * FROM Address WHERE Municipality LIKE @Mun AND Road LIKE @Road;"),
                     cnct);
+                cmd.Parameters.Add(CreateParam("@Mun", municipality.Trim(), SqlDbType.NVarChar));
                 cmd.Parameters.Add(CreateParam("@Road", road.Trim(), SqlDbType.NVarChar));
                 cnct.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -229,28 +230,51 @@ namespace _2_sem_eksamen_bravo
                 }
             }
 
+            if (roadCode != 0)
+            {
+                try
+                {
+                    cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                    SqlCommand cmd = new SqlCommand(
+                        string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, {1}, {2}, {3}, @Email, {4};", registered, gender, birth, phone, roadCode),
+                        cnct);
+                    cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
+                    cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
+                    cmd.Parameters.Add(CreateParam("@Email", email.Trim(), SqlDbType.NVarChar));
+
+                    cnct.Open();
+                }
+                catch (Exception ex)
+                {
+
+                }
+                finally
+                {
+                    if (cnct != null)
+                    {
+                        cnct.Close();
+                    }
+                }
+            }
+        }
+
+        public static void DeleteCustomer(string customerID)
+        {
+            SqlConnection connection = null;
             try
             {
-                cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand cmd = new SqlCommand(
-                    string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, @Gender, GETDATE(), '{0}', '{1}');", registered),
-                    cnct);
-                cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
-                cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
-                cmd.Parameters.Add(CreateParam("@Gender", gender.Trim(), SqlDbType.NVarChar));
-
-                cnct.Open();
+                connection = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+                SqlCommand command = new SqlCommand("Delete FROM Customer WHERE CustomerID LIKE @C_id", connection);
+                command.Parameters.Add(CreateParam("@C_id", customerID.Trim(), SqlDbType.NVarChar));
+                connection.Open();
+                command.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
             }
             finally
             {
-                if (cnct != null)
-                {
-                    cnct.Close();
-                }
+                if (connection != null) connection.Close();
             }
         }
         public static void AdresseImpoter() //Kevin

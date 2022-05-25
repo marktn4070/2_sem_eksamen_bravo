@@ -44,8 +44,8 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Refresh()
         {
-            datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
-        }
+           datagrid_customer.DataContext = new ObservableCollection<Customer_strings>(Customer_list);
+       }
 
 
         private class Customer_strings
@@ -123,7 +123,6 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
 
-
         private SqlParameter CreateParam(string name, object value, SqlDbType type)
         {
             SqlParameter param = new SqlParameter(name, type);
@@ -136,7 +135,7 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
-            string error = "";
+
             string selected_id = Customer_list[datagrid_customer.SelectedIndex].C_id;
             string selected_name = Customer_list[datagrid_customer.SelectedIndex].C_firstName;
             int n = datagrid_customer.SelectedIndex;
@@ -144,29 +143,8 @@ namespace _2_sem_eksamen_bravo.Views
             var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
-                SqlConnection connection = null;
-                try
-                {
-                    connection = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
-                    SqlCommand command = new SqlCommand("Delete FROM Participant WHERE C_id = @C_id", connection);
-                    command.Parameters.Add(CreateParam("@C_id", selected_id.Trim(), SqlDbType.NVarChar));
-                    connection.Open();
-                    if (command.ExecuteNonQuery() == 1)
-                    {
-                        Clear();
-                        return;
-                    }
-                    error = "Illegal database operation";
-                }
-                catch (Exception ex)
-                {
-                    error = ex.Message;
-                }
-                finally
-                {
-                    if (connection != null) connection.Close();
-                }
-                MessageBox.Show(error);
+                SQL.DeleteCustomer(selected_id);
+                Refresh();
             }
             else if (Result == MessageBoxResult.No)
             {
