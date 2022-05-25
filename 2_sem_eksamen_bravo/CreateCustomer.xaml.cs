@@ -27,6 +27,88 @@ namespace _2_sem_eksamen_bravo
             Kommune.ItemsSource = SQL.GetMunicipalities();
         }
 
+
+
+        
+        //public bool IsValid()
+        //{
+
+
+
+        //    // Navne feltet
+        //    if (Name.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("Navn skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+        //    else if (Regex.IsMatch(Name.Text, "[^æøåÆØÅa-zA-Z ]"))
+        //    {
+        //        MessageBox.Show("Vær venligst at indtaste bogstaver ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+
+        //    // Email feltet
+        //    if (Mail.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+        //    else if (!Regex.IsMatch(Mail.Text, @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$"))
+        //    {
+        //        MessageBox.Show("Vær venligst at indtaste en korrekt e-mail adresse", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+
+        //    // Telefonnummer feltet
+        //    if (Phone.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("Telefon nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+        //    else if (Regex.IsMatch(Phone.Text, "[^0-9]"))
+        //    {
+        //        MessageBox.Show("Vær venligst at indtaste tal ved 'Telefon nr'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        Phone.Text = Phone.Text.Remove(Phone.Text.Length - 1);
+        //        return false;
+        //    }
+
+        //    // Adresse feltet
+        //    if (Address.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("Addresse skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+
+        //    // Postnummer feltet
+        //    if (Zip.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("Post nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+        //    else if (Regex.IsMatch(Zip.Text, "[^0-9](0-4)"))
+        //    {
+        //        MessageBox.Show("Vær venligst at kun indtaste tal ved 'Post nr'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+
+        //    // By feltet
+        //    if (City.Text == string.Empty)
+        //    {
+        //        MessageBox.Show("Name is required", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+        //    else if (Regex.IsMatch(City.Text, @"[^ÆØÅæøåa-zA-Z^\s]"))
+        //    {
+        //        MessageBox.Show("Vær venligst at indtaste bogstaver ved 'By'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+        //        return false;
+        //    }
+
+        //    return true;
+        //}
+
+
+
+
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {
             //validation here
