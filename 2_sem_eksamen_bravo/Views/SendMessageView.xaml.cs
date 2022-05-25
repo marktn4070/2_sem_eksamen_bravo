@@ -39,7 +39,7 @@ namespace _2_sem_eksamen_bravo.Views
                 {
                     MessageEmulator.EmulateSendSms(Headline.Text, Subheadline.Text, Message.Text);
                 }
-                if ((((bool)Sms.IsChecked && Vej.SelectedItem != null) || !(bool)Sms.IsChecked) && (bool)EmailGeo.IsChecked && Vej.SelectedItem != null)
+                if ((((bool)Sms.IsChecked && Vej.SelectedItem != null) || (!(bool)Sms.IsChecked) || ((bool)EmailGeo.IsChecked) && Vej.SelectedItem != null))
                 {
                     int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked, (bool)EmailGeo.IsChecked, Vej.SelectedItem);
                     ClearAll();

@@ -269,20 +269,18 @@ namespace _2_sem_eksamen_bravo
         //    LoadGrid_Time();
         //}
 
-        public static void DeleteCustomer(string customerID)
-        {
+        public static void DeleteCustomer(string customerID) //james
+        {            
             SqlConnection connection = null;
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand command = new SqlCommand("Delete FROM Customer WHERE CustomerID LIKE @C_id", connection);
-                command.Parameters.Add(CreateParam("@C_id", customerID.Trim(), SqlDbType.NVarChar));
+                SqlCommand deleteHistFor = new SqlCommand(string.Format("DELETE FROM Message_history WHERE CustomerID LIKE {0};", customerID), connection);
+                SqlCommand deleteCust = new SqlCommand(string.Format("DELETE FROM Customer WHERE CustomerID LIKE {0};", customerID), connection);
                 connection.Open();
                 
-                
-                command.ExecuteNonQuery();
-
-
+                deleteHistFor.ExecuteNonQuery();
+                deleteCust.ExecuteNonQuery();
             }
             catch (Exception)
             {
