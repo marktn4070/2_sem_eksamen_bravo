@@ -21,7 +21,7 @@ using System.ComponentModel;
 namespace _2_sem_eksamen_bravo.Views
 {
     /// <summary>
-    /// Interaction logic for CustomerView.xaml
+    /// Interaction logic for CustomerView.xamldcs
     /// </summary>
     public partial class CustomerView : UserControl
     {
