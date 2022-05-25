@@ -39,12 +39,16 @@ namespace _2_sem_eksamen_bravo.Views
             CreateCustomer vindue = new CreateCustomer();
             vindue.Show();
         }
+
+        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
         SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
         public CancelEventHandler Closing { get; private set; }
 
         private void Refresh()
         {
-           datagrid_customer.DataContext = new ObservableCollection<Customer_strings>(Customer_list);
+           datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
+           //datagrid_customer.DataContext = new ObservableCollection<Customer_strings>(Customer_list);
        }
 
 
