@@ -34,11 +34,23 @@ namespace _2_sem_eksamen_bravo.Views
             cb_LoadName();
         }
 
+
+
+
+
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
         {
-            CreateCustomer vindue = new CreateCustomer();
-            vindue.Show();
+            CreateCustomer Window = new CreateCustomer();
+            Window.Show();
+
         }
+
+
+
+
+
+
+
 
         //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
