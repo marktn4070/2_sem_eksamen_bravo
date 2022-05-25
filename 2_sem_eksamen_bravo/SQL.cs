@@ -30,9 +30,9 @@ namespace _2_sem_eksamen_bravo
                 cnct.Open();
                 addedMessagesId = (int)cmd.ExecuteScalar();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                throw;
             }
             finally
             {
@@ -57,9 +57,9 @@ namespace _2_sem_eksamen_bravo
                         addToHistory.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("");
+                    throw;
                 }
                 finally
                 {
@@ -86,8 +86,9 @@ namespace _2_sem_eksamen_bravo
                         roadCode = (int)reader[0];
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
+                    throw;
                 }
                 finally
                 {
@@ -117,8 +118,9 @@ namespace _2_sem_eksamen_bravo
                         addToHistory.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
+                    throw;
                 }
                 finally
                 {
@@ -152,9 +154,9 @@ namespace _2_sem_eksamen_bravo
                     municipalities.Add(reader[0].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MainWindow.ShowError(ex);
+                throw;
             }
             finally
             {
@@ -183,9 +185,9 @@ namespace _2_sem_eksamen_bravo
                     roads.Add(reader[1].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MainWindow.ShowError(ex);
+                throw;
             }
             finally
             {
@@ -245,9 +247,9 @@ namespace _2_sem_eksamen_bravo
                     cnct.Open();
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
+                    throw;
                 }
                 finally
                 {
@@ -269,7 +271,6 @@ namespace _2_sem_eksamen_bravo
 
         public static void DeleteCustomer(string customerID)
         {
-            string error = "";
             SqlConnection connection = null;
             try
             {
@@ -283,9 +284,9 @@ namespace _2_sem_eksamen_bravo
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //error = ex.Message;
+                throw;
             }
             finally
             {
@@ -344,9 +345,9 @@ namespace _2_sem_eksamen_bravo
                 objbulk.WriteToServer(tbl);
             }
             //skal ændre exception beskeden (måske som en return)
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show(ex.ToString());
+                throw;
             }
             finally
             {
@@ -372,9 +373,9 @@ namespace _2_sem_eksamen_bravo
                     Names.Add(reader[0].ToString() + " " + reader[1].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MainWindow.ShowError(ex);
+                throw;
             }
             finally
             {

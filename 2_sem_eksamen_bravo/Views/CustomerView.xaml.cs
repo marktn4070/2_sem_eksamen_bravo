@@ -147,9 +147,15 @@ namespace _2_sem_eksamen_bravo.Views
             var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
-                SQL.DeleteCustomer(selected_id);
-                // lav en try catch
-                Clear();
+                try
+                {
+                    SQL.DeleteCustomer(selected_id);
+                    Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else if (Result == MessageBoxResult.No)
             {
