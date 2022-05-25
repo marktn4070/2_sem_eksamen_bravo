@@ -76,6 +76,7 @@ namespace _2_sem_eksamen_bravo
                                 if (emailCheck.IsMatch(Email.Text.Trim()))
                                 {
                                     SQL.RegisterCustomer(FirstName.Text.Trim(), LastName.Text.Trim(), (bool)Registered.IsChecked, gender, birth, phone, Email.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
+                                    MessageBox.Show("Kunde oprettet!");
                                     ClearAll();
                                 }
                                 else
