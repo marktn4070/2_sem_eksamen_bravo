@@ -236,13 +236,14 @@ namespace _2_sem_eksamen_bravo
                 {
                     cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                     SqlCommand cmd = new SqlCommand(
-                        string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, {1}, {2}, {3}, @Email, {4};", registered, gender, birth, phone, roadCode),
+                        string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, '{0}', '{1}', '{2}', {3}, @Email, {4});", registered, gender, birth, phone, roadCode),
                         cnct);
                     cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
                     cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
                     cmd.Parameters.Add(CreateParam("@Email", email.Trim(), SqlDbType.NVarChar));
 
                     cnct.Open();
+                    cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
                 {

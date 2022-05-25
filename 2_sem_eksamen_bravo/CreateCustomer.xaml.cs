@@ -44,7 +44,7 @@ namespace _2_sem_eksamen_bravo
                     int.Parse(Birthmonth.Text);
                     int.Parse(Birthyear.Text);
                     
-                    if (Birthday.Text.Length == 2 && Birthmonth.Text.Length == 2 && Birthyear.Text.Length == 4)
+                    if (Birthday.Text.Trim().Length == 2 && Birthmonth.Text.Trim().Length == 2 && Birthyear.Text.Trim().Length == 4)
                     {
                         //DateTime.Now.Date
                         if (int.Parse(Birthday.Text) < 1 || int.Parse(Birthday.Text) > 31 ||  int.Parse(Birthmonth.Text) < 1 || int.Parse(Birthmonth.Text) > 12 || int.Parse(Birthyear.Text) < 1850)
@@ -53,7 +53,7 @@ namespace _2_sem_eksamen_bravo
                         }
                         else
                         {
-                            string birth = Birthday.Text + "-" + Birthmonth.Text + "-" + Birthyear.Text;
+                            string birth = Birthyear.Text.Trim() + "-" + Birthmonth.Text.Trim() + "-" + Birthday.Text.Trim();
                             string gender = "";
                             if ((bool)Male.IsChecked)
                             {
@@ -68,7 +68,7 @@ namespace _2_sem_eksamen_bravo
                                 gender = "Other";
                             }
                             int phone = 0;
-                            if (Phone.Text.Length == 8 && int.TryParse(Phone.Text.Trim(), out phone))
+                            if (Phone.Text.Trim().Length == 8 && int.TryParse(Phone.Text.Trim(), out phone))
                             {
                                 Regex emailCheck = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
                                 + "@"
