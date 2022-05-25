@@ -20,8 +20,6 @@
 
         <Button Content="Opret &#xD;&#xA;Kunde" Margin="10,83,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold"/>
 
-        <!--<DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,265,0,35" Grid.Row="3" Grid.ColumnSpan="7" AutoGenerateColumns="False" CanUserAddRows="False"
-                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="datagrid_customer_changed" >-->
         <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,141,0,159" AutoGenerateColumns="False" CanUserAddRows="False"
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed">
 

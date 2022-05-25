@@ -148,7 +148,8 @@ namespace _2_sem_eksamen_bravo.Views
             if (Result == MessageBoxResult.Yes)
             {
                 SQL.DeleteCustomer(selected_id);
-                Refresh();
+                // lav en try catch
+                Clear();
             }
             else if (Result == MessageBoxResult.No)
             {

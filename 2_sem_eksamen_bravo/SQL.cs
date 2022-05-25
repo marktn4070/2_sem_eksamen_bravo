@@ -259,8 +259,17 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
+        //private void Clear()
+        //{
+        //    datagrid_deltager.SelectedIndex = -1;
+        //    LoadGrid_Runner();
+        //    LoadGrid_Route();
+        //    LoadGrid_Time();
+        //}
+
         public static void DeleteCustomer(string customerID)
         {
+            string error = "";
             SqlConnection connection = null;
             try
             {
@@ -268,10 +277,15 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand command = new SqlCommand("Delete FROM Customer WHERE CustomerID LIKE @C_id", connection);
                 command.Parameters.Add(CreateParam("@C_id", customerID.Trim(), SqlDbType.NVarChar));
                 connection.Open();
+                
+                
                 command.ExecuteNonQuery();
+
+
             }
             catch (Exception ex)
             {
+                //error = ex.Message;
             }
             finally
             {
