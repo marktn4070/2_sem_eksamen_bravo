@@ -14,13 +14,6 @@
         <CheckBox x:Name="Sms" Content="SMS" Margin="291,95,439,302" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" Checked="GeoChecked" Unchecked="GeoUnchecked"/>
         <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="223,70,381,0" VerticalAlignment="Top"  IsEnabled="False" Checked="GeoChecked" Unchecked="GeoUnchecked"/>
 
-        <!--<Button x:Name="SendButton" Content="Send" Height="30" Width="40" Click="SendButton_Click" Margin="644,322,108,67"/>
-        <Button x:Name="ClearButton" Content="Clear" Height="30" Width="40" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="586,321,0,0" Click="ClearButton_Click"/>
-        <TextBox x:Name="Headline"  Height="60" Width="100" Margin="216,138,476,221"/>
-        <TextBox x:Name="Subheadline"  Height="60" Width="100" Margin="214,222,478,137"/>
-        <TextBox x:Name="Message"  Height="60" Width="100" Margin="213,313,479,46"/>-->
-
-
 
         <TextBox x:Name="Headline" Height="23" Width="100" Margin="226,153,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <TextBox x:Name="Subheadline" Height="23" Width="100" Margin="226,203,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>

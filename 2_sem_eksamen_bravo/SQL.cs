@@ -31,9 +31,9 @@ namespace _2_sem_eksamen_bravo
                 cnct.Open();
                 addedMessagesId = (int)cmd.ExecuteScalar();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                throw;
             }
             finally
             {
@@ -58,9 +58,9 @@ namespace _2_sem_eksamen_bravo
                         addToHistory.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("");
+                    throw;
                 }
                 finally
                 {
@@ -87,8 +87,9 @@ namespace _2_sem_eksamen_bravo
                         roadCode = (int)reader[0];
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
+                    throw;
                 }
                 finally
                 {
@@ -118,8 +119,9 @@ namespace _2_sem_eksamen_bravo
                         addToHistory.ExecuteNonQuery();
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
+                    throw;
                 }
                 finally
                 {
@@ -153,9 +155,9 @@ namespace _2_sem_eksamen_bravo
                     municipalities.Add(reader[0].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MainWindow.ShowError(ex);
+                throw;
             }
             finally
             {
@@ -184,9 +186,9 @@ namespace _2_sem_eksamen_bravo
                     roads.Add(reader[1].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MainWindow.ShowError(ex);
+                throw;
             }
             finally
             {
@@ -237,17 +239,18 @@ namespace _2_sem_eksamen_bravo
                 {
                     cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                     SqlCommand cmd = new SqlCommand(
-                        string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, {0}, {1}, {2}, {3}, @Email, {4};", registered, gender, birth, phone, roadCode),
+                        string.Format("INSERT INTO Customer VALUES (@FirstName, @LastName, '{0}', '{1}', '{2}', {3}, @Email, {4});", registered, gender, birth, phone, roadCode),
                         cnct);
                     cmd.Parameters.Add(CreateParam("@FirstName", firstName.Trim(), SqlDbType.NVarChar));
                     cmd.Parameters.Add(CreateParam("@LastName", lastName.Trim(), SqlDbType.NVarChar));
                     cmd.Parameters.Add(CreateParam("@Email", email.Trim(), SqlDbType.NVarChar));
 
                     cnct.Open();
+                    cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-
+                    throw;
                 }
                 finally
                 {
@@ -259,19 +262,30 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static void DeleteCustomer(string customerID)
-        {
+        //private void Clear()
+        //{
+        //    datagrid_deltager.SelectedIndex = -1;
+        //    LoadGrid_Runner();
+        //    LoadGrid_Route();
+        //    LoadGrid_Time();
+        //}
+
+        public static void DeleteCustomer(string customerID) //james
+        {            
             SqlConnection connection = null;
             try
             {
                 connection = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand command = new SqlCommand("Delete FROM Customer WHERE CustomerID LIKE @C_id", connection);
-                command.Parameters.Add(CreateParam("@C_id", customerID.Trim(), SqlDbType.NVarChar));
+                SqlCommand deleteHistFor = new SqlCommand(string.Format("DELETE FROM Message_history WHERE CustomerID LIKE {0};", customerID), connection);
+                SqlCommand deleteCust = new SqlCommand(string.Format("DELETE FROM Customer WHERE CustomerID LIKE {0};", customerID), connection);
                 connection.Open();
-                command.ExecuteNonQuery();
+                
+                deleteHistFor.ExecuteNonQuery();
+                deleteCust.ExecuteNonQuery();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
+                throw;
             }
             finally
             {
@@ -374,9 +388,9 @@ namespace _2_sem_eksamen_bravo
                 //objbulk.WriteToServer(tbl);
             }
             //skal ændre exception beskeden (måske som en return)
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MessageBox.Show(ex.ToString());
+                throw;
             }
             finally
             {
@@ -402,9 +416,9 @@ namespace _2_sem_eksamen_bravo
                     Names.Add(reader[0].ToString() + " " + reader[1].ToString());
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                //MainWindow.ShowError(ex);
+                throw;
             }
             finally
             {

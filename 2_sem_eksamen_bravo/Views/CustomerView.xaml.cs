@@ -21,7 +21,7 @@ using System.ComponentModel;
 namespace _2_sem_eksamen_bravo.Views
 {
     /// <summary>
-    /// Interaction logic for CustomerView.xaml
+    /// Interaction logic for CustomerView.xamldcs
     /// </summary>
     public partial class CustomerView : UserControl
     {
@@ -34,17 +34,33 @@ namespace _2_sem_eksamen_bravo.Views
             cb_LoadName();
         }
 
+
+
+
+
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
         {
-            CreateCustomer vindue = new CreateCustomer();
-            vindue.Show();
+            CreateCustomer Window = new CreateCustomer();
+            Window.Show();
+
         }
+
+
+
+
+
+
+
+
+        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
         SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
         public CancelEventHandler Closing { get; private set; }
 
         private void Refresh()
         {
-           datagrid_customer.DataContext = new ObservableCollection<Customer_strings>(Customer_list);
+           datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
+           //datagrid_customer.DataContext = new ObservableCollection<Customer_strings>(Customer_list);
        }
 
 
@@ -143,8 +159,15 @@ namespace _2_sem_eksamen_bravo.Views
             var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
-                SQL.DeleteCustomer(selected_id);
-                Refresh();
+                try
+                {
+                    SQL.DeleteCustomer(selected_id);
+                    Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
             else if (Result == MessageBoxResult.No)
             {
