@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
+using SqlBulkTools;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -277,56 +278,100 @@ namespace _2_sem_eksamen_bravo
                 if (connection != null) connection.Close();
             }
         }
+
+        public class Address
+        {
+            public int RoadcodeID { get; set; }
+            public string Road { get; set; }
+            public int Zip { get; set; }
+            public string Municipality { get; set; }
+        }
         public static void AdresseImpoter() //Kevin
         {
-            DataTable tbl = new DataTable();
-            tbl.Columns.Add(new DataColumn("RoadcodeID", typeof(int)));
-            tbl.Columns.Add(new DataColumn("Road", typeof(string)));
-            tbl.Columns.Add(new DataColumn("Zip", typeof(int)));
-            tbl.Columns.Add(new DataColumn("Municipality", typeof(string)));
+            //DataTable tbl = new DataTable();
+            //tbl.Columns.Add(new DataColumn("RoadcodeID", typeof(int)));
+            //tbl.Columns.Add(new DataColumn("Road", typeof(string)));
+            //tbl.Columns.Add(new DataColumn("Zip", typeof(int)));
+            //tbl.Columns.Add(new DataColumn("Municipality", typeof(string)));
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            List<Address> adresslist = new List<Address>();
             try
             {
+                string path = @"C:\dropzone";
                 string tjek = string.Empty;
                 string tjek2 = string.Empty;
-                //cmd = new SqlCommand("Delete from Address", connect);
-                //cmd.ExecuteNonQuery();
-                foreach (string file in Directory.EnumerateFiles(@"C:\dropzone", "*.txt"))
+                connect.Open();
+                //SqlCommand cmd = new SqlCommand("Select * from Address where exists (select RoadcodeID from Address)", connect);
+                SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
+                int count = (int)cmd.ExecuteScalar();
+                connect.Close();
+                if (Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
                 {
-                    foreach (var line in File.ReadLines(file, System.Text.Encoding.Default).Skip(1))
+                    foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
                     {
-
-                        //Den her condition tal kan måske være bedre (kigge på pdf om det)
-                        if (1000000000 > Convert.ToInt64(line.Substring(0, 11)))
+                        foreach (var line in File.ReadLines(file, System.Text.Encoding.Default).Skip(1))
                         {
-                            if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
+
+                            //Den her condition tal kan måske være bedre (kigge på pdf om det)
+                            if (1000000000 > Convert.ToInt64(line.Substring(0, 11)))
                             {
-                                DataRow dr = tbl.NewRow();
-                                dr["RoadcodeID"] = Convert.ToInt32(line.Substring(0, 11));
-                                dr["Road"] = line.Substring(31, 20).Trim();
-                                dr["Zip"] = Convert.ToInt32(line.Substring(60, 4));
-                                dr["Municipality"] = line.Substring(11, 20).Trim();
+                                if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
+                                {
+                                    adresslist.Add(new Address
+                                    {
+                                        RoadcodeID = Convert.ToInt32(line.Substring(0, 11)),
+                                        Road = line.Substring(31, 20).Trim(),
+                                        Zip = Convert.ToInt32(line.Substring(60, 4)),
+                                        Municipality = line.Substring(11, 20).Trim()
+                                    });
 
-                                tbl.Rows.Add(dr);
+                                    //DataRow dr = tbl.NewRow();
+                                    //dr["RoadcodeID"] = Convert.ToInt32(line.Substring(0, 11));
+                                    //dr["Road"] = line.Substring(31, 20).Trim();
+                                    //dr["Zip"] = Convert.ToInt32(line.Substring(60, 4));
+                                    //dr["Municipality"] = line.Substring(11, 20).Trim();
+
+                                    //tbl.Rows.Add(dr);
+                                }
+
+                                tjek = line.Substring(60, 4);
+                                tjek2 = line.Substring(31, 20);
                             }
-
-                            tjek = line.Substring(60, 4);
-                            tjek2 = line.Substring(31, 20);
-                        }
-                        else
-                        {
-                            break;
+                            else
+                            {
+                                break;
+                            }
                         }
                     }
+                    var bulk = new BulkOperations();
+                    bulk.Setup<Address>(x => x.ForCollection(adresslist))
+                    .WithTable("Address")
+                    .AddColumn(x => x.RoadcodeID)
+                    .AddColumn(x => x.Road)
+                    .AddColumn(x => x.Zip)
+                    .AddColumn(x => x.Municipality)
+                    .BulkInsertOrUpdate()
+                    .MatchTargetOn(x => x.RoadcodeID);
+
+                    bulk.CommitTransaction(connect);
+
+                    //foreach (string file in Directory.GetFiles(path))
+                    //{
+                    //    File.Delete(file);
+                    //}
                 }
-                SqlBulkCopy objbulk = new SqlBulkCopy(connect);
-                objbulk.DestinationTableName = "Address";
-                objbulk.ColumnMappings.Add("RoadcodeID", "RoadcodeID");
-                objbulk.ColumnMappings.Add("Road", "Road");
-                objbulk.ColumnMappings.Add("Zip", "Zip");
-                objbulk.ColumnMappings.Add("Municipality", "Municipality");
-                connect.Open();
-                objbulk.WriteToServer(tbl);
+                else
+                {
+                    //besked om der mangler noget
+                }
+                //SqlBulkCopy objbulk = new SqlBulkCopy(connect);
+                //objbulk.DestinationTableName = "Address";
+                //objbulk.ColumnMappings.Add("RoadcodeID", "RoadcodeID");
+                //objbulk.ColumnMappings.Add("Road", "Road");
+                //objbulk.ColumnMappings.Add("Zip", "Zip");
+                //objbulk.ColumnMappings.Add("Municipality", "Municipality");
+                //connect.Open();
+                //objbulk.WriteToServer(tbl);
             }
             //skal ændre exception beskeden (måske som en return)
             catch (Exception ex)
