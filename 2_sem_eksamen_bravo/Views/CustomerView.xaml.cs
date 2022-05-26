@@ -17,6 +17,12 @@ using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+
+
+
+
+
 
 namespace _2_sem_eksamen_bravo.Views
 {
@@ -30,8 +36,8 @@ namespace _2_sem_eksamen_bravo.Views
         public CustomerView()
         {
             InitializeComponent();
-            LoadGrid_Cusumer();
             cb_LoadName();
+            LoadGrid_Cusumer();
         }
 
 
@@ -60,14 +66,13 @@ namespace _2_sem_eksamen_bravo.Views
         private void Refresh()
         {
            datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
-           //datagrid_customer.DataContext = new ObservableCollection<Customer_strings>(Customer_list);
        }
 
 
         private class Customer_strings
         {
             public string C_id { get; set; }
-            public string C_firstName { get; set; }
+            public string C_FirstName { get; set; }
             public string C_LastName { get; set; }
             public string C_Registered { get; set; }
             public string C_Gender { get; set; }
@@ -97,7 +102,7 @@ namespace _2_sem_eksamen_bravo.Views
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Customer_list.Clear();
-                while (sdr.Read()) Customer_list.Add(new Customer_strings { C_id = sdr[0].ToString(), C_firstName = sdr[1].ToString(), C_LastName = sdr[2].ToString(), C_Registered = sdr[3].ToString(), C_Gender = sdr[4].ToString(), C_Birth = sdr[5].ToString(), C_Phone = sdr[6].ToString(), C_Email = sdr[7].ToString() });
+                while (sdr.Read()) Customer_list.Add(new Customer_strings { C_id = sdr[0].ToString(), C_FirstName = sdr[1].ToString(), C_LastName = sdr[2].ToString(), C_Registered = sdr[3].ToString(), C_Gender = sdr[4].ToString(), C_Birth = sdr[5].ToString(), C_Phone = sdr[6].ToString(), C_Email = sdr[7].ToString() });
                 Refresh();
             }
             catch (Exception ex)
@@ -125,7 +130,7 @@ namespace _2_sem_eksamen_bravo.Views
             if (n >= 0)
             {
                 string C_id_sting = Customer_list[n].C_id;
-                string C_firstName_sting = Customer_list[n].C_firstName;
+                string C_FirstName_sting = Customer_list[n].C_FirstName;
                 string C_LastName_sting = Customer_list[n].C_LastName;
                 string C_Registered_sting = Customer_list[n].C_Registered;
                 string C_Gender_sting = Customer_list[n].C_Gender;
@@ -133,7 +138,7 @@ namespace _2_sem_eksamen_bravo.Views
                 string C_Phone_sting = Customer_list[n].C_Phone;
                 string C_Email_sting = Customer_list[n].C_Email;
 
-                Update_customer win2 = new Update_customer(C_id_sting, C_firstName_sting, C_LastName_sting, C_Registered_sting, C_Gender_sting, C_Birth_sting, C_Phone_sting, C_Email_sting);
+                Update_customer win2 = new Update_customer(C_id_sting, C_FirstName_sting, C_LastName_sting, C_Registered_sting, C_Gender_sting, C_Birth_sting, C_Phone_sting, C_Email_sting);
                 win2.Show();
             }
         }
@@ -153,7 +158,7 @@ namespace _2_sem_eksamen_bravo.Views
         {
 
             string selected_id = Customer_list[datagrid_customer.SelectedIndex].C_id;
-            string selected_name = Customer_list[datagrid_customer.SelectedIndex].C_firstName;
+            string selected_name = Customer_list[datagrid_customer.SelectedIndex].C_FirstName;
             int n = datagrid_customer.SelectedIndex;
 
             var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -177,12 +182,65 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Search_Click(object sender, RoutedEventArgs e)
         {
-            //cb_Search.SelectedItem
+            //string name_txt = cb_Search.Text.ToString();
+            string name_txt = Search_txt.Text.ToString();
+
+            if (name_txt != string.Empty)
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name_txt + "%' or FirstName like '%" + name_txt + "%' or LastName like '%" + name_txt + "%'", host);
+                DataTable dt = new DataTable();
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                dt.Load(sdr);
+                host.Close();
+                datagrid_customer.ItemsSource = dt.DefaultView;
+                //cb_Search.Background = Brushes.Transparent;
+                //string name_txt = name_txt;
+                ////name_txt = "";
+
+                int Search_items = datagrid_customer.Items.Count;
+
+                if (Search_items == 0)
+                {
+                    Search_message.Content = "Der er ingen resultater på din søgningen";
+                }
+                else if (Search_items == 1)
+                {
+                    Search_message.Content = Search_items + " resultat på søgningen af '" + name_txt + "'";
+                    Search_message.Foreground = Brushes.Black;
+                }
+                else
+                {
+                    Search_message.Content = Search_items + " resultater på søgningen af '" + name_txt + "'";
+                    Search_message.Foreground = Brushes.Black;
+                }
+
+
+
+                //ClearDataBtn.Visibility = Visibility.Visible;
+                //SearchDataBtn.Visibility = Visibility.Hidden;
+
+            }
+            else
+            {
+
+                Search_message.Content = "Der er ingen tekst i søgningsfeltet";
+                Search_message.Foreground = Brushes.Red;
+            }
         }
 
         private void cb_LoadName() //Kevin
         {
             cb_Search.ItemsSource = SQL.GetCustomerName();
+
+
+
+            if (cb_Search.SelectedItem == null)
+            {
+                // do something
+                Search_test.Content = cb_Search.SelectedItem;
+            }
+
         }
 
         //private void datagrid_customer()

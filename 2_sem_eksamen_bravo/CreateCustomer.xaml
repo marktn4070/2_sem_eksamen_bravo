@@ -29,9 +29,9 @@
         <TextBox Name="LastName" HorizontalAlignment="Left" Margin="145,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
         <TextBox Name="Phone" HorizontalAlignment="Left" Margin="145,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
         <TextBox Name="Email" HorizontalAlignment="Left" Margin="145,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox Name="Birthday" HorizontalAlignment="Left" Margin="145,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
-        <TextBox Name="Birthmonth" HorizontalAlignment="Left" Margin="190,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="30"/>
-        <TextBox Name="Birthyear" HorizontalAlignment="Left" Margin="250,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="65"/>
+        <TextBox Name="Birthday" HorizontalAlignment="Left" Margin="145,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthday" MaxLength="2" Width="30"/>
+        <TextBox Name="Birthmonth" HorizontalAlignment="Left" Margin="190,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthmonth" MaxLength="2" Width="30"/>
+        <TextBox Name="Birthyear" HorizontalAlignment="Left" Margin="250,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="4" Width="65"/>
         <Label Content="Vælg vej:" Margin="45,307,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Vælg kommune:" Margin="49,271,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <ComboBox Name="Kommune" Height="23" Width="100" Margin="158,276,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
