@@ -50,6 +50,11 @@ namespace _2_sem_eksamen_bravo
             this.MainContent.Content = new ViewModels.SendMessageViewModel();
         }
 
+        private void Menu_Click_4(object sender, RoutedEventArgs e)
+        {
+            this.MainContent.Content = new ViewModels.Search_testModel();
+        }
+
         public static void ShowError(Exception ex)
         {
             MessageBox.Show(ex.Message);

@@ -27,9 +27,42 @@ namespace _2_sem_eksamen_bravo
             Kommune.ItemsSource = SQL.GetMunicipalities();
         }
 
+       
 
 
-        
+        private void txb_TextChanged_Birthday(object sender, TextChangedEventArgs e)
+        {
+            int time = Birthday.Text.Length;
+
+            if (Birthday.Text == "" || Birthmonth.Text == "" || Birthyear.Text == "")
+            {
+                if (time == 2)
+                {
+                    Birthday.Text.Remove(time - 1);
+                    Keyboard.Focus(Birthmonth);
+                }
+            }
+        }
+
+        private void txb_TextChanged_Birthmonth(object sender, TextChangedEventArgs e)
+        {
+            int time = Birthmonth.Text.Length;
+
+            if (Birthday.Text == "" || Birthmonth.Text == "" || Birthyear.Text == "")
+            {
+                if (time == 2)
+                {
+                    Birthmonth.Text.Remove(time - 1);
+                    Keyboard.Focus(Birthyear);
+                }
+            }
+        }
+
+    
+
+
+
+
         //public bool IsValid()
         //{
 
@@ -220,5 +253,19 @@ namespace _2_sem_eksamen_bravo
                 Vej.ItemsSource = new List<string>();
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            DataChangedEventHandler handler = DataChanged;
+
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
+        }
+
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+
+        public event DataChangedEventHandler DataChanged;
     }
 }
