@@ -30,7 +30,7 @@ namespace _2_sem_eksamen_bravo
        
 
 
-        private void txb_TextChanged_Birthday(object sender, TextChangedEventArgs e)
+        private void txb_TextChanged_Birthday(object sender, TextChangedEventArgs e) //mark
         {
             int time = Birthday.Text.Length;
 
@@ -44,7 +44,7 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        private void txb_TextChanged_Birthmonth(object sender, TextChangedEventArgs e)
+        private void txb_TextChanged_Birthmonth(object sender, TextChangedEventArgs e) //mark
         {
             int time = Birthmonth.Text.Length;
 

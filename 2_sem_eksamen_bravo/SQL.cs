@@ -144,28 +144,25 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static void GetMCustomer()
+        public static List<Customer> GetMCustomer()
         {
-            SqlConnection connection = null;
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                SqlConnection host = null;
-
-                host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-
-
+                List<Customer> customer_list = new List<Customer>();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
                 DataTable dt = new DataTable();
-
-
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
+                }
+                return customer_list;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 throw;
-            }
-            finally
-            {
-                if (connection != null) connection.Close();
             }
         }
 
@@ -282,9 +279,9 @@ namespace _2_sem_eksamen_bravo
                     roadCode = (int)reader[0];
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
+                throw;
             }
             finally
             {
@@ -470,6 +467,30 @@ namespace _2_sem_eksamen_bravo
                 }
             }
             return Names;
+        }
+
+        public static void UpdateCustomer(Customer customer)
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+
+            host.Open();
+            //SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Registered = '" + C_Registered_txt.Text + "', Gender = '" + C_Gender_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
+            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, Roadcode = {4} WHERE CustomerID LIKE {5}", customer.Registered), host);
+            try
+            {
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (host != null)
+                {
+                    host.Close();
+                }
+            }
         }
     }
 }
