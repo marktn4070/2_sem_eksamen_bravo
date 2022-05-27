@@ -25,19 +25,31 @@ namespace _2_sem_eksamen_bravo
     {
         public string C_id_public;
 
-        public Update_customer(string CustomerID_sting, string C_firstName_sting, string C_LastName_sting, string C_Registered_sting, string C_Gender_sting, string C_Birth_sting, string C_Phone_sting, string C_Email_sting)
+        public Update_customer(Customer customer)
         {
             InitializeComponent();
 
 
-            C_id_public = CustomerID_sting;
-            C_firstName_txt.Text = C_firstName_sting;
-            C_LastName_txt.Text = C_LastName_sting;
+            C_id_public = customer.CustomerID;
+            C_firstName_txt.Text = customer.FirstName;
+            C_LastName_txt.Text = customer.LastName;
             //C_Registered_txt.Text = C_Registered_sting;
+            if (customer.Registered == "Male")
+            {
+                Male.IsChecked = true;
+            }
+            else if (customer.Registered == "Female")
+            {
+                Female.IsChecked = true;
+            }
+            else
+            {
+                Other.IsChecked = true;
+            }
             //C_Gender_txt.Text = C_Gender_sting;
-            C_Birth_txt.Text = C_Birth_sting;
-            C_Phone_txt.Text = C_Phone_sting;
-            C_Email_txt.Text = C_Email_sting;
+            C_Birth_txt.Text = customer.Birth;
+            C_Phone_txt.Text = customer.Phone;
+            C_Email_txt.Text = customer.Email;
 
         }
         SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);

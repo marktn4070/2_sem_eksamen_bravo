@@ -68,6 +68,7 @@
     <Compile Include="CreateCustomer.xaml.cs">
       <DependentUpon>CreateCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs" />
     <Compile Include="SQL.cs" />
     <Compile Include="Update_customer.xaml.cs">
       <DependentUpon>Update_customer.xaml</DependentUpon>

@@ -32,7 +32,7 @@ namespace _2_sem_eksamen_bravo.Views
     public partial class CustomerView : UserControl
     {
 
-        private List<Customer_strings> Customer_list = new List<Customer_strings>();
+        private List<Customer> Customer_list = new List<Customer>();
         public CustomerView()
         {
             InitializeComponent();
@@ -59,21 +59,11 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Refresh()
         {
-           datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
+           datagrid_customer.ItemsSource = new ObservableCollection<Customer>(Customer_list);
        }
 
 
-        private class Customer_strings
-        {
-            public string CustomerID { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-            public string Registered { get; set; }
-            public string Gender { get; set; }
-            public string Birth { get; set; }
-            public string Phone { get; set; }
-            public string Email { get; set; }
-        }
+        
 
 
 
@@ -98,7 +88,7 @@ namespace _2_sem_eksamen_bravo.Views
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Customer_list.Clear();
-                while (sdr.Read()) Customer_list.Add(new Customer_strings { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
+                while (sdr.Read()) Customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
                 Refresh();
             }
             catch (Exception ex)
@@ -125,16 +115,7 @@ namespace _2_sem_eksamen_bravo.Views
             int n = datagrid_customer.SelectedIndex;
             if (n >= 0)
             {
-                string CustomerID_sting = Customer_list[n].CustomerID;
-                string FirstName_sting = Customer_list[n].FirstName;
-                string LastName_sting = Customer_list[n].LastName;
-                string Registered_sting = Customer_list[n].Registered;
-                string Gender_sting = Customer_list[n].Gender;
-                string Birth_sting = Customer_list[n].Birth;
-                string Phone_sting = Customer_list[n].Phone;
-                string Email_sting = Customer_list[n].Email;
-
-                Update_customer win2 = new Update_customer(CustomerID_sting, FirstName_sting, LastName_sting, Registered_sting, Gender_sting, Birth_sting, Phone_sting, Email_sting);
+                Update_customer win2 = new Update_customer(Customer_list[n]);
                 win2.DataChanged += UpdateCustomer_Updated;
                 win2.Show();
             }

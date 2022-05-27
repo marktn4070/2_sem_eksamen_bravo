@@ -23,9 +23,9 @@
         <Label Content="Postnummer" HorizontalAlignment="Left" Margin="40,272,0,0" VerticalAlignment="Top"/>
         <Label Content="Vej" HorizontalAlignment="Left" Margin="40,303,0,0" VerticalAlignment="Top"/>
 
-        <RadioButton Content="Mand" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Kvinde" HorizontalAlignment="Left" Margin="211,221,0,0" VerticalAlignment="Top"/>
-        <RadioButton Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="274,221,0,0" VerticalAlignment="Top"/>
+        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
+        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="211,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
+        <RadioButton Name="Other" Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="274,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
 
         <TextBox x:Name="C_firstName_txt" HorizontalAlignment="Left" Margin="145,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
         <TextBox x:Name="C_LastName_txt" HorizontalAlignment="Left" Margin="145,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
