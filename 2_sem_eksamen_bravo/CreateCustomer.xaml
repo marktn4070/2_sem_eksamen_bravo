@@ -10,8 +10,8 @@
     <Grid>
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opret kunde"/>
-        <Button Content="Gem" x:Name="Update_Btn" Margin="267,342,0,0" Width="70" Height="45" Click="Create_Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
-        <Button Content="Nulstil" x:Name="Clear_Btn" Margin="182,342,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Gem" x:Name="Update_Btn" Margin="300,358,0,0" Width="70" Height="45" Click="Create_Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Nulstil" x:Name="Clear_Btn" Margin="216,358,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
 
         <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,60,0,0" VerticalAlignment="Top" Width="105"/>
@@ -35,7 +35,7 @@
         <TextBox Name="Birthyear" HorizontalAlignment="Left" Margin="250,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="4" Width="65"/>
         <Label Content="Vælg vej:" Margin="45,307,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Vælg kommune:" Margin="49,271,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <ComboBox Name="Kommune" Height="23" Width="100" Margin="158,276,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
+        <ComboBox Name="Kommune" Height="23" Width="100" Margin="152,276,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
         <ComboBox Name="Vej" Height="23" Width="100" Margin="152,307,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="False"/>
 
     </Grid>

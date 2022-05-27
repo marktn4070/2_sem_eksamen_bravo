@@ -8,9 +8,10 @@
         Title="Opdater kunde" Height="450" Width="400">
     <Grid>
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opdater kunde"/>
-        <Button Content="Nulstil" x:Name="Clear_Btn"  Margin="133,342,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" RenderTransformOrigin="0.491,0.514" FontSize="14" FontWeight="Bold"/>
-        <Button Content="Opdater" x:Name="Update_Btn" Margin="225,342,0,0" Width="70" Height="45" Click="Update_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Nulstil" x:Name="Clear_Btn"  Margin="216,356,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" RenderTransformOrigin="0.491,0.514" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Opdater" x:Name="Update_Btn" Margin="300,356,0,0" Width="70" Height="45" Click="Update_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
+        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="40,250,196,149"/>
         <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,60,0,0" VerticalAlignment="Top" Width="105"/>
         <Label Content="Efternavn" HorizontalAlignment="Left" Margin="40,91,0,0" VerticalAlignment="Top"/>
         <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="40,122,0,0" VerticalAlignment="Top"/>
@@ -26,13 +27,13 @@
         <RadioButton Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="274,221,0,0" VerticalAlignment="Top"/>
 
         <TextBox x:Name="C_firstName_txt" HorizontalAlignment="Left" Margin="145,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox x:Name="C_LastName_txt" HorizontalAlignment="Left" Margin="145,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox x:Name="C_Registered_txt" HorizontalAlignment="Left" Margin="145,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox x:Name="C_Gender_txt" HorizontalAlignment="Left" Margin="145,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox x:Name="C_Birth_txt" HorizontalAlignment="Left" Margin="145,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
+        <TextBox x:Name="C_LastName_txt" HorizontalAlignment="Left" Margin="145,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
+        <TextBox x:Name="C_Phone_txt" HorizontalAlignment="Left" Margin="145,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
+        <TextBox x:Name="C_Email_txt" HorizontalAlignment="Left" Margin="145,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
+        <TextBox x:Name="C_Birth_txt" HorizontalAlignment="Left" Margin="145,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
 
-        <TextBox x:Name="C_Phone_txt" HorizontalAlignment="Left" Margin="145,276,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="60"/>
-        <TextBox x:Name="C_Email_txt" HorizontalAlignment="Left" Margin="145,307,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="Kommune" Height="23" Width="100" Margin="152,275,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
+        <ComboBox Name="Vej" Height="23" Width="100" Margin="152,307,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="True"/>
 
     </Grid>
 </Window>
