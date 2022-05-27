@@ -37,7 +37,7 @@ namespace _2_sem_eksamen_bravo.Views
         {
             InitializeComponent();
             cb_LoadName();
-            LoadGrid_Cusumer();
+            LoadGrid_Customer();
             Refresh();
             Clear();
         }
@@ -48,7 +48,7 @@ namespace _2_sem_eksamen_bravo.Views
         {
             CreateCustomer Window = new CreateCustomer();
             Window.DataChanged += CreateCustomer_Created;
-            Window.Show();
+            Window.ShowDialog();
 
         }
 
@@ -71,14 +71,14 @@ namespace _2_sem_eksamen_bravo.Views
         private void Clear()
         {
             datagrid_customer.SelectedIndex = -1;
-            LoadGrid_Cusumer();
+            LoadGrid_Customer();
         }
 
 
 
 
 
-        public void LoadGrid_Cusumer()
+        public void LoadGrid_Customer()
         {                
             try
             {
@@ -106,7 +106,7 @@ namespace _2_sem_eksamen_bravo.Views
             {
                 Update_customer win2 = new Update_customer(Customer_list[n]);
                 win2.DataChanged += UpdateCustomer_Updated;
-                win2.Show();
+                win2.ShowDialog();
             }
         }
 
@@ -143,7 +143,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
             else if (Result == MessageBoxResult.No)
             {
-                LoadGrid_Cusumer();
+                LoadGrid_Customer();
             }
         }
 
@@ -213,11 +213,15 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void CreateCustomer_Created(object sender, EventArgs e)
         {
+            LoadGrid_Customer();
+            Refresh();
             Clear();
         }
 
         private void UpdateCustomer_Updated(object sender, EventArgs e)
         {
+            LoadGrid_Customer();
+            Refresh();
             Clear();
         }
 
