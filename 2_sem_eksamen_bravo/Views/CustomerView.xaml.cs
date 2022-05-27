@@ -135,6 +135,7 @@ namespace _2_sem_eksamen_bravo.Views
                 string Email_sting = Customer_list[n].Email;
 
                 Update_customer win2 = new Update_customer(CustomerID_sting, FirstName_sting, LastName_sting, Registered_sting, Gender_sting, Birth_sting, Phone_sting, Email_sting);
+                win2.DataChanged += UpdateCustomer_Updated;
                 win2.Show();
             }
         }
@@ -240,6 +241,11 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
         private void CreateCustomer_Created(object sender, EventArgs e)
+        {
+            Clear();
+        }
+
+        private void UpdateCustomer_Updated(object sender, EventArgs e)
         {
             Clear();
         }

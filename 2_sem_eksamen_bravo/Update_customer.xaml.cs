@@ -145,5 +145,19 @@ namespace _2_sem_eksamen_bravo
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            DataChangedEventHandler handler = DataChanged;
+
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
+        }
+
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+
+        public event DataChangedEventHandler DataChanged;
     }
 }
