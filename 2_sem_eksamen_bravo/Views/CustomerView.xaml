@@ -8,30 +8,23 @@
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
 
 
-
-
-
-
-
-
-
-    <Grid x:Name="page_deltager" Height="600" Width="800" Background="White">
-        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunder"/>
+    <Grid x:Name="page__customer" Height="600" Width="800" Background="White">
+        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunder" VerticalAlignment="Top" Height="50"/>
 
         <Button Content="Opret &#xD;&#xA;Kunde" Margin="10,83,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold"/>
 
         <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,141,0,159" AutoGenerateColumns="False" CanUserAddRows="False"
-                IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed">
+                IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="70" Binding="{Binding C_id}"/>
-                <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding C_firstName}"/>
-                <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding C_LastName}"/>
-                <DataGridTextColumn Header="Registreret" Width="70" Binding="{Binding C_Registered}"/>
-                <DataGridTextColumn Header="Køn" Width="70" Binding="{Binding C_Gender}"/>
-                <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding C_Birth}"/>
-                <DataGridTextColumn Header="Mobil nr." Width="70" Binding="{Binding C_Phone}"/>
-                <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding C_Email}"/>
+                <DataGridTextColumn Header="Id" Width="70" Binding="{Binding CustomerID}"/>
+                <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Registreret" Width="70" Binding="{Binding Registered}"/>
+                <DataGridTextColumn Header="Køn" Width="70" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding Birth}"/>
+                <DataGridTextColumn Header="Mobil nr." Width="70" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
 
                 <DataGridTemplateColumn Header="Opdater">
                     <DataGridTemplateColumn.CellTemplate>
@@ -51,15 +44,15 @@
 
             </DataGrid.Columns>
         </DataGrid>
+               
+
+        
 
 
-
-
-        <ComboBox Name="cb_Search"  Height="23" Width="100" Margin="590,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True"/>
+        
+        <Label Name="Search_message" Content="Søg efter 'Fornavn' og 'Efternavn'" Margin="474,71,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
+        <ComboBox Name="cb_Search"  Height="23" Width="206" Margin="484,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" Background = "Transparent"/>
         <Button Content="Søg" Margin="708,102,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
-
-
-
 
 
     </Grid>

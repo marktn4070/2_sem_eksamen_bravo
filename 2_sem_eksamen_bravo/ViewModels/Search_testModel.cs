@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace _2_sem_eksamen_bravo.ViewModels
 {
-    public class CustomerViewModel : BaseViewModel
+    class Search_testModel : BaseViewModel
     {
-
 
     }
 }

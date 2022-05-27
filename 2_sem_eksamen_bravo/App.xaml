@@ -15,5 +15,8 @@
         <DataTemplate DataType="{x:Type viewmodels:SendMessageViewModel}">
             <views:SendMessageView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewmodels:Search_testModel}">
+            <views:Search_test/>
+        </DataTemplate>
     </Application.Resources>
 </Application>
