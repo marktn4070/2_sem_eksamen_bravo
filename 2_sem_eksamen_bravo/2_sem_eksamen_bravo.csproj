@@ -66,15 +66,11 @@
     <Compile Include="Update_customer.xaml.cs">
       <DependentUpon>Update_customer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\Search_testModel.cs" />
     <Compile Include="ViewModels\SendMessageViewModel.cs" />
     <Compile Include="ViewModels\MessagesViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="Views\Search_test.xaml.cs">
-      <DependentUpon>Search_test.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\SendMessageView.xaml.cs">
       <DependentUpon>SendMessageView.xaml</DependentUpon>
     </Compile>
@@ -103,10 +99,6 @@
     <Page Include="Update_customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\Search_test.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SendMessageView.xaml">
       <Generator>MSBuild:Compile</Generator>
