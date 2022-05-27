@@ -167,7 +167,24 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-
+        public static DataTable SearchCustomer(string name)
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name_txt + "%' or FirstName like '%" + name_txt + "%' or LastName like '%" + name_txt + "%'", host);
+                DataTable dt = new DataTable();
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                dt.Load(sdr);
+                host.Close();
+                return dt;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
 
         public static List<string> GetMMessage() //Mark
         {
@@ -277,6 +294,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     roadCode = (int)reader[0];
                 }
+                cnct.Close();
                 return roadCode;
             }
             catch (Exception)
@@ -509,6 +527,7 @@ namespace _2_sem_eksamen_bravo
                     names[0] = reader[1].ToString();
                     names[1] = reader[3].ToString();
                 }
+                host.Close();
                 return names;
             }
             catch (Exception)

@@ -154,13 +154,7 @@ namespace _2_sem_eksamen_bravo.Views
 
             if (name_txt != string.Empty)
             {
-                SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name_txt + "%' or FirstName like '%" + name_txt + "%' or LastName like '%" + name_txt + "%'", host);
-                DataTable dt = new DataTable();
-                host.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                dt.Load(sdr);
-                host.Close();
+                DataTable dt = SQL.SearchCustomer(name_txt);
                 datagrid_customer.ItemsSource = dt.DefaultView;
                 //cb_Search.Background = Brushes.Transparent;
                 //string name_txt = name_txt;
