@@ -38,10 +38,6 @@ namespace _2_sem_eksamen_bravo.Commands
             {
                 viewModel.SelectedViewModel = new SendMessageViewModel();
             }
-            else if (parameter.ToString() == "Search_test")
-            {
-                viewModel.SelectedViewModel = new Search_testModel();
-            }
         }
     }
 }
