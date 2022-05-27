@@ -34,7 +34,7 @@
         <TextBox x:Name="C_Birth_txt" HorizontalAlignment="Left" Margin="145,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
 
         <ComboBox Name="Kommune" Height="23" Width="100" Margin="152,275,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
-        <ComboBox Name="Vej" Height="23" Width="100" Margin="152,307,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="True"/>
+        <ComboBox Name="Vej" Height="23" Width="100" Margin="152,307,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="True" SelectionChanged="Vej_SelectionChanged"/>
 
     </Grid>
 </Window>

@@ -33,8 +33,8 @@ namespace _2_sem_eksamen_bravo
             C_id_public = CustomerID_sting;
             C_firstName_txt.Text = C_firstName_sting;
             C_LastName_txt.Text = C_LastName_sting;
-            C_Registered_txt.Text = C_Registered_sting;
-            C_Gender_txt.Text = C_Gender_sting;
+            //C_Registered_txt.Text = C_Registered_sting;
+            //C_Gender_txt.Text = C_Gender_sting;
             C_Birth_txt.Text = C_Birth_sting;
             C_Phone_txt.Text = C_Phone_sting;
             C_Email_txt.Text = C_Email_sting;
@@ -46,8 +46,8 @@ namespace _2_sem_eksamen_bravo
         {
             C_firstName_txt.Clear();
             C_LastName_txt.Clear();
-            C_Registered_txt.Clear();
-            C_Gender_txt.Clear();
+            //C_Registered_txt.Clear();
+            //C_Gender_txt.Clear();
             C_Birth_txt.Clear();
             C_Phone_txt.Clear();
             C_Email_txt.Clear();
@@ -120,7 +120,8 @@ namespace _2_sem_eksamen_bravo
                 if (IsValid())
                 {
                     host.Open();
-                    SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Registered = '" + C_Registered_txt.Text + "', Gender = '" + C_Gender_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
+                    //SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Registered = '" + C_Registered_txt.Text + "', Gender = '" + C_Gender_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
+                    SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
                     try
                     {
                         cmd.ExecuteNonQuery();
@@ -159,5 +160,15 @@ namespace _2_sem_eksamen_bravo
         public delegate void DataChangedEventHandler(object sender, EventArgs e);
 
         public event DataChangedEventHandler DataChanged;
+
+        private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Vej_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
