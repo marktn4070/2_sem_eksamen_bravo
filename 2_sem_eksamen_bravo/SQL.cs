@@ -156,7 +156,7 @@ namespace _2_sem_eksamen_bravo
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
+                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString(), RoadCode = sdr[8].ToString()});
                 }
                 return customer_list;
             }
@@ -259,11 +259,10 @@ namespace _2_sem_eksamen_bravo
             return roads;
         }
 
-        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
+        public static int GetRoadCode(string municipality, string road)
         {
             int roadCode = 0;
             SqlConnection cnct = null;
-
             try //get roadcode
             {
                 cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -278,18 +277,18 @@ namespace _2_sem_eksamen_bravo
                 {
                     roadCode = (int)reader[0];
                 }
+                return roadCode;
             }
             catch (Exception)
             {
                 throw;
             }
-            finally
-            {
-                if (cnct != null)
-                {
-                    cnct.Close();
-                }
-            }
+        }
+        public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
+        {
+
+            SqlConnection cnct = null;
+            int roadCode = GetRoadCode(municipality, road);
 
             if (roadCode != 0)
             {
@@ -474,8 +473,10 @@ namespace _2_sem_eksamen_bravo
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
 
             host.Open();
-            //SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Registered = '" + C_Registered_txt.Text + "', Gender = '" + C_Gender_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
-            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, Roadcode = {4} WHERE CustomerID LIKE {5}", customer.Registered), host);
+            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, RoadcodeID = '{4}' WHERE CustomerID LIKE '{5}';", customer.Registered, customer.Gender, customer.Birth, customer.Phone, customer.RoadCode, customer.CustomerID), host);
+            cmd.Parameters.Add(CreateParam("@First", customer.FirstName, SqlDbType.NVarChar));
+            cmd.Parameters.Add(CreateParam("@Last", customer.LastName, SqlDbType.NVarChar));
+            cmd.Parameters.Add(CreateParam("@Email", customer.Email, SqlDbType.NVarChar));
             try
             {
                 cmd.ExecuteNonQuery();
@@ -490,6 +491,29 @@ namespace _2_sem_eksamen_bravo
                 {
                     host.Close();
                 }
+            }
+        }
+
+        public static string[] GetRoadAndMunicipalityNames(string roadCode) //james
+        {
+            string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            try
+            {
+                SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+
+                host.Open();
+                SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Address WHERE RoadcodeID LIKE {0}", roadCode), host);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    names[0] = reader[1].ToString();
+                    names[1] = reader[3].ToString();
+                }
+                return names;
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }

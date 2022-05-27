@@ -24,12 +24,22 @@ namespace _2_sem_eksamen_bravo
     public partial class Update_customer : Window
     {
         private string currentID;
+        private string[] startAddress; //først vejnavn så kommunenavn
 
         public Update_customer(Customer customer)
         {
             InitializeComponent();
-
-
+            try
+            {
+                startAddress = SQL.GetRoadAndMunicipalityNames(customer.RoadCode);
+                Kommune.ItemsSource = SQL.GetMunicipalities();
+                Kommune.SelectedItem = startAddress[1];
+                Vej.SelectedItem = startAddress[0];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message); //måske gøre mere ud af den her..
+            }
             currentID = customer.CustomerID;
             C_firstName_txt.Text = customer.FirstName;
             C_LastName_txt.Text = customer.LastName;
@@ -74,7 +84,11 @@ namespace _2_sem_eksamen_bravo
         }
         public bool IsValid()
         {
-
+            if (Vej.SelectedItem == null)
+            {
+                MessageBox.Show("Der skal vælges en adresse!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                return false;
+            }
             //Fornavn feltet
             if (C_firstName_txt.Text == string.Empty)
             {
@@ -148,10 +162,10 @@ namespace _2_sem_eksamen_bravo
                         gender = "Other";
                     }
                     try
-                    {   
-                        SQL.UpdateCustomer(new Customer { FirstName = C_firstName_txt.Text, LastName = C_LastName_txt.Text, 
+                    {
+                        SQL.UpdateCustomer(new Customer { FirstName = C_firstName_txt.Text, LastName = C_LastName_txt.Text,
                             Registered = (bool)Registered.IsChecked, Birth = C_Birth_txt.Text, CustomerID = currentID, Gender = gender,
-                         Email = C_Email_txt.Text, Phone = C_Phone_txt.Text});
+                            Email = C_Email_txt.Text, Phone = C_Phone_txt.Text, RoadCode = SQL.GetRoadCode(Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString()).ToString() } );
                         MessageBox.Show("'" + C_firstName_txt.Text + " " + C_LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (SqlException ex)
