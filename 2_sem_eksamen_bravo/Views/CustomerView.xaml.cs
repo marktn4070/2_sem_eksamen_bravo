@@ -38,6 +38,8 @@ namespace _2_sem_eksamen_bravo.Views
             InitializeComponent();
             cb_LoadName();
             LoadGrid_Cusumer();
+            Refresh();
+            Clear();
         }
 
 
@@ -54,13 +56,12 @@ namespace _2_sem_eksamen_bravo.Views
 
         //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
-        SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
         public CancelEventHandler Closing { get; private set; }
 
         private void Refresh()
         {
            datagrid_customer.ItemsSource = new ObservableCollection<Customer>(Customer_list);
-       }
+        }
 
 
         
@@ -79,25 +80,13 @@ namespace _2_sem_eksamen_bravo.Views
 
         public void LoadGrid_Cusumer()
         {                
-            //SQL.GetMCustomer();
-
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
-                DataTable dt = new DataTable();
-                host.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                Customer_list.Clear();
-                while (sdr.Read()) Customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
-                Refresh();
+                Customer_list = SQL.GetMCustomer();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (host != null) host.Close();
             }
         }
 
@@ -158,13 +147,14 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
-        private void Search_Click(object sender, RoutedEventArgs e)
+        private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
         {
             //string name_txt = cb_Search.Text.ToString();
             string name_txt = cb_Search.Text.ToString();
 
             if (name_txt != string.Empty)
             {
+                SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name_txt + "%' or FirstName like '%" + name_txt + "%' or LastName like '%" + name_txt + "%'", host);
                 DataTable dt = new DataTable();
                 host.Open();

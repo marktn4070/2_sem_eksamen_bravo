@@ -23,22 +23,22 @@ namespace _2_sem_eksamen_bravo
     /// </summary>
     public partial class Update_customer : Window
     {
-        public string C_id_public;
+        private string currentID;
 
         public Update_customer(Customer customer)
         {
             InitializeComponent();
 
 
-            C_id_public = customer.CustomerID;
+            currentID = customer.CustomerID;
             C_firstName_txt.Text = customer.FirstName;
             C_LastName_txt.Text = customer.LastName;
-            //C_Registered_txt.Text = C_Registered_sting;
-            if (customer.Registered == "Male")
+            Registered.IsChecked = customer.Registered;
+            if (customer.Gender == "Male")
             {
                 Male.IsChecked = true;
             }
-            else if (customer.Registered == "Female")
+            else if (customer.Gender == "Female")
             {
                 Female.IsChecked = true;
             }
@@ -46,20 +46,22 @@ namespace _2_sem_eksamen_bravo
             {
                 Other.IsChecked = true;
             }
-            //C_Gender_txt.Text = C_Gender_sting;
             C_Birth_txt.Text = customer.Birth;
             C_Phone_txt.Text = customer.Phone;
             C_Email_txt.Text = customer.Email;
 
         }
-        SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
 
-        public void clearData()
+        public void ClearData()
         {
+            Vej.ItemsSource = new List<string>();
+            Kommune.SelectedItem = null;
             C_firstName_txt.Clear();
             C_LastName_txt.Clear();
-            //C_Registered_txt.Clear();
-            //C_Gender_txt.Clear();
+            Registered.IsChecked = false;
+            Male.IsChecked = false;
+            Female.IsChecked = false;
+            Other.IsChecked = false;
             C_Birth_txt.Clear();
             C_Phone_txt.Clear();
             C_Email_txt.Clear();
@@ -67,7 +69,8 @@ namespace _2_sem_eksamen_bravo
 
         private void Clear_Btn_Click(object sender, RoutedEventArgs e)
         {
-            clearData();
+            //spørg om sikker nok en god ide................
+            ClearData();
         }
         public bool IsValid()
         {
@@ -80,7 +83,7 @@ namespace _2_sem_eksamen_bravo
             }
             else if (Regex.IsMatch(C_firstName_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
             {
-                MessageBox.Show("Vær venligst at indtaste bogstaver ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Vær venlig at indtaste bogstaver ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
                 return false;
             }
             //Efternavn feltet
@@ -131,12 +134,24 @@ namespace _2_sem_eksamen_bravo
 
                 if (IsValid())
                 {
-                    host.Open();
-                    //SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Registered = '" + C_Registered_txt.Text + "', Gender = '" + C_Gender_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
-                    SqlCommand cmd = new SqlCommand("update Customer set FirstName = '" + C_firstName_txt.Text + "', LastName = '" + C_LastName_txt.Text + "', Birth = '" + C_Birth_txt.Text + "', Phone = '" + C_Phone_txt.Text + "', Email = '" + C_Email_txt.Text + "' WHERE CustomerID = '" + C_id_public + "' ", host);
-                    try
+                    string gender = "";
+                    if ((bool)Male.IsChecked)
                     {
-                        cmd.ExecuteNonQuery();
+                        gender = "Male";
+                    }
+                    else if ((bool)Female.IsChecked)
+                    {
+                        gender = "Female";
+                    }
+                    else
+                    {
+                        gender = "Other";
+                    }
+                    try
+                    {   
+                        SQL.UpdateCustomer(new Customer { FirstName = C_firstName_txt.Text, LastName = C_LastName_txt.Text, 
+                            Registered = (bool)Registered.IsChecked, Birth = C_Birth_txt.Text, CustomerID = currentID, Gender = gender,
+                         Email = C_Email_txt.Text, Phone = C_Phone_txt.Text});
                         MessageBox.Show("'" + C_firstName_txt.Text + " " + C_LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (SqlException ex)
@@ -145,9 +160,7 @@ namespace _2_sem_eksamen_bravo
                     }
                     finally
                     {
-                        host.Close();
-                        clearData();
-
+                        //clearData(); tror ikke vi har brug for dette
                         this.Close();
                     }
 
@@ -175,12 +188,18 @@ namespace _2_sem_eksamen_bravo
 
         private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            if (Kommune.SelectedItem != null)
+            {
+                Vej.IsEnabled = true;
+                Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
+            }
+            else
+            {
+                Vej.IsEnabled = false;
+                Vej.ItemsSource = new List<string>();
+            }
         }
 
-        private void Vej_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
+        
     }
 }
