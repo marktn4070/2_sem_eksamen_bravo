@@ -42,19 +42,12 @@ namespace _2_sem_eksamen_bravo.Views
 
 
 
-
-
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
         {
             CreateCustomer Window = new CreateCustomer();
             Window.Show();
 
         }
-
-
-
-
-
 
 
 
@@ -71,14 +64,14 @@ namespace _2_sem_eksamen_bravo.Views
 
         private class Customer_strings
         {
-            public string C_id { get; set; }
-            public string C_FirstName { get; set; }
-            public string C_LastName { get; set; }
-            public string C_Registered { get; set; }
-            public string C_Gender { get; set; }
-            public string C_Birth { get; set; }
-            public string C_Phone { get; set; }
-            public string C_Email { get; set; }
+            public string CustomerID { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Registered { get; set; }
+            public string Gender { get; set; }
+            public string Birth { get; set; }
+            public string Phone { get; set; }
+            public string Email { get; set; }
         }
 
 
@@ -102,7 +95,7 @@ namespace _2_sem_eksamen_bravo.Views
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 Customer_list.Clear();
-                while (sdr.Read()) Customer_list.Add(new Customer_strings { C_id = sdr[0].ToString(), C_FirstName = sdr[1].ToString(), C_LastName = sdr[2].ToString(), C_Registered = sdr[3].ToString(), C_Gender = sdr[4].ToString(), C_Birth = sdr[5].ToString(), C_Phone = sdr[6].ToString(), C_Email = sdr[7].ToString() });
+                while (sdr.Read()) Customer_list.Add(new Customer_strings { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
                 Refresh();
             }
             catch (Exception ex)
@@ -129,16 +122,16 @@ namespace _2_sem_eksamen_bravo.Views
             int n = datagrid_customer.SelectedIndex;
             if (n >= 0)
             {
-                string C_id_sting = Customer_list[n].C_id;
-                string C_FirstName_sting = Customer_list[n].C_FirstName;
-                string C_LastName_sting = Customer_list[n].C_LastName;
-                string C_Registered_sting = Customer_list[n].C_Registered;
-                string C_Gender_sting = Customer_list[n].C_Gender;
-                string C_Birth_sting = Customer_list[n].C_Birth;
-                string C_Phone_sting = Customer_list[n].C_Phone;
-                string C_Email_sting = Customer_list[n].C_Email;
+                string CustomerID_sting = Customer_list[n].CustomerID;
+                string FirstName_sting = Customer_list[n].FirstName;
+                string LastName_sting = Customer_list[n].LastName;
+                string Registered_sting = Customer_list[n].Registered;
+                string Gender_sting = Customer_list[n].Gender;
+                string Birth_sting = Customer_list[n].Birth;
+                string Phone_sting = Customer_list[n].Phone;
+                string Email_sting = Customer_list[n].Email;
 
-                Update_customer win2 = new Update_customer(C_id_sting, C_FirstName_sting, C_LastName_sting, C_Registered_sting, C_Gender_sting, C_Birth_sting, C_Phone_sting, C_Email_sting);
+                Update_customer win2 = new Update_customer(CustomerID_sting, FirstName_sting, LastName_sting, Registered_sting, Gender_sting, Birth_sting, Phone_sting, Email_sting);
                 win2.Show();
             }
         }
@@ -157,8 +150,8 @@ namespace _2_sem_eksamen_bravo.Views
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
 
-            string selected_id = Customer_list[datagrid_customer.SelectedIndex].C_id;
-            string selected_name = Customer_list[datagrid_customer.SelectedIndex].C_FirstName;
+            string selected_id = Customer_list[datagrid_customer.SelectedIndex].CustomerID;
+            string selected_name = Customer_list[datagrid_customer.SelectedIndex].FirstName;
             int n = datagrid_customer.SelectedIndex;
 
             var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
@@ -183,7 +176,7 @@ namespace _2_sem_eksamen_bravo.Views
         private void Search_Click(object sender, RoutedEventArgs e)
         {
             //string name_txt = cb_Search.Text.ToString();
-            string name_txt = Search_txt.Text.ToString();
+            string name_txt = cb_Search.Text.ToString();
 
             if (name_txt != string.Empty)
             {
@@ -235,11 +228,11 @@ namespace _2_sem_eksamen_bravo.Views
 
 
 
-            if (cb_Search.SelectedItem == null)
-            {
-                // do something
-                Search_test.Content = cb_Search.SelectedItem;
-            }
+            //if (cb_Search.SelectedItem == null)
+            //{
+            //    // do something
+            //    Search_test.Content = cb_Search.SelectedItem;
+            //}
 
         }
 

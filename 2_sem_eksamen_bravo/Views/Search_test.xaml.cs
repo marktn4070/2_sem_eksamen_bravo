@@ -27,71 +27,52 @@ namespace _2_sem_eksamen_bravo.Views
     /// </summary>
     public partial class Search_test : UserControl
     {
-
-
-
-
-
-        private List<Participant_strings> Participant_list = new List<Participant_strings>();
-
+        private List<Customer_strings> Customer_list = new List<Customer_strings>();
 
         public Search_test()
         {
             InitializeComponent();
-
-
-            LoadGrid_Runner();
-
+            LoadGrid_Cusumer();
         }
 
+        //SqlConnection data = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
-
-
-
-        SqlConnection data = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
-
-        //SqlConnection data = new SqlConnection(ConfigurationManager.ConnectionStrings["data"].ConnectionString);
+        SqlConnection data = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
 
         private void Refresh()
         {
-            datagrid_deltager.ItemsSource = new ObservableCollection<Participant_strings>(Participant_list);
+            datagrid_customer.ItemsSource = new ObservableCollection<Customer_strings>(Customer_list);
         }
 
 
-        private class Participant_strings
+        private class Customer_strings
         {
-            public string P_id { get; set; }
-            public string P_name { get; set; }
-            public string P_mail { get; set; }
-            public string P_phone { get; set; }
-            public string P_address { get; set; }
-            public string P_zip { get; set; }
-            public string P_city { get; set; }
+            public string CustomerID { get; set; }
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string Registered { get; set; }
+            public string Gender { get; set; }
+            public string Birth { get; set; }
+            public string Phone { get; set; }
+            public string Email { get; set; }
         }
-
-
-      
-
 
         private void Clear()
         {
-            datagrid_deltager.SelectedIndex = -1;
-            LoadGrid_Runner();
+            datagrid_customer.SelectedIndex = -1;
+            LoadGrid_Cusumer();
         }
 
-
-
-
-        public void LoadGrid_Runner()
+        public void LoadGrid_Cusumer()
         {
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant", data);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", data);
                 DataTable dt = new DataTable();
                 data.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
-                Participant_list.Clear();
-                while (sdr.Read()) Participant_list.Add(new Participant_strings { P_id = sdr[0].ToString(), P_name = sdr[1].ToString(), P_mail = sdr[2].ToString(), P_phone = sdr[3].ToString(), P_address = sdr[4].ToString(), P_zip = sdr[5].ToString(), P_city = sdr[6].ToString() });
+                Customer_list.Clear();
+                while (sdr.Read()) Customer_list.Add(new Customer_strings { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
                 Refresh();
             }
             catch (Exception ex)
@@ -109,20 +90,20 @@ namespace _2_sem_eksamen_bravo.Views
         {
             if (Search_txt.Text != string.Empty)
             {
-
-                string runner_id = Search_txt.Text;
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Participant WHERE P_name like '%" + runner_id + "%' or P_id like '%" + runner_id + "%'", data);
+                string name_txt = Search_txt.Text;
+                //SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name_txt + "%' or FirstName like '%" + name_txt + "%' or LastName like '%" + name_txt + "%'", data);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName like '%" + name_txt + "%' or CustomerID like '%" + name_txt + "%'", data);
                 DataTable dt = new DataTable();
                 data.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 dt.Load(sdr);
                 data.Close();
-                datagrid_deltager.ItemsSource = dt.DefaultView;
+                datagrid_customer.ItemsSource = dt.DefaultView;
                 Search_txt.Background = Brushes.Transparent;
                 string runner_txt = Search_txt.Text;
                 Search_txt.Text = "";
 
-                int Search_items = datagrid_deltager.Items.Count;
+                int Search_items = datagrid_customer.Items.Count;
 
                 if (Search_items == 0)
                 {
@@ -137,22 +118,16 @@ namespace _2_sem_eksamen_bravo.Views
                     Search_message.Content = Search_items + " resultater på søgningen af '" + runner_txt + "'";
                 }
 
-
-
                 ClearDataBtn.Visibility = Visibility.Visible;
                 SearchDataBtn.Visibility = Visibility.Hidden;
-
             }
-
         }
-
-
 
 
         private void ClearDataBtn_Click(object sender, RoutedEventArgs e)
         {
             Search_txt.Clear();
-            LoadGrid_Runner();
+            LoadGrid_Cusumer();
             ClearDataBtn.Visibility = Visibility.Hidden;
             SearchDataBtn.Visibility = Visibility.Visible;
             Search_txt.Background = (Brush)new BrushConverter().ConvertFrom("#fff");
@@ -161,9 +136,8 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void grid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int n = datagrid_deltager.SelectedIndex;
+            int n = datagrid_customer.SelectedIndex;
         }
-
 
 
         private SqlParameter CreateParam(string name, object value, SqlDbType type)
@@ -174,19 +148,12 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
 
-
-
-
-
-
-
         private void Search_txt_TextChanged(object sender, TextChangedEventArgs e)
         {
             //Search_txt.Text = "";
             if (Search_txt.Text != "")
             {
                 Search_txt.Background = (Brush)new BrushConverter().ConvertFrom("#fff");
-
 
                 ClearDataBtn.Visibility = Visibility.Hidden;
                 SearchDataBtn.Visibility = Visibility.Visible;

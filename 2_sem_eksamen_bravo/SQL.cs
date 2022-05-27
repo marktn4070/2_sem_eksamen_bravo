@@ -140,6 +140,36 @@ namespace _2_sem_eksamen_bravo
             return param;
         }
 
+        public static List<string> GetMMessage() //Mark
+        {
+            List<string> Headline = new List<string>();
+            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand command = new SqlCommand("SELECT DISTINCT Headline FROM Message;", cnct);
+                cnct.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    Headline.Add(reader[0].ToString());
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (cnct != null)
+                {
+                    cnct.Close();
+                }
+            }
+            Headline.Sort();
+            return Headline;
+        }
+
+
         public static List<string> GetMunicipalities() //james
         {
             List<string> municipalities = new List<string>();

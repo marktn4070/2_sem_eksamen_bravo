@@ -7,110 +7,22 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
     <Grid Height="600" Width="800" Background="White">
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <Grid Name="Menu" Height="100" d:IsLocked="True">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0,0,-0.4,0" Background="#3173C6">
-
-                <!--<Button Uid="0" Width="150" Content="Deltager" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click" FontWeight="Bold"/>
-
-                <Button Uid="1" Width="150" Content="Løberute" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click" FontWeight="Bold"/>
-
-                <Button Uid="2" Width="150" Content="Tidstagning" Height="50" Background="#3173C6" BorderBrush="{x:Null}" Foreground="Black" Click="Button_Click" FontWeight="Bold"/>-->
-
-            </StackPanel>
-
-            <Grid x:Name="GridCursor" Width="150" Height="5" Background="Black" HorizontalAlignment="Left" Margin="0,48,0,47"/>
-        </Grid>
-
-
-
         <Grid x:Name="GridMain">
 
-            <Grid x:Name="page_løberute" Height="600" Width="900"  Background="White" d:IsLocked="True">
-
-
-                <DataGrid x:Name="datagrid_løberute"  HorizontalAlignment="Left" Width="770" Height="300" Margin="65,139,0,161" AutoGenerateColumns="False" CanUserAddRows="False"
-                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged">
-
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" Binding="{Binding R_id}"/>
-
-                        <DataGridTextColumn Header="Navn" Width="156.21" Binding="{Binding R_name}"/>
-
-                        <DataGridTextColumn Header="År" Width="156.21" Binding="{Binding R_year}"/>
-
-                        <DataGridTextColumn Header="Start tid" Width="156.21" Binding="{Binding R_starttime}"/>
-
-                        <DataGridTextColumn Header="Distance" Width="156.21" Binding="{Binding R_distance}"/>
-
-                        <DataGridTemplateColumn Header="Opdater">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <!--<Button Name="Route_btnView" Content="Opdater" Click="Route_btnView_Click"  Background="#FF5C5959" Foreground="#FFFFFF" Width="50"/>-->
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                        <DataGridTemplateColumn Header="Slet">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <!--<Button Name="Route_btnDelete" Content="Slet" Click="Route_btnDelete_Click_2"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>-->
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-
-                    </DataGrid.Columns>
-                </DataGrid>
-            </Grid>
-
-
-            <Grid x:Name="page_tidstagning" Height="600" Width="900" Background="White" d:IsLocked="True">
-
-
-                <DataGrid x:Name="datagrid_tidstagning"  HorizontalAlignment="Left" Width="770" Height="300" Margin="65,139,0,161" />
-            </Grid>
-
-
-
             <Grid x:Name="page_deltager"  Height="600" Width="900" Background="White">
-                <!--<Button Content="Opret &#xD;&#xA;Deltager" Margin="764,56,0,0" Width="70" Height="70" RenderTransformOrigin="0.504,0.504" Click="Button_Click_1" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FF5C5959" Foreground="#FFFFFF" Style="{DynamicResource RoundedButtonStyle}" FontWeight="Bold"/>-->
 
-                <DataGrid x:Name="datagrid_deltager"  HorizontalAlignment="Left" Width="770" Height="300" Margin="26,139,0,161" AutoGenerateColumns="False" CanUserAddRows="False"
+                <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="770" Height="300" Margin="26,139,0,161" AutoGenerateColumns="False" CanUserAddRows="False"
                   IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
 
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Id" Width="30" Binding="{Binding P_id}"/>
-
-                        <DataGridTextColumn Header="Navn" Width="104.2" Binding="{Binding P_name}"/>
-
-                        <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding P_mail}"/>
-
-                        <DataGridTextColumn Header="Telefon nr." Width="104.2" Binding="{Binding P_phone}"/>
-
-                        <DataGridTextColumn Header="Adresse" Width="104.2" Binding="{Binding P_address}"/>
-
-                        <DataGridTextColumn Header="Post nr." Width="104.2" Binding="{Binding P_zip}"/>
-
-                        <DataGridTextColumn Header="By" Width="104.2" Binding="{Binding P_city}"/>
+                        <DataGridTextColumn Header="Id" Width="30" Binding="{Binding CustomerID}"/>
+                        <DataGridTextColumn Header="Fornavn" Width="104.2" Binding="{Binding FirstName}"/>
+                        <DataGridTextColumn Header="Efternavn" Width="104.2" Binding="{Binding LastName}"/>
+                        <DataGridTextColumn Header="Registreret" Width="104.2" Binding="{Binding Registered}"/>
+                        <DataGridTextColumn Header="Køn" Width="104.2" Binding="{Binding Gender}"/>
+                        <DataGridTextColumn Header="Fødselsdag" Width="104.2" Binding="{Binding Birth}"/>
+                        <DataGridTextColumn Header="Mobil nr." Width="104.2" Binding="{Binding Phone}"/>
+                        <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding Email}"/>
 
                         <DataGridTemplateColumn Header="Opdater">
                             <DataGridTemplateColumn.CellTemplate>
@@ -138,11 +50,71 @@
 
                 <Button Content="Søg" x:Name="SearchDataBtn" Margin="290,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="Btn_Runner_Search_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
             </Grid>
+        </Grid>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--<Grid x:Name="GridMain">
+
+            <Grid x:Name="page_deltager"  Height="600" Width="900" Background="White">
+
+                <DataGrid x:Name="datagrid_deltager"  HorizontalAlignment="Left" Width="770" Height="300" Margin="26,139,0,161" AutoGenerateColumns="False" CanUserAddRows="False"
+                  IsReadOnly="True" SelectionMode="Single" SelectionChanged="grid_SelectionChanged"  >
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Width="30" Binding="{Binding P_id}"/>
+
+                        <DataGridTextColumn Header="Navn" Width="104.2" Binding="{Binding P_name}"/>
+
+                        <DataGridTextColumn Header="E-mail" Width="104.2" Binding="{Binding P_mail}"/>
+
+                        <DataGridTextColumn Header="Telefon nr." Width="104.2" Binding="{Binding P_phone}"/>
+
+                        <DataGridTextColumn Header="Adresse" Width="104.2" Binding="{Binding P_address}"/>
+
+                        <DataGridTextColumn Header="Post nr." Width="104.2" Binding="{Binding P_zip}"/>
+
+                        <DataGridTextColumn Header="By" Width="104.2" Binding="{Binding P_city}"/>
+
+                        <DataGridTemplateColumn Header="Opdater">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    --><!--<Button Name="btnView" Content="Opdater" Click="btnView_Click" Background="#FF5C5959" Foreground="#FFFFFF" Width="50"/>--><!--
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                        <DataGridTemplateColumn Header="Slet" d:IsLocked="True">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    --><!--<Button Name="btnDelete" Content="Slet" Click="btnDelete_Click_2"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>--><!--
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Name="Search_message" Content="Søg efter 'Id' eller 'Navn'" Margin="65,87,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
+
+                <TextBox x:Name="Search_txt" Height="31" Width="258" Margin="65,87,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="16" TextChanged="Search_txt_TextChanged" Text="" Background = "Transparent"/>
+
+                <Button Content="x" x:Name="ClearDataBtn" Margin="290,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="ClearDataBtn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#fff" FontSize="22" BorderBrush="#FF939393" Foreground="#FF939393"/>
+
+                <Button Content="Søg" x:Name="SearchDataBtn" Margin="290,87,0,0" Width="33" Height="31" RenderTransformOrigin="0.504,0.504" Click="Btn_Runner_Search_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#333333" Foreground="#FFFFFF"/>
+            </Grid>
 
             <TextBlock  x:Name="Title" HorizontalAlignment="Center" Margin="0" TextWrapping="Wrap" Text="Deltager" VerticalAlignment="Top" FontSize="30" FontWeight="Bold" d:IsLocked="True"/>
-        </Grid>
-
-
+        </Grid>-->
 
     </Grid>
 </UserControl>

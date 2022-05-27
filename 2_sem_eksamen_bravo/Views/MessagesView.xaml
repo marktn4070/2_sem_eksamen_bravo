@@ -10,10 +10,61 @@
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" Height="50" VerticalAlignment="Top"/>
 
 
+        <!--<Grid Margin="10">
+            <ItemsControl>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3" />
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding}" Margin="0,0,5,5" />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ListBox x:Name="teest">Item #1</ListBox>
+                --><!--<system:String>Item #1</system:String>
+                <system:String>Item #2</system:String>
+                <system:String>Item #3</system:String>
+                <system:String>Item #4</system:String>
+                <system:String>Item #5</system:String>--><!--
+            </ItemsControl>
+        </Grid>-->
+        <ComboBox Name="Headline_txt" Height="23" Width="100" Margin="559,397,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="True" IsTextSearchEnabled="True" IsEditable="True"/>
 
-        <Label Width="50" Height="50" x:Name="string_1" Margin="83,74,667,476"></Label>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500">
+            <Grid Name="LayoutRoot" Width="200" Height="Auto"  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" >
+
+                <Grid.ColumnDefinitions>
+                    <!--<ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />-->
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <!--<RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />-->
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            </Grid>
+        </ScrollViewer>
+
+        
+        
+        
+        
+
+        <!--<Label Width="50" Height="50" x:Name="string_1" Margin="83,74,667,476"></Label>
         <Label Width="50" Height="50" x:Name="string_2" Margin="377,74,373,476"></Label>
-        <Label Width="50" Height="50" x:Name="string_3" Margin="649,74,101,476"></Label>
+        <Label Width="50" Height="50" x:Name="string_3" Margin="649,74,101,476"></Label>-->
 
 
 
