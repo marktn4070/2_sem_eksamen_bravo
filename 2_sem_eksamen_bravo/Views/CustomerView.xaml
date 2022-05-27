@@ -8,7 +8,7 @@
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
 
 
-    <Grid x:Name="page_deltager" Height="600" Width="800" Background="White">
+    <Grid x:Name="page__customer" Height="600" Width="800" Background="White">
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunder" VerticalAlignment="Top" Height="50"/>
 
         <Button Content="Opret &#xD;&#xA;Kunde" Margin="10,83,0,0" Width="70" Height="45" RenderTransformOrigin="0.504,0.504" Click="Btn_OpenCreateCustomerWindow_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold"/>

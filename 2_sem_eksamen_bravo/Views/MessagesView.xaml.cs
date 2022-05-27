@@ -49,6 +49,13 @@ namespace _2_sem_eksamen_bravo.Views
             //    }
             //}
 
+
+
+
+            //foreach (var item in collection)
+            //{
+
+
             for (int j = 0; j < 4; j++)
             {
                 //int j2 =
@@ -62,23 +69,31 @@ namespace _2_sem_eksamen_bravo.Views
 
             }
 
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    Button lbl = new Button { FontSize = 10, Foreground = Brushes.Black, VerticalContentAlignment = System.Windows.VerticalAlignment.Top, HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center, Background = Brushes.White, Content = "name" + i, Height = 50, Width = 50, Name = "_" + i };
-            //    lbl.SetValue(Grid.RowProperty, 2);
-            //    lbl.SetValue(Grid.ColumnProperty, i);
+                    //for (int i = 0; i < 3; i++)
+                    //{
+                    //    Button lbl = new Button { FontSize = 10, Foreground = Brushes.Black, VerticalContentAlignment = System.Windows.VerticalAlignment.Top, HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center, Background = Brushes.White, Content = "name" + i, Height = 50, Width = 50, Name = "_" + i };
+                    //    lbl.SetValue(Grid.RowProperty, 2);
+                    //    lbl.SetValue(Grid.ColumnProperty, i);
 
-            //    this.LayoutRoot.Children.Add(lbl);
+                    //    this.LayoutRoot.Children.Add(lbl);
 
+                    //}
+
+
+
+                }
             //}
 
-
-
         }
 
-        }
 
-        string Hello = "2";
+
+
+
+
+
+
+            string Hello = "2";
 
 
 

@@ -30,7 +30,6 @@
                 <system:String>Item #5</system:String>--><!--
             </ItemsControl>
         </Grid>-->
-        <ComboBox Name="Headline_txt" Height="23" Width="100" Margin="559,397,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="True" IsTextSearchEnabled="True" IsEditable="True"/>
 
 
         <ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500">
@@ -57,10 +56,11 @@
             </Grid>
         </ScrollViewer>
 
-        
-        
-        
-        
+        <ComboBox Name="Headline_txt" Height="23" Width="100" Margin="559,397,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="True" IsTextSearchEnabled="True" IsEditable="True"/>
+
+
+
+
 
         <!--<Label Width="50" Height="50" x:Name="string_1" Margin="83,74,667,476"></Label>
         <Label Width="50" Height="50" x:Name="string_2" Margin="377,74,373,476"></Label>

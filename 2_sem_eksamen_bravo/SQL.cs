@@ -140,6 +140,37 @@ namespace _2_sem_eksamen_bravo
             return param;
         }
 
+
+
+
+        public static void GetMCustomer()
+        {
+            SqlConnection connection = null;
+            try
+            {
+                SqlConnection host = null;
+
+                host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+
+
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                DataTable dt = new DataTable();
+
+
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (connection != null) connection.Close();
+            }
+        }
+
+
+
+
         public static List<string> GetMMessage() //Mark
         {
             List<string> Headline = new List<string>();

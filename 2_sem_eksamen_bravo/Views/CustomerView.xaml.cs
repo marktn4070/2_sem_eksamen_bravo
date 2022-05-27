@@ -87,7 +87,9 @@ namespace _2_sem_eksamen_bravo.Views
 
 
         public void LoadGrid_Cusumer()
-        {
+        {                
+            //SQL.GetMCustomer();
+
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
