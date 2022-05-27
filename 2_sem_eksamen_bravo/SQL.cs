@@ -302,11 +302,6 @@ namespace _2_sem_eksamen_bravo
         }
         public static void AdresseImpoter() //Kevin
         {
-            //DataTable tbl = new DataTable();
-            //tbl.Columns.Add(new DataColumn("RoadcodeID", typeof(int)));
-            //tbl.Columns.Add(new DataColumn("Road", typeof(string)));
-            //tbl.Columns.Add(new DataColumn("Zip", typeof(int)));
-            //tbl.Columns.Add(new DataColumn("Municipality", typeof(string)));
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             List<Address> adresslist = new List<Address>();
             try
@@ -315,7 +310,6 @@ namespace _2_sem_eksamen_bravo
                 string tjek = string.Empty;
                 string tjek2 = string.Empty;
                 connect.Open();
-                //SqlCommand cmd = new SqlCommand("Select * from Address where exists (select RoadcodeID from Address)", connect);
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
@@ -323,11 +317,14 @@ namespace _2_sem_eksamen_bravo
                 {
                     foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
                     {
+                        if(84 != File.ReadLines(file, System.Text.Encoding.Default).Skip(1).First().Length)
+                        {
+                            throw new ArgumentException(string.Format("Forkert file i dropzone: {0}", file.Remove(0, 12)));
+                        }
+
                         foreach (var line in File.ReadLines(file, System.Text.Encoding.Default).Skip(1))
                         {
-
-                            //Den her condition tal kan måske være bedre (kigge på pdf om det)
-                            if (1000000000 > Convert.ToInt64(line.Substring(0, 11)))
+                            if (001 == Convert.ToInt64(line.Substring(0, 3)))
                             {
                                 if (tjek != line.Substring(60, 4) && tjek2 != line.Substring(31, 20))
                                 {
@@ -339,13 +336,6 @@ namespace _2_sem_eksamen_bravo
                                         Municipality = line.Substring(11, 20).Trim()
                                     });
 
-                                    //DataRow dr = tbl.NewRow();
-                                    //dr["RoadcodeID"] = Convert.ToInt32(line.Substring(0, 11));
-                                    //dr["Road"] = line.Substring(31, 20).Trim();
-                                    //dr["Zip"] = Convert.ToInt32(line.Substring(60, 4));
-                                    //dr["Municipality"] = line.Substring(11, 20).Trim();
-
-                                    //tbl.Rows.Add(dr);
                                 }
 
                                 tjek = line.Substring(60, 4);
@@ -369,25 +359,16 @@ namespace _2_sem_eksamen_bravo
 
                     bulk.CommitTransaction(connect);
 
-                    //foreach (string file in Directory.GetFiles(path))
-                    //{
-                    //    File.Delete(file);
-                    //}
+                    foreach (string file in Directory.GetFiles(path))
+                    {
+                        File.Delete(file);
+                    }
                 }
                 else
                 {
-                    //besked om der mangler noget
+                    throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }
-                //SqlBulkCopy objbulk = new SqlBulkCopy(connect);
-                //objbulk.DestinationTableName = "Address";
-                //objbulk.ColumnMappings.Add("RoadcodeID", "RoadcodeID");
-                //objbulk.ColumnMappings.Add("Road", "Road");
-                //objbulk.ColumnMappings.Add("Zip", "Zip");
-                //objbulk.ColumnMappings.Add("Municipality", "Municipality");
-                //connect.Open();
-                //objbulk.WriteToServer(tbl);
             }
-            //skal ændre exception beskeden (måske som en return)
             catch (Exception)
             {
                 throw;
@@ -401,7 +382,7 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static List<string> GetCustomerName()
+        public static List<string> GetCustomerName() //kevin
         {
             List<string> Names = new List<string>();
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
