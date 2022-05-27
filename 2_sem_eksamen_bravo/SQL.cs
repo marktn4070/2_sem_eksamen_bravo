@@ -374,11 +374,15 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                if (Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
+                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
+                {
+                    throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
+                }
+                else
                 {
                     foreach (string file in Directory.EnumerateFiles(path, "*.txt"))
                     {
-                        if(84 != File.ReadLines(file, System.Text.Encoding.Default).Skip(1).First().Length)
+                        if (84 != File.ReadLines(file, System.Text.Encoding.Default).Skip(1).First().Length)
                         {
                             throw new ArgumentException(string.Format("Forkert file i dropzone: {0}", file.Remove(0, 12)));
                         }
@@ -407,27 +411,23 @@ namespace _2_sem_eksamen_bravo
                                 break;
                             }
                         }
-                    }
-                    var bulk = new BulkOperations();
-                    bulk.Setup<Address>(x => x.ForCollection(adresslist))
-                    .WithTable("Address")
-                    .AddColumn(x => x.RoadcodeID)
-                    .AddColumn(x => x.Road)
-                    .AddColumn(x => x.Zip)
-                    .AddColumn(x => x.Municipality)
-                    .BulkInsertOrUpdate()
-                    .MatchTargetOn(x => x.RoadcodeID);
+                        var bulk = new BulkOperations();
+                        bulk.Setup<Address>(x => x.ForCollection(adresslist))
+                        .WithTable("Address")
+                        .AddColumn(x => x.RoadcodeID)
+                        .AddColumn(x => x.Road)
+                        .AddColumn(x => x.Zip)
+                        .AddColumn(x => x.Municipality)
+                        .BulkInsertOrUpdate()
+                        .MatchTargetOn(x => x.RoadcodeID);
 
-                    bulk.CommitTransaction(connect);
+                        bulk.CommitTransaction(connect);
+                    }
 
                     foreach (string file in Directory.GetFiles(path))
                     {
                         File.Delete(file);
                     }
-                }
-                else
-                {
-                    throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }
             }
             catch (Exception)

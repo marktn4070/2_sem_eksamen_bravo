@@ -30,6 +30,7 @@ namespace _2_sem_eksamen_bravo
     {
         public MainWindow()
         {
+            SQL.AdresseImpoter();
             InitializeComponent();
             DataContext = new MainViewModel();
             this.MainContent.Content = new ViewModels.CustomerViewModel();
@@ -50,19 +51,19 @@ namespace _2_sem_eksamen_bravo
             this.MainContent.Content = new ViewModels.SendMessageViewModel();
         }
 
-        private void Menu_Click_4(object sender, RoutedEventArgs e)
-        {
-            this.MainContent.Content = new ViewModels.Search_testModel();
-        }
-
         public static void ShowError(Exception ex)
         {
             MessageBox.Show(ex.Message);
         }
-
-        private void ImpoterAddresser_Click(object sender, RoutedEventArgs e) //Kevin
+        private void DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
         {
-            SQL.AdresseImpoter();
+            MessageBox.Show("An unhandled exception just occurred: " + e.Exception.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
+            e.Handled = true;
         }
+
+        //private void ImpoterAddresser_Click(object sender, RoutedEventArgs e) //Kevin
+        //{
+        //    SQL.AdresseImpoter();
+        //}
     }
 }
