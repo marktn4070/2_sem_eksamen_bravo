@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
         mc:Ignorable="d"
-        Title="Opret kunde" Height="450" Width="400">
+        Title="Opret kunde" Height="450" Width="400"
+        Closed="Window_Closed">
     <Grid>
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opret kunde"/>

@@ -41,6 +41,7 @@ namespace _2_sem_eksamen_bravo.Views
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
         {
             CreateCustomer Window = new CreateCustomer();
+            Window.DataChanged += CreateCustomer_Created;
             Window.Show();
 
         }
@@ -183,6 +184,11 @@ namespace _2_sem_eksamen_bravo.Views
         private void cb_LoadName() //Kevin
         {
             cb_Search.ItemsSource = SQL.GetCustomerName();
+        }
+
+        private void CreateCustomer_Created(object sender, EventArgs e)
+        {
+            Clear();
         }
 
         //private void datagrid_customer()

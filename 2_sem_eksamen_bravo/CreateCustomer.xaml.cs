@@ -27,9 +27,10 @@ namespace _2_sem_eksamen_bravo
             Kommune.ItemsSource = SQL.GetMunicipalities();
         }
 
+       
 
 
-        
+
         //public bool IsValid()
         //{
 
@@ -220,5 +221,19 @@ namespace _2_sem_eksamen_bravo
                 Vej.ItemsSource = new List<string>();
             }
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            DataChangedEventHandler handler = DataChanged;
+
+            if (handler != null)
+            {
+                handler(this, new EventArgs());
+            }
+        }
+
+        public delegate void DataChangedEventHandler(object sender, EventArgs e);
+
+        public event DataChangedEventHandler DataChanged;
     }
 }
