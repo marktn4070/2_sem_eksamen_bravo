@@ -30,7 +30,14 @@ namespace _2_sem_eksamen_bravo
     {
         public MainWindow()
         {
-            SQL.AdresseImpoter();
+            try
+            {
+                SQL.AdresseImpoter();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
             InitializeComponent();
             DataContext = new MainViewModel();
             this.MainContent.Content = new ViewModels.CustomerViewModel();
@@ -54,11 +61,6 @@ namespace _2_sem_eksamen_bravo
         public static void ShowError(Exception ex)
         {
             MessageBox.Show(ex.Message);
-        }
-        private void DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
-        {
-            MessageBox.Show("An unhandled exception just occurred: " + e.Exception.Message, "Exception Sample", MessageBoxButton.OK, MessageBoxImage.Warning);
-            e.Handled = true;
         }
 
         //private void ImpoterAddresser_Click(object sender, RoutedEventArgs e) //Kevin
