@@ -172,7 +172,7 @@ namespace _2_sem_eksamen_bravo
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name_txt + "%' or FirstName like '%" + name_txt + "%' or LastName like '%" + name_txt + "%'", host);
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name + "%' or FirstName like '%" + name + "%' or LastName like '%" + name + "%'", host);
                 DataTable dt = new DataTable();
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -192,7 +192,7 @@ namespace _2_sem_eksamen_bravo
             SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                SqlCommand command = new SqlCommand("SELECT DISTINCT Headline FROM Message;", cnct);
+                SqlCommand command = new SqlCommand("SELECT DISTINCT MessageID FROM Message;", cnct);
                 cnct.Open();
                 SqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
