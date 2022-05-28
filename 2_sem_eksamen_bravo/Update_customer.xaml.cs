@@ -214,6 +214,9 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        
+        private void Vej_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

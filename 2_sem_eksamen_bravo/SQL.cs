@@ -144,7 +144,7 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static List<Customer> GetMCustomer()
+        public static List<Customer> GetMCustomer() //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
@@ -167,7 +167,7 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        public static DataTable SearchCustomer(string name)
+        public static DataTable SearchCustomer(string name) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
