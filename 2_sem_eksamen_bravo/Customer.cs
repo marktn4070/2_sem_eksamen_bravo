@@ -16,5 +16,6 @@ namespace _2_sem_eksamen_bravo
         public string Birth { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string RoadcodeID { get; set; }
     }
 }

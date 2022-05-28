@@ -84,11 +84,13 @@ namespace _2_sem_eksamen_bravo.Views
             try
             {
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                //SqlCommand cmd_2 = new SqlCommand("SELECT * FROM Address WHERE RoadcodeID LIKE @RoadcodeID", host);
                 DataTable dt = new DataTable();
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
+                //SqlDataReader sdr_2 = cmd_2.ExecuteReader();
                 Customer_list.Clear();
-                while (sdr.Read()) Customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString() });
+                while (sdr.Read()) Customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = sdr[3].ToString(), Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString(), RoadcodeID = sdr[8].ToString() });
                 Refresh();
             }
             catch (Exception ex)
@@ -139,7 +141,7 @@ namespace _2_sem_eksamen_bravo.Views
             string selected_name = Customer_list[datagrid_customer.SelectedIndex].FirstName;
             int n = datagrid_customer.SelectedIndex;
 
-            var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette kunden '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
                 try

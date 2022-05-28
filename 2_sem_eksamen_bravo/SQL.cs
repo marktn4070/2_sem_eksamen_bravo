@@ -144,7 +144,7 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static void GetMCustomer()
+        public static void GetMCustomer() //Mark
         {
             SqlConnection connection = null;
             try
@@ -156,7 +156,6 @@ namespace _2_sem_eksamen_bravo
 
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
                 DataTable dt = new DataTable();
-
 
             }
             catch (Exception)

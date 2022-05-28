@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
     <Grid Height="600" Width="800" Background="White">
-        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" Height="50" VerticalAlignment="Top"/>
+        <!--<Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" Height="50" VerticalAlignment="Top"/>-->
 
 
         <!--<Grid Margin="10">
@@ -23,32 +23,34 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
                 <ListBox x:Name="teest">Item #1</ListBox>
-                --><!--<system:String>Item #1</system:String>
+                -->
+        <!--<system:String>Item #1</system:String>
                 <system:String>Item #2</system:String>
                 <system:String>Item #3</system:String>
                 <system:String>Item #4</system:String>
-                <system:String>Item #5</system:String>--><!--
+                <system:String>Item #5</system:String>-->
+        <!--
             </ItemsControl>
         </Grid>-->
 
 
-        <ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500">
+        <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500">
             <Grid Name="LayoutRoot" Width="200" Height="Auto"  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" >
 
                 <Grid.ColumnDefinitions>
-                    <!--<ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />
-                <ColumnDefinition Width="1*" />-->
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="1*" />
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <!--<RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />
-                <RowDefinition Height="1*" />-->
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
                     <RowDefinition Height="Auto"/>
                     <RowDefinition />
                     <RowDefinition Height="Auto"/>
@@ -56,77 +58,57 @@
             </Grid>
         </ScrollViewer>
 
-        <ComboBox Name="Headline_txt" Height="23" Width="100" Margin="559,397,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="True" IsTextSearchEnabled="True" IsEditable="True"/>
 
 
 
 
 
-        <!--<Label Width="50" Height="50" x:Name="string_1" Margin="83,74,667,476"></Label>
-        <Label Width="50" Height="50" x:Name="string_2" Margin="377,74,373,476"></Label>
-        <Label Width="50" Height="50" x:Name="string_3" Margin="649,74,101,476"></Label>-->
+        <ComboBox Name="Headline_txt" Height="23" Width="100" Margin="591,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="True" IsTextSearchEnabled="True" IsEditable="True"/>
 
 
 
+        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="100" Margin="591,130,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="696,211,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>-->
 
-        <!--<Grid Height="0" Width="0">
-            <Canvas Name="panel11" Height="379" Width="218" Background="White" Margin="0,-243,-380,-136" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                <Canvas Name="panel12" Height="5" Width="180" Background="#FFCDDAFF" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                </Canvas>
-                <Canvas Name="panel14" Height="100" Width="200" Margin="-1,248,-199,-348" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button Name="button23" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button24" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button25" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Label Name="label18" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Top" >02-01-2019</Label>
-                    <Label Name="label19" Height="26" Width="127" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Black" Margin="10,25,-137,-51" HorizontalAlignment="Right" VerticalAlignment="Top" >Hiking Challenge</Label>
-                </Canvas>
-                <Canvas Name="panel15" Height="100" Width="200" Margin="-1,35,-199,-135" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button Name="button26" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button27" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button28" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Label Name="label20" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Top" >02-01-2019</Label>
-                    <Label Name="label21" Height="26" Width="164" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Black" Margin="10,25,-174,-51" HorizontalAlignment="Right" VerticalAlignment="Top" >Inspirational Gathering</Label>
-                </Canvas>
-                <Label Name="label22" Height="25" Width="94" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="7,-6,-101,-19" HorizontalAlignment="Right" VerticalAlignment="Top" >6th Monday</Label>
-            </Canvas>
-            <Canvas Name="panel6" Height="379" Width="218" Background="White" Margin="-98,-243,-120,-136" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                <Canvas Name="panel7" Height="5" Width="180" Background="#FFCDDAFF" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                </Canvas>
-                <Canvas Name="panel9" Height="100" Width="200" Margin="-1,146,-199,-246" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button Name="button14" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button15" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button16" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Label Name="label11" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Top" >02-01-2019</Label>
-                    <Label Name="label12" Height="26" Width="127" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Black" Margin="10,25,-137,-51" HorizontalAlignment="Right" VerticalAlignment="Top" >Hiking Challenge</Label>
-                </Canvas>
-                <Canvas Name="panel10" Height="100" Width="200" Margin="-1,35,-199,-135" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button Name="button17" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button18" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button19" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Label Name="label13" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Top" >02-01-2019</Label>
-                    <Label Name="label14" Height="26" Width="164" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Black" Margin="10,25,-174,-51" HorizontalAlignment="Right" VerticalAlignment="Top" >Inspirational Gathering</Label>
-                </Canvas>
-                <Label Name="label15" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="7,-6,-90,-19" HorizontalAlignment="Right" VerticalAlignment="Top" >3rd Friday</Label>
-            </Canvas>
-            <Canvas Name="panel1" Height="379" Width="218" Background="White" Margin="-365,-243,147,-136" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                <Canvas Name="panel3" Height="5" Width="180" Background="#FFCDDAFF" Margin="-1,13,-179,-18" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                </Canvas>
-                <Canvas Name="panel5" Height="100" Width="200" Margin="-1,248,-199,-348" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button Name="button8" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button9" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button10" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Label Name="label7" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Top" >02-01-2019</Label>
-                    <Label Name="label8" Height="26" Width="127" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Black" Margin="10,25,-137,-51" HorizontalAlignment="Right" VerticalAlignment="Top" >Hiking Challenge</Label>
-                </Canvas>
-                <Canvas Name="panel2" Height="100" Width="200" Margin="-1,35,-199,-135" HorizontalAlignment="Right" VerticalAlignment="Top" >
-                    <Button Name="button4" Height="23" Width="29" TabIndex="1" Margin="145,55,-174,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button3" Height="23" Width="29" TabIndex="1" Margin="110,55,-139,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Button Name="button2" Height="23" Width="29" TabIndex="1" Margin="75,55,-104,-78" HorizontalAlignment="Right" VerticalAlignment="Top" ></Button>
-                    <Label Name="label3" Height="25" Width="83" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="10,-10,-93,-15" HorizontalAlignment="Right" VerticalAlignment="Top" >02-01-2019</Label>
-                    <Label Name="label4" Height="26" Width="164" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Black" Margin="10,25,-174,-51" HorizontalAlignment="Right" VerticalAlignment="Top" >Inspirational Gathering</Label>
-                </Canvas>
-                <Label Name="label2" Height="25" Width="104" FontSize="11" FontFamily="Microsoft Sans Serif" TabIndex="0" Foreground="Gray" Margin="7,-6,-111,-19" HorizontalAlignment="Right" VerticalAlignment="Top" >2nd Thrusday</Label>
-            </Canvas>
-        </Grid>-->
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.RowSpan="3" Grid.ColumnSpan="2" Margin="0,0,630,0">
+        </Grid>
+        <ScrollViewer Background="#FFFF" Grid.ColumnSpan="2" Margin="0,1,0,49" Grid.RowSpan="2">
+            <StackPanel>
+                <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" Height="50" VerticalAlignment="Top"/>
+
+
+                <StackPanel Margin="20 0">
+                    <ItemsControl x:Name="ListViewProducts" ItemsSource="{Binding Product}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border Margin="19.2" Width="110" Height="160">
+                                    <StackPanel>
+                                        <Button Content="{Binding Headline_Btn}" Height="66" Width="66" Click="Button_Click_22"/>
+                                        <TextBlock Margin="5" Text="{Binding Subheadline}" FontSize="17" FontFamily="Franklin Gothic Medium"/>
+                                        <TextBlock Margin="5 0" Text="{Binding Time}" FontSize="15"/>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                    </ItemsControl>
+                </StackPanel>
+            </StackPanel>
+        </ScrollViewer>
+
     </Grid>
 </UserControl>
