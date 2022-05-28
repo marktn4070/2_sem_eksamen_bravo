@@ -174,7 +174,6 @@ namespace _2_sem_eksamen_bravo
                     }
                     finally
                     {
-                        //clearData(); tror ikke vi har brug for dette
                         this.Close();
                     }
 
@@ -214,9 +213,5 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        private void Vej_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }
