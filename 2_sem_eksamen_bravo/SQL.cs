@@ -151,12 +151,13 @@ namespace _2_sem_eksamen_bravo
             {
                 List<Customer> customer_list = new List<Customer>();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
-                DataTable dt = new DataTable();
+                DataTable dt = new DataTable(); //nødvendig?
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString(), RoadCode = sdr[8].ToString()});
+                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), 
+                        Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString(), RoadCode = sdr[8].ToString()});
                 }
                 return customer_list;
             }
