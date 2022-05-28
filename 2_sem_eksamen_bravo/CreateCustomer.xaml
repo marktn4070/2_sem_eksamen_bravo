@@ -9,7 +9,7 @@
         Closed="Window_Closed">
     <Grid>
 
-        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opret kunde"/>
+        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opret kunde" VerticalAlignment="Top" Height="50"/>
         <Button Content="Gem" x:Name="Update_Btn" Margin="300,358,0,0" Width="70" Height="45" Click="Create_Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
         <Button Content="Nulstil" x:Name="Clear_Btn" Margin="216,358,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 

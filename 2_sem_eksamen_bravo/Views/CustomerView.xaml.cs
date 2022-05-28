@@ -128,7 +128,7 @@ namespace _2_sem_eksamen_bravo.Views
             string selected_name = Customer_list[datagrid_customer.SelectedIndex].FirstName;
             int n = datagrid_customer.SelectedIndex;
 
-            var Result = MessageBox.Show("Er du sikker på, at du vil slette deltageren '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            var Result = MessageBox.Show("Er du sikker på, at du vil slette kunden '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if (Result == MessageBoxResult.Yes)
             {
                 try
