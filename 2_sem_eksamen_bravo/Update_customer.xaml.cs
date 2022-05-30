@@ -31,7 +31,7 @@ namespace _2_sem_eksamen_bravo
             InitializeComponent();
             try
             {
-                startAddress = SQL.GetRoadAndMunicipalityNames(customer.RoadCode);
+                startAddress = SQL.GetRoadAndMunicipalityNames(customer.RoadCodeID);
                 Kommune.ItemsSource = SQL.GetMunicipalities();
                 Kommune.SelectedItem = startAddress[1];
                 Vej.SelectedItem = startAddress[0];
@@ -165,7 +165,7 @@ namespace _2_sem_eksamen_bravo
                     {
                         SQL.UpdateCustomer(new Customer { FirstName = C_firstName_txt.Text, LastName = C_LastName_txt.Text,
                             Registered = (bool)Registered.IsChecked, Birth = C_Birth_txt.Text, CustomerID = currentID, Gender = gender,
-                            Email = C_Email_txt.Text, Phone = C_Phone_txt.Text, RoadCode = SQL.GetRoadCode(Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString()).ToString() } );
+                            Email = C_Email_txt.Text, Phone = C_Phone_txt.Text, RoadCodeID = SQL.GetRoadCode(Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString()).ToString() } );
                         MessageBox.Show("'" + C_firstName_txt.Text + " " + C_LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (SqlException ex)

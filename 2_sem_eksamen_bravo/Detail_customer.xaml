@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
         mc:Ignorable="d"
              Height="600" Width="650" Background="#fff">
-    <Grid Height="600" Width="650">
+    <Grid Height="600" Width="650" Margin="0,0,-6.8,-29.6">
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunde Detaljer" VerticalAlignment="Top" Height="50" Margin="121,0,120.6,0"/>
-        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="346,176,154,404"/>
+        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="346,102,154,478"/>
         <Label Content="Fornavn" HorizontalAlignment="Left" Margin="134,43,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
         <Label Content="Efternavn" HorizontalAlignment="Left" Margin="134,96,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="134,138,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
@@ -40,7 +40,7 @@
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_message_changed" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="70" Binding="{Binding MessageID}"/>
+                <DataGridTextColumn Header="Id" Width="20" Binding="{Binding MessageID}"/>
                 <DataGridTextColumn Header="Overskrift" Width="70" Binding="{Binding Headline}"/>
                 <DataGridTextColumn Header="Underoverskrift" Width="70" Binding="{Binding Subheadline}"/>
                 <DataGridTextColumn Header="Tid" Width="70" Binding="{Binding Time}"/>
