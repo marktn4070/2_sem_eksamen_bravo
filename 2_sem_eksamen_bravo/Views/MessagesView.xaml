@@ -6,69 +6,53 @@
              xmlns:local="clr-namespace:_2_sem_eksamen_bravo.Views"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="800" Background="#fff">
-    <Grid Height="600" Width="800" Background="White">
-        <!--<Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" Height="50" VerticalAlignment="Top"/>-->
 
+    <Grid x:Name="page__message" Height="600" Width="800" Background="White">
+        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder" VerticalAlignment="Top" Height="50"/>
 
-        <!--<Grid Margin="10">
-            <ItemsControl>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <UniformGrid Columns="3" />
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Button Content="{Binding}" Margin="0,0,5,5" />
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-                <ListBox x:Name="teest">Item #1</ListBox>
-                -->
-        <!--<system:String>Item #1</system:String>
-                <system:String>Item #2</system:String>
-                <system:String>Item #3</system:String>
-                <system:String>Item #4</system:String>
-                <system:String>Item #5</system:String>-->
-        <!--
-            </ItemsControl>
-        </Grid>-->
+        <DataGrid x:Name="datagrid_message" HorizontalAlignment="Left" Width="770" Height="300" Margin="10,141,0,159" AutoGenerateColumns="False" CanUserAddRows="False"
+                IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_message_changed" >
 
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="70" Binding="{Binding MessageID}"/>
+                <DataGridTextColumn Header="Overskrift" Width="70" Binding="{Binding Headline}"/>
+                <DataGridTextColumn Header="Underoverskrift" Width="70" Binding="{Binding Subheadline}"/>
+                <DataGridTextColumn Header="Tekst" Width="70" Binding="{Binding Text}"/>
+                <DataGridTextColumn Header="Tid" Width="70" Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Sms" Width="70" Binding="{Binding Sms}"/>
 
-        <!--<ScrollViewer HorizontalScrollBarVisibility="Visible" Height="500">
-            <Grid Name="LayoutRoot" Width="200" Height="Auto"  HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="2" Grid.Column="3" >
+                <DataGridTemplateColumn Header="Detaljer">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnView" Content="Detaljer" Click="btn_Detail_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="1*" />
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="1*" />
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-            </Grid>
-        </ScrollViewer>
+            </DataGrid.Columns>
+        </DataGrid>
 
 
 
 
 
 
-        <ComboBox Name="Headline_txt" Height="23" Width="100" Margin="591,78,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsEnabled="True" IsTextSearchEnabled="True" IsEditable="True"/>
+        <Label Name="Search_message" Content="Søg efter 'Overskrift' og 'Underoverskrift'" Margin="474,71,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
+        <TextBox Name="time_Search"  Height="23" Width="206" Margin="484,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background = "Transparent"/>
+        <Button Content="Søg" Margin="708,102,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
+
+
+    </Grid>
 
 
 
-        <ListBox x:Name="listBox1" HorizontalAlignment="Left" Height="100" Margin="591,130,0,0" VerticalAlignment="Top" Width="100"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="696,211,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>-->
+
+
+
+
+    <!--<Grid Height="600" Width="800" Background="White">
+   
 
 
 
@@ -110,5 +94,5 @@
             </StackPanel>
         </ScrollViewer>
 
-    </Grid>
+    </Grid>-->
 </UserControl>

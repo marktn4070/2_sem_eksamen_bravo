@@ -68,8 +68,15 @@
     <Compile Include="CreateCustomer.xaml.cs">
       <DependentUpon>CreateCustomer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Detail_customer.xaml.cs">
+      <DependentUpon>Detail_customer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Message.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="SQL.cs" />
+    <Compile Include="Detail_message.xaml.cs">
+      <DependentUpon>Detail_message.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Update_customer.xaml.cs">
       <DependentUpon>Update_customer.xaml</DependentUpon>
     </Compile>
@@ -91,6 +98,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Detail_customer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -103,6 +114,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Detail_message.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Update_customer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
