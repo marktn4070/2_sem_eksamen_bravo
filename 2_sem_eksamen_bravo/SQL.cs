@@ -267,32 +267,44 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        public static List<Message> GetMessageSendToCustomer() //Mark
+        public static List<Message> GetMessageSendToCustomer(int customerID) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
                 List<Message> message_list = new List<Message>();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Message", host);
+                SqlCommand intermediate = new SqlCommand(string.Format("SELECT * FROM Message_history WHERE CustomerID LIKE {0}", customerID), host);
                 DataTable dt = new DataTable(); //nødvendig?
+
                 host.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while (sdr.Read())
+                List<int> relevantMessageIDS = new List<int>();
+                SqlDataReader reader = intermediate.ExecuteReader();
+                while(reader.Read())
                 {
-                    message_list.Add(new Message
-                    {
-                        MessageID = sdr[0].ToString(),
-                        Headline = sdr[1].ToString(),
-                        Subheadline = sdr[2].ToString(),
-                        Text = sdr[3].ToString(),
-                        Time = sdr[4].ToString(),
-                        Email = (bool)sdr[5],
-                        Sms = (bool)sdr[6]
-                    });
+                    relevantMessageIDS.Add((int)reader[0]);
                 }
+                foreach (int id in relevantMessageIDS)
+                {
+                    SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Message WHERE MessageID LIKE {0}", id), host);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
+                    {
+                        message_list.Add(new Message
+                        {
+                            MessageID = sdr[0].ToString(),
+                            Headline = sdr[1].ToString(),
+                            Subheadline = sdr[2].ToString(),
+                            Text = sdr[3].ToString(),
+                            Time = sdr[4].ToString(),
+                            Email = (bool)sdr[5],
+                            Sms = (bool)sdr[6]
+                        });
+                    }
+                }
+                
                 return message_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

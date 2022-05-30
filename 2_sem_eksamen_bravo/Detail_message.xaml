@@ -9,9 +9,9 @@
     <Grid Height="600" Width="650">
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Besked Detaljer" VerticalAlignment="Top" Height="50" Margin="121,0,120.6,0"/>
 
-        <CheckBox x:Name="Email" Content="Email" Margin="144,55,457,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Sms" Content="SMS" Margin="212,55,386,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top"/>
-        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="282,55,166,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Email" Content="Email" Margin="144,55,457,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="Sms" Content="SMS" Margin="212,55,386,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="282,55,166,0" VerticalAlignment="Top" IsEnabled="False"/>
 
 
         <Label x:Name="Headline" Height="23" Width="100" Margin="147,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>

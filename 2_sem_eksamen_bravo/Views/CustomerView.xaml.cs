@@ -139,6 +139,7 @@ namespace _2_sem_eksamen_bravo.Views
                 try
                 {
                     SQL.DeleteCustomer(selected_id);
+                    Refresh();
                     Clear();
                 }
                 catch (Exception ex)

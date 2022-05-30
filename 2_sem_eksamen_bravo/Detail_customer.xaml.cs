@@ -91,7 +91,7 @@ namespace _2_sem_eksamen_bravo
         {
             try
             {
-                Message_list = SQL.GetMessageSendToCustomer();
+                Message_list = SQL.GetMessageSendToCustomer(int.Parse(currentID));
             }
             catch (Exception ex)
             {
