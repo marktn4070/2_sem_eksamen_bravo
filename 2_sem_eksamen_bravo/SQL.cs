@@ -391,7 +391,10 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
+                //Directory.EnumerateFileSystemEntries(path).Any()
+                DirectoryInfo folder = new DirectoryInfo(path);
+                FileInfo[] txtExist = folder.GetFiles("*.txt");
+                if (txtExist.Length == 0 && count >= 0)
                 {
                     throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }
