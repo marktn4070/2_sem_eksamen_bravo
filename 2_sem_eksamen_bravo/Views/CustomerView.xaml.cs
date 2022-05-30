@@ -21,9 +21,6 @@ using System.Text.RegularExpressions;
 
 
 
-
-
-
 namespace _2_sem_eksamen_bravo.Views
 {
     /// <summary>
@@ -109,7 +106,16 @@ namespace _2_sem_eksamen_bravo.Views
                 win2.ShowDialog();
             }
         }
-
+        private void btn_Detail_Click(object sender, RoutedEventArgs e)
+        {
+            int n = datagrid_customer.SelectedIndex;
+            if (n >= 0)
+            {
+                Detail_customer win2 = new Detail_customer(Customer_list[n]);
+                win2.DataChanged += UpdateCustomer_Updated;
+                win2.ShowDialog();
+            }
+        }
 
         private SqlParameter CreateParam(string name, object value, SqlDbType type)
         {
@@ -204,6 +210,9 @@ namespace _2_sem_eksamen_bravo.Views
             //}
 
         }
+
+
+
 
         private void CreateCustomer_Created(object sender, EventArgs e)
         {

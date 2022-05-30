@@ -18,6 +18,8 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.ComponentModel;
 using System.Text.RegularExpressions;
+using System.IO;
+using SqlBulkTools;
 
 namespace _2_sem_eksamen_bravo.Views
 {
@@ -26,92 +28,189 @@ namespace _2_sem_eksamen_bravo.Views
     /// </summary>
     public partial class MessagesView : UserControl
     {
+        private List<Message> Message_list = new List<Message>();
+
         public MessagesView()
         {
-            List<string> Headline = SQL.GetMMessage();
             InitializeComponent();
-            //Headline_txt.ItemsSource = Headline;
-            //teest.ItemsSource = Headline;
+            LoadGrid_Message();
+            Refresh();
+            Clear();
+        }
 
 
 
+
+
+
+        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
+        public CancelEventHandler Closing { get; private set; }
+
+        private void Refresh()
+        {
+            datagrid_message.ItemsSource = new ObservableCollection<Message>(Message_list);
+        }
+
+
+
+
+
+
+        private void Clear()
+        {
+            datagrid_message.SelectedIndex = -1;
+            LoadGrid_Message();
+        }
+
+
+
+
+
+        public void LoadGrid_Message()
+        {
+            try
+            {
+                Message_list = SQL.GetMMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+
+        private void datagrid_message_changed(object sender, SelectionChangedEventArgs e)
+        {
+            int n = datagrid_message.SelectedIndex;
+        }
+
+
+
+        private void btn_Detail_Click(object sender, RoutedEventArgs e)
+        {
+            int n = datagrid_message.SelectedIndex;
+            if (n >= 0)
+            {
+                Detail_message win2 = new Detail_message(Message_list[n]);
+                //win2.DataChanged += DetailMessage_Detaild;
+                win2.ShowDialog();
+            }
+        }
+
+
+        private SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
+        }
+
+
+
+
+
+        private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
+        {
+            //string name_txt = time_Search.Text.ToString();
+            string name_txt = time_Search.Text.ToString();
+
+            if (name_txt != string.Empty)
+            {
+                DataTable dt = SQL.SearchMessage(name_txt);
+                datagrid_message.ItemsSource = dt.DefaultView;
+                //time_Search.Background = Brushes.Transparent;
+                //string name_txt = name_txt;
+                ////name_txt = "";
+
+                int Search_items = datagrid_message.Items.Count;
+
+                if (Search_items == 0)
+                {
+                    Search_message.Content = "Der er ingen resultater på din søgningen";
+                }
+                else if (Search_items == 1)
+                {
+                    Search_message.Content = Search_items + " resultat på søgningen af '" + name_txt + "'";
+                    Search_message.Foreground = Brushes.Black;
+                }
+                else
+                {
+                    Search_message.Content = Search_items + " resultater på søgningen af '" + name_txt + "'";
+                    Search_message.Foreground = Brushes.Black;
+                }
+
+
+
+                //ClearDataBtn.Visibility = Visibility.Visible;
+                //SearchDataBtn.Visibility = Visibility.Hidden;
+
+            }
+            else
+            {
+
+                Search_message.Content = "Der er ingen tekst i søgningsfeltet";
+                Search_message.Foreground = Brushes.Red;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void Button_Click_22(object sender, RoutedEventArgs e)
+        {
+        }
+
+
+
+        SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+
+        public void GetMMessage_not_done()
+        {
+            //List<string> Headline = SQL.GetMMessage_2();
             var products = new List<Product>();
 
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < 5; i++)
             {
                 int j = i + 1;
                 //products.Add(new Product("Product 1", 205.46, "/Assets/1.jpg"));
                 products.Add(new Product("Headline " + j, "Subheadline", "Time"));
             }
 
-
-
-            if (products.Count > 0)
-                ListViewProducts.ItemsSource = products;
-
-
-
-            //int i = 0;
-            //while (i < 5)
-            //{
-            //    //string_1.Content = "test sring";
-            //    i++;
-            //}
-
-            //for (int i = 0; i < listBox11.Items.Count; ++i)
-            //{
-            //    DataRowView drv = listBox11.Items[i] as DataRowView;
-            //    if (drv != null)
-            //    {
-            //        if (!listBox11.SelectedItems.Contains(drv))
-            //        {
-            //            DataRow dr = drv.Row;
-            //            //...
-            //        }
-            //    }
-            //}
-
-
-            //foreach (var item in collection)
-            //{
-
-
-
-            //for (int j = 0; j < 4; j++)
-            //{
-            //    //int j2 =
-            //    for (int i = 0; i < 4; i++)
-            //    {
-            //        Button lbl = new Button { FontSize = 10, Foreground = Brushes.Black, Background = Brushes.White, Content = "name" + i, Height = 50, Width = 50, Name = "_" + i };
-            //        lbl.SetValue(Grid.RowProperty, j);
-            //        lbl.SetValue(Grid.ColumnProperty, i);
-
-            //        this.LayoutRoot.Children.Add(lbl);
-
-            //    }
-            //}
-
-
-
-
-
-            //for (int i = 0; i < 3; i++)
-            //{
-            //    Button lbl = new Button { FontSize = 10, Foreground = Brushes.Black, VerticalContentAlignment = System.Windows.VerticalAlignment.Top, HorizontalContentAlignment = System.Windows.HorizontalAlignment.Center, Background = Brushes.White, Content = "name" + i, Height = 50, Width = 50, Name = "_" + i };
-            //    lbl.SetValue(Grid.RowProperty, 2);
-            //    lbl.SetValue(Grid.ColumnProperty, i);
-
-            //    this.LayoutRoot.Children.Add(lbl);
-
-            //}
-            //var products = GetProducts();
-
-        }
-
-        private void Button_Click_22(object sender, RoutedEventArgs e)
-        {
+            //if (products.Count > 0)
+                //ListViewProducts.ItemsSource = products;
         }
     }
+
+
 
     public class Product
     {
@@ -126,48 +225,5 @@ namespace _2_sem_eksamen_bravo.Views
             Time = time;
         }
 
-//SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-
-
-//        private void Button_Click(object sender, RoutedEventArgs e)
-//        {
-
-//            SqlDataAdapter cmd = new SqlDataAdapter("SELECT * FROM Message", host);
-//            host.Open();
-//                DataTable dt = new DataTable();
-//                cmd.Fill(dt);
-
-//            foreach (DataRow row in dt.Rows)
-//            {
-//                listBox1.Items.Add(row["Headline"].ToString()); 
-//            }
-//        //}
-
-//        }
-
-
-            //string Hello = "2";
-
-
-        //private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        //{
-        //    //    //if (Kommune.SelectedItem != null)
-        //    //    //{
-        //    //    //    Vej.IsEnabled = true;
-        //    //    //    Vej.ItemsSource = SQL.GetRoads(Kommune.SelectedItem.ToString());
-        //    //    //}
-        //    //    //else
-        //    //    //{
-        //    //    //    Vej.IsEnabled = false;
-        //    //    //    Vej.ItemsSource = new List<string>();
-        //    //    //}
-        //}
-
-
-
-        //private void button1_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
     }
 }

@@ -1,0 +1,35 @@
+﻿<Window x:Class="_2_sem_eksamen_bravo.Detail_message"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
+        mc:Ignorable="d"
+             Height="500" Width="400" Background="#fff" 
+        Closed="Window_Closed">
+    <Grid Height="600" Width="800" >
+        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Besked Detaljer" VerticalAlignment="Top" Height="50" Margin="105,0,539,0"/>
+
+        <CheckBox x:Name="Email" Content="Email" Margin="6,95,717,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Sms" Content="SMS" Margin="74,95,656,0" RenderTransformOrigin="0.5,0.5" VerticalAlignment="Top"/>
+        <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="6,70,598,0" VerticalAlignment="Top"/>
+
+
+        <Label x:Name="Headline" Height="23" Width="100" Margin="9,153,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Subheadline" Height="23" Width="100" Margin="9,203,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+
+
+        <Label Content="Overskrift:" Margin="10,127,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Underoverskrift:" Margin="10,177,0,0" Height="25" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Besked:" Margin="10,231,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Vælg vej:" Margin="6,389,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Vælg kommune:" Margin="6,335,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Name="Kommune" Height="23" Width="100" Margin="6,360,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="False" Content="Mangler SELECT"/>
+        <Label Name="Vej" Height="23" Width="100" Margin="6,414,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="Mangler SELECT"/>
+        <Label x:Name="Text" Height="23" Width="100" Margin="10,257,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Tid:" Margin="10,286,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label x:Name="Time" Height="23" Width="100" Margin="10,312,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+
+    </Grid>
+</Window>
