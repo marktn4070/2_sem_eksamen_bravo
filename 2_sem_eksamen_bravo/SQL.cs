@@ -231,12 +231,12 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static DataTable SearchMessage(string name) //Mark
+        public static DataTable SearchMessage(string startDate, string endDate) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Message WHERE Headline like '%" + name + "%' or Subheadline like '%" + name + "%'", host);
+                SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Message WHERE Time between '{0}' and '{1}';", startDate, endDate), host);
                 DataTable dt = new DataTable();
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
@@ -458,7 +458,7 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
+                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count <= 0)
                 {
                     throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }
