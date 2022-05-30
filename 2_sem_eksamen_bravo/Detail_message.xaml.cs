@@ -15,6 +15,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions; // Skal bruges for at kunne bruge Regex
 using System.Configuration;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -25,10 +27,15 @@ namespace _2_sem_eksamen_bravo
     {
         private string currentID;
         private string[] startAddress; //først vejnavn så kommunenavn
+        private List<Customer> Customer_list = new List<Customer>();
+
 
         public Detail_message(Message message)
         {
             InitializeComponent();
+            LoadGrid_Customer();
+            Refresh();
+            Clear();
 
 
 
@@ -56,19 +63,70 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            DataChangedEventHandler handler = DataChanged;
 
-            if (handler != null)
+
+
+
+
+
+
+        public void LoadGrid_Customer()
+        {
+            try
             {
-                handler(this, new EventArgs());
+                Customer_list = SQL.GetCustomerGotMessage();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
-        public delegate void DataChangedEventHandler(object sender, EventArgs e);
 
-        public event DataChangedEventHandler DataChanged;
+
+        public CancelEventHandler Closing { get; private set; }
+
+        private void Refresh()
+        {
+            datagrid_customer.ItemsSource = new ObservableCollection<Customer>(Customer_list);
+        }
+
+
+
+
+
+
+        private void Clear()
+        {
+            datagrid_customer.SelectedIndex = -1;
+            LoadGrid_Customer();
+        }
+
+
+
+
+
+        private SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
+        }
+
+
+
+
+
+
+
+
+
+
+        //private void datagrid_customer()
+        //{
+
+        //}
+
 
 
 

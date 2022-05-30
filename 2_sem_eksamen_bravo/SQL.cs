@@ -145,7 +145,7 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static List<Customer> GetMCustomer() //Mark
+        public static List<Customer> GetCustomer() //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
@@ -157,16 +157,53 @@ namespace _2_sem_eksamen_bravo
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer { 
-                        CustomerID = sdr[0].ToString(), 
-                        FirstName = sdr[1].ToString(), 
-                        LastName = sdr[2].ToString(), 
-                        Registered = (bool)sdr[3], 
-                        Gender = sdr[4].ToString(), 
-                        Birth = sdr[5].ToString(), 
-                        Phone = sdr[6].ToString(), 
-                        Email = sdr[7].ToString(), 
-                        RoadCode = sdr[8].ToString()});
+                    customer_list.Add(new Customer
+                    {
+                        CustomerID = sdr[0].ToString(),
+                        FirstName = sdr[1].ToString(),
+                        LastName = sdr[2].ToString(),
+                        Registered = (bool)sdr[3],
+                        Gender = sdr[4].ToString(),
+                        Birth = sdr[5].ToString(),
+                        Phone = sdr[6].ToString(),
+                        Email = sdr[7].ToString(),
+                        RoadCode = sdr[8].ToString()
+                    });
+                }
+                return customer_list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+
+        public static List<Customer> GetCustomerGotMessage() //Mark
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                List<Customer> customer_list = new List<Customer>();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                DataTable dt = new DataTable(); //nødvendig?
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    customer_list.Add(new Customer
+                    {
+                        CustomerID = sdr[0].ToString(),
+                        FirstName = sdr[1].ToString(),
+                        LastName = sdr[2].ToString(),
+                        Registered = (bool)sdr[3],
+                        Gender = sdr[4].ToString(),
+                        Birth = sdr[5].ToString(),
+                        Phone = sdr[6].ToString(),
+                        Email = sdr[7].ToString(),
+                        RoadCode = sdr[8].ToString()
+                    });
                 }
                 return customer_list;
             }
@@ -227,7 +264,39 @@ namespace _2_sem_eksamen_bravo
             {
                 throw;
             }
-}
+        }
+
+
+        public static List<Message> GetMessageSendToCustomer() //Mark
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                List<Message> message_list = new List<Message>();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Message", host);
+                DataTable dt = new DataTable(); //nødvendig?
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    message_list.Add(new Message
+                    {
+                        MessageID = sdr[0].ToString(),
+                        Headline = sdr[1].ToString(),
+                        Subheadline = sdr[2].ToString(),
+                        Text = sdr[3].ToString(),
+                        Time = sdr[4].ToString(),
+                        Email = (bool)sdr[5],
+                        Sms = (bool)sdr[6]
+                    });
+                }
+                return message_list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
 
 

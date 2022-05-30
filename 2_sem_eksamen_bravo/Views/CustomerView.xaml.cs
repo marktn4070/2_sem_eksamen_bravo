@@ -79,7 +79,7 @@ namespace _2_sem_eksamen_bravo.Views
         {                
             try
             {
-                Customer_list = SQL.GetMCustomer();
+                Customer_list = SQL.GetCustomer();
             }
             catch (Exception ex)
             {

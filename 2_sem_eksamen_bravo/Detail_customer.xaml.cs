@@ -15,6 +15,11 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions; // Skal bruges for at kunne bruge Regex
 using System.Configuration;
+using System.Windows.Navigation;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.IO;
+using SqlBulkTools;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -25,6 +30,7 @@ namespace _2_sem_eksamen_bravo
     {
         private string currentID;
         private string[] startAddress; //først vejnavn så kommunenavn
+        private List<Message> Message_list = new List<Message>();
 
         public Detail_customer(Customer customer)
         {
@@ -50,20 +56,79 @@ namespace _2_sem_eksamen_bravo
             C_Phone_txt.Content = customer.Phone;
             C_Email_txt.Content = customer.Email;
 
+            LoadGrid_Message();
+            Refresh();
+            Clear();
         }
 
 
 
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            DataChangedEventHandler handler = DataChanged;
 
-            if (handler != null)
+
+        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
+
+        public CancelEventHandler Closing { get; private set; }
+
+        private void Refresh()
+        {
+            datagrid_message.ItemsSource = new ObservableCollection<Message>(Message_list);
+        }
+
+
+
+        private void Clear()
+        {
+            datagrid_message.SelectedIndex = -1;
+            LoadGrid_Message();
+        }
+
+
+
+
+
+        public void LoadGrid_Message()
+        {
+            try
             {
-                handler(this, new EventArgs());
+                Message_list = SQL.GetMessageSendToCustomer();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
+
+
+        private void btn_Detail_Click(object sender, RoutedEventArgs e)
+        {
+            int n = datagrid_message.SelectedIndex;
+            if (n >= 0)
+            {
+                Detail_message win2 = new Detail_message(Message_list[n]);
+                //win2.DataChanged += DetailMessage_Detaild;
+                win2.ShowDialog();
+            }
+        }
+
+
+        private void datagrid_message_changed(object sender, SelectionChangedEventArgs e)
+        {
+            int n = datagrid_message.SelectedIndex;
+        }
+
+
+
+        private SqlParameter CreateParam(string name, object value, SqlDbType type)
+        {
+            SqlParameter param = new SqlParameter(name, type);
+            param.Value = value;
+            return param;
+        }
+
+
+
+
 
         public delegate void DataChangedEventHandler(object sender, EventArgs e);
 

@@ -17,7 +17,6 @@
                 <DataGridTextColumn Header="Id" Width="70" Binding="{Binding MessageID}"/>
                 <DataGridTextColumn Header="Overskrift" Width="70" Binding="{Binding Headline}"/>
                 <DataGridTextColumn Header="Underoverskrift" Width="70" Binding="{Binding Subheadline}"/>
-                <DataGridTextColumn Header="Tekst" Width="70" Binding="{Binding Text}"/>
                 <DataGridTextColumn Header="Tid" Width="70" Binding="{Binding Time}"/>
                 <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Sms" Width="70" Binding="{Binding Sms}"/>
