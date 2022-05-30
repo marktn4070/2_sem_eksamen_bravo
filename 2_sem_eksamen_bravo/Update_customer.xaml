@@ -26,7 +26,7 @@
 
         <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
         <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="209,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
-        <RadioButton Name="Other" Content="Ikke oplyse" HorizontalAlignment="Left" Margin="289,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
+        <RadioButton Name="Other" Content="Oplyser ikke" HorizontalAlignment="Left" Margin="289,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
 
         <TextBox x:Name="C_firstName_txt" HorizontalAlignment="Left" Margin="145,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
         <TextBox x:Name="C_LastName_txt" HorizontalAlignment="Left" Margin="145,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>

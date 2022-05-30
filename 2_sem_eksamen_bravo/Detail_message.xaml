@@ -45,7 +45,7 @@
                 <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding Birth}"/>
                 <DataGridTextColumn Header="Mobil nr." Width="70" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Vej kode" Width="70" Binding="{Binding RoadCodeID}"/>
+                <DataGridTextColumn Header="Vej kode" Width="70" Binding="{Binding RoadcodeID}"/>
             </DataGrid.Columns>
         </DataGrid>
 
