@@ -5,34 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
         mc:Ignorable="d"
-        Title="Opdater kunde" Height="450" Width="400" 
+        Title="Opdater kunde" Height="500" Width="400" 
         Closed="Window_Closed">
     <Grid>
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunde Detaljer" VerticalAlignment="Top" Height="50" Margin="121,0,120.6,0"/>
-        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="45,315,198.6,85"/>
-        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,89,0,0" VerticalAlignment="Top" Width="105"/>
-        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="40,120,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="40,159,0,0" VerticalAlignment="Top"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="40,190,0,0" VerticalAlignment="Top"/>
-        <Label Content="Fødselsdagsdato" HorizontalAlignment="Left" Margin="40,280,0,0" VerticalAlignment="Top"/>
-        <Label Content="Køn" HorizontalAlignment="Left" Margin="40,240,0,0" VerticalAlignment="Top"/>
+        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="45,317,198.6,133.4"/>
+        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,43,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="40,96,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="40,138,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="40,179,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Fødselsdagsdato" HorizontalAlignment="Left" Margin="40,267,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Køn" HorizontalAlignment="Left" Margin="40,220,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.517,0.26"/>
 
-        <Label Content="Postnummer" HorizontalAlignment="Left" Margin="41,340,0,0" VerticalAlignment="Top"/>
-        <Label Content="Vej" HorizontalAlignment="Left" Margin="41,371,0,0" VerticalAlignment="Top"/>
+        <Label Content="Postnummer" HorizontalAlignment="Left" Margin="41,349,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Vej" HorizontalAlignment="Left" Margin="41,394,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
-        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="145,246,0,0" VerticalAlignment="Top" GroupName="Gender"/>
-        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="205,246,0,0" VerticalAlignment="Top" GroupName="Gender" RenderTransformOrigin="0.34,0.487"/>
-        <RadioButton Name="Other" Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="269,246,0,0" VerticalAlignment="Top" GroupName="Gender"/>
+        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="44,247,0,0" VerticalAlignment="Top" GroupName="Gender"/>
+        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="104,247,0,0" VerticalAlignment="Top" GroupName="Gender" RenderTransformOrigin="0.34,0.487"/>
+        <RadioButton Name="Other" Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="168,247,0,0" VerticalAlignment="Top" GroupName="Gender"/>
 
-        <Label x:Name="C_firstName_txt" HorizontalAlignment="Left" Margin="145,93,0,0" VerticalAlignment="Top" Width="192"/>
-        <Label x:Name="C_LastName_txt" HorizontalAlignment="Left" Margin="145,128,0,0" VerticalAlignment="Top" Width="192"/>
-        <Label x:Name="C_Phone_txt" HorizontalAlignment="Left" Margin="145,159,0,0" VerticalAlignment="Top" Width="192"/>
-        <Label x:Name="C_Email_txt" HorizontalAlignment="Left" Margin="145,190,0,0" VerticalAlignment="Top" Width="192"/>
+        <Label x:Name="C_firstName_txt" HorizontalAlignment="Left" Margin="45,66,0,0" VerticalAlignment="Top" Width="192"/>
+        <Label x:Name="C_LastName_txt" HorizontalAlignment="Left" Margin="45,115,0,0" VerticalAlignment="Top" Width="192"/>
+        <Label x:Name="C_Phone_txt" HorizontalAlignment="Left" Margin="45,157,0,0" VerticalAlignment="Top" Width="192"/>
+        <Label x:Name="C_Email_txt" HorizontalAlignment="Left" Margin="45,198,0,0" VerticalAlignment="Top" Width="192"/>
 
-        <Label Name="C_Birth_txt" Height="23" Width="100" Margin="153,285,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Name="Kommune" Height="23" Width="100" Margin="153,343,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Name="Vej" Height="23" Width="100" Margin="153,371,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <Label Name="C_Birth_txt" Height="23" Width="100" Margin="45,287,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Name="Kommune" Height="23" Width="100" Margin="45,366,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Label Name="Vej" Height="23" Width="100" Margin="44,420,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" />
 
     </Grid>
 </Window>
