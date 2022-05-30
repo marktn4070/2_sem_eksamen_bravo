@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 using SqlBulkTools;
+using System.Data.OleDb;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -376,13 +377,14 @@ namespace _2_sem_eksamen_bravo
             public int Zip { get; set; }
             public string Municipality { get; set; }
         }
+
         public static void AdresseImpoter() //Kevin
         {
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             List<Address> adresslist = new List<Address>();
             try
             {
-                string path = @"C:\dropzone";
+                string path = @"C:\dropzone"; //pas på med at ændre "path"
                 string tjek = string.Empty;
                 string tjek2 = string.Empty;
                 connect.Open();
@@ -410,7 +412,7 @@ namespace _2_sem_eksamen_bravo
                                 {
                                     adresslist.Add(new Address
                                     {
-                                        RoadcodeID = Convert.ToInt32(line.Substring(0, 11)),
+                                        RoadcodeID = Convert.ToInt32(line.Substring(3, 8)),
                                         Road = line.Substring(31, 20).Trim(),
                                         Zip = Convert.ToInt32(line.Substring(60, 4)),
                                         Municipality = line.Substring(11, 20).Trim()
