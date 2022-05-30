@@ -21,7 +21,7 @@ namespace _2_sem_eksamen_bravo
 /////// HEAD
     /// Interaction logic for MainWindow.xaml
 //////
-    /// Interaction logic for MainWindow.xamlerferfeddsc
+    /// Interaction logic for MainWindow.xamlerferfeddscdscs
 ////// master
     /// Interaction logic for MainWindow.xaml
 ////// Temporary merge branch 2
