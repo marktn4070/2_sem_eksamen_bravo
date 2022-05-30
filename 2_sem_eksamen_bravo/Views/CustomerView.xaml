@@ -17,15 +17,15 @@
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="20" Binding="{Binding CustomerID}"/>
+                <DataGridTextColumn Header="Id" Width="30" Binding="{Binding CustomerID}"/>
                 <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Registreret" Width="70" Binding="{Binding Registered}"/>
-                <DataGridTextColumn Header="Køn" Width="70" Binding="{Binding Gender}"/>
+                <DataGridTextColumn Header="Tilmeldt" Width="55" Binding="{Binding Registered}"/>
+                <DataGridTextColumn Header="Køn" Width="45" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding Birth}"/>
-                <DataGridTextColumn Header="Mobil nr." Width="70" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Vej kode" Width="70" Binding="{Binding RoadCodeID}"/>
+                <DataGridTextColumn Header="Mobil nr." Width="60" Binding="{Binding Phone}"/>
+                <DataGridTextColumn Header="E-mail" Width="140" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Vej kode" Width="55" Binding="{Binding RoadCodeID}"/>
 
                 <DataGridTemplateColumn Header="Detaljer">
                     <DataGridTemplateColumn.CellTemplate>

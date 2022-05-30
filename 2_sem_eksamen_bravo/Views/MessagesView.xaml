@@ -14,12 +14,12 @@
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_message_changed" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="20" Binding="{Binding MessageID}"/>
-                <DataGridTextColumn Header="Overskrift" Width="70" Binding="{Binding Headline}"/>
-                <DataGridTextColumn Header="Underoverskrift" Width="70" Binding="{Binding Subheadline}"/>
-                <DataGridTextColumn Header="Tid" Width="70" Binding="{Binding Time}"/>
-                <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Sms" Width="70" Binding="{Binding Sms}"/>
+                <DataGridTextColumn Header="Id" Width="30" Binding="{Binding MessageID}"/>
+                <DataGridTextColumn Header="Overskrift" Width="150" Binding="{Binding Headline}"/>
+                <DataGridTextColumn Header="Underoverskrift" Width="320" Binding="{Binding Subheadline}"/>
+                <DataGridTextColumn Header="Tid" Width="120" Binding="{Binding Time}"/>
+                <DataGridTextColumn Header="E-mail" Width="45" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Sms" Width="35" Binding="{Binding Sms}"/>
 
                 <DataGridTemplateColumn Header="Detaljer">
                     <DataGridTemplateColumn.CellTemplate>

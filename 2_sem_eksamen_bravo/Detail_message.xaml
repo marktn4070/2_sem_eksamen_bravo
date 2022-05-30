@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
         mc:Ignorable="d"
-            Height="600" Width="650" Background="#fff">
+            Title="Besked Detaljer" Height="600" Width="650" Background="#fff">
     <Grid Height="600" Width="650">
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Besked Detaljer" VerticalAlignment="Top" Height="50" Margin="121,0,120.6,0"/>
 
@@ -14,30 +14,30 @@
         <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="282,55,166,0" VerticalAlignment="Top" IsEnabled="False"/>
 
 
-        <Label x:Name="Headline" Height="23" Width="100" Margin="147,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label x:Name="Subheadline" Height="23" Width="100" Margin="147,163,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Headline" Height="26" Width="232" Margin="147,105,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Subheadline" Height="26" Width="232" Margin="147,165,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
 
 
         <Label Content="Overskrift:" Margin="148,87,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Underoverskrift:" Margin="148,137,0,0" Height="25" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Besked:" Margin="148,191,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Vælg vej:" Margin="384,190,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Vælg kommune:" Margin="384,136,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Name="Kommune" Height="23" Width="100" Margin="384,161,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="False" Content="Mangler SELECT"/>
-        <Label Name="Vej" Height="23" Width="100" Margin="384,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="Mangler SELECT"/>
-        <Label x:Name="Text" Height="23" Width="100" Margin="148,217,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Underoverskrift:" Margin="148,147,0,0" Height="25" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Besked:" Margin="148,211,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Vej:" Margin="384,210,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Kommune:" Margin="384,146,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Name="Kommune" Height="26" Width="241" Margin="384,163,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="False" Content="Mangler SELECT"/>
+        <Label Name="Vej" Height="26" Width="241" Margin="384,228,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="Mangler SELECT"/>
+        <Label x:Name="Text" Height="26" Width="231" Margin="148,229,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Tid:" Margin="388,87,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label x:Name="Time" Height="23" Width="100" Margin="388,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Time" Height="26" Width="237" Margin="388,104,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
 
 
-        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Modtagere af Beskeden" VerticalAlignment="Top" Height="50" Margin="199,288,209,0" Width="242"/>
-        <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="600" Height="180" Margin="25,335,0,85" AutoGenerateColumns="False" CanUserAddRows="False"
+        <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Modtagere af Beskeden" VerticalAlignment="Top" Height="50" Margin="199,321,209,0" Width="242"/>
+        <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="600" Height="180" Margin="25,368,0,52" AutoGenerateColumns="False" CanUserAddRows="False"
                 IsReadOnly="True" SelectionMode="Single">
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="20" Binding="{Binding CustomerID}"/>
+                <DataGridTextColumn Header="Id" Width="30" Binding="{Binding CustomerID}"/>
                 <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding LastName}"/>
                 <DataGridTextColumn Header="Registreret" Width="70" Binding="{Binding Registered}"/>
