@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using System.IO;
 using SqlBulkTools;
+using System.Data.OleDb;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -144,7 +145,7 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static List<Customer> GetMCustomer() //Mark
+        public static List<Customer> GetCustomer() //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
@@ -156,8 +157,53 @@ namespace _2_sem_eksamen_bravo
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), 
-                        Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString(), RoadCode = sdr[8].ToString()});
+                    customer_list.Add(new Customer
+                    {
+                        CustomerID = sdr[0].ToString(),
+                        FirstName = sdr[1].ToString(),
+                        LastName = sdr[2].ToString(),
+                        Registered = (bool)sdr[3],
+                        Gender = sdr[4].ToString(),
+                        Birth = sdr[5].ToString(),
+                        Phone = sdr[6].ToString(),
+                        Email = sdr[7].ToString(),
+                        RoadCode = sdr[8].ToString()
+                    });
+                }
+                return customer_list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+
+        public static List<Customer> GetCustomerGotMessage() //Mark
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                List<Customer> customer_list = new List<Customer>();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                DataTable dt = new DataTable(); //nødvendig?
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    customer_list.Add(new Customer
+                    {
+                        CustomerID = sdr[0].ToString(),
+                        FirstName = sdr[1].ToString(),
+                        LastName = sdr[2].ToString(),
+                        Registered = (bool)sdr[3],
+                        Gender = sdr[4].ToString(),
+                        Birth = sdr[5].ToString(),
+                        Phone = sdr[6].ToString(),
+                        Email = sdr[7].ToString(),
+                        RoadCode = sdr[8].ToString()
+                    });
                 }
                 return customer_list;
             }
@@ -187,34 +233,125 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static List<string> GetMMessage() //Mark
+
+
+        public static List<Message> GetMMessage() //Mark
         {
-            List<string> Headline = new List<string>();
-            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                SqlCommand command = new SqlCommand("SELECT DISTINCT MessageID FROM Message;", cnct);
-                cnct.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                List<Message> message_list = new List<Message>();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Message", host);
+                DataTable dt = new DataTable(); //nødvendig?
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
                 {
-                    Headline.Add(reader[0].ToString());
+                    message_list.Add(new Message
+                    {
+                        MessageID = sdr[0].ToString(),
+                        Headline = sdr[1].ToString(),
+                        Subheadline = sdr[2].ToString(),
+                        Text = sdr[3].ToString(),
+                        Time = sdr[4].ToString(),
+                        Email = (bool)sdr[5],
+                        Sms = (bool)sdr[6]
+                    });
                 }
+                return message_list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+        public static List<Message> GetMessageSendToCustomer() //Mark
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                List<Message> message_list = new List<Message>();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Message", host);
+                DataTable dt = new DataTable(); //nødvendig?
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    message_list.Add(new Message
+                    {
+                        MessageID = sdr[0].ToString(),
+                        Headline = sdr[1].ToString(),
+                        Subheadline = sdr[2].ToString(),
+                        Text = sdr[3].ToString(),
+                        Time = sdr[4].ToString(),
+                        Email = (bool)sdr[5],
+                        Sms = (bool)sdr[6]
+                    });
+                }
+                return message_list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
+
+        public static DataTable SearchMessage(string name) //Mark
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Message WHERE Headline like '%" + name + "%' or Subheadline like '%" + name + "%'", host);
+                DataTable dt = new DataTable();
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                dt.Load(sdr);
+                host.Close();
+                return dt;
             }
             catch (Exception)
             {
                 throw;
             }
-            finally
-            {
-                if (cnct != null)
-                {
-                    cnct.Close();
-                }
-            }
-            Headline.Sort();
-            return Headline;
         }
+
+
+
+        //public static List<string> GetMMessage_2() //Mark
+        //{
+        //    List<string> Headline = new List<string>();
+        //    SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+        //    try
+        //    {
+        //        SqlCommand command = new SqlCommand("SELECT DISTINCT MessageID FROM Message;", cnct);
+        //        cnct.Open();
+        //        SqlDataReader reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            Headline.Add(reader[0].ToString());
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        if (cnct != null)
+        //        {
+        //            cnct.Close();
+        //        }
+        //    }
+        //    Headline.Sort();
+        //    return Headline;
+        //}
+
+
+
 
 
         public static List<string> GetMunicipalities() //james
@@ -370,13 +507,14 @@ namespace _2_sem_eksamen_bravo
             public int Zip { get; set; }
             public string Municipality { get; set; }
         }
+
         public static void AdresseImpoter() //Kevin
         {
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             List<Address> adresslist = new List<Address>();
             try
             {
-                string path = @"C:\dropzone";
+                string path = @"C:\dropzone"; //pas på med at ændre "path"
                 string tjek = string.Empty;
                 string tjek2 = string.Empty;
                 connect.Open();
@@ -404,7 +542,7 @@ namespace _2_sem_eksamen_bravo
                                 {
                                     adresslist.Add(new Address
                                     {
-                                        RoadcodeID = Convert.ToInt32(line.Substring(0, 11)),
+                                        RoadcodeID = Convert.ToInt32(line.Substring(3, 8)),
                                         Road = line.Substring(31, 20).Trim(),
                                         Zip = Convert.ToInt32(line.Substring(60, 4)),
                                         Municipality = line.Substring(11, 20).Trim()

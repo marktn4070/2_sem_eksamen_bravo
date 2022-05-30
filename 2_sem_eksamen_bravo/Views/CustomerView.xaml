@@ -17,7 +17,7 @@
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_customer_changed" >
 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Id" Width="70" Binding="{Binding CustomerID}"/>
+                <DataGridTextColumn Header="Id" Width="20" Binding="{Binding CustomerID}"/>
                 <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding LastName}"/>
                 <DataGridTextColumn Header="Registreret" Width="70" Binding="{Binding Registered}"/>
@@ -27,10 +27,18 @@
                 <DataGridTextColumn Header="E-mail" Width="70" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Vej kode" Width="70" Binding="{Binding RoadCode}"/>
 
+                <DataGridTemplateColumn Header="Detaljer">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Name="btnView" Content="Detaljer" Click="btn_Detail_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn Header="Opdater">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
+                            <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FF5C5959" BorderBrush="#FF5C5959" Foreground="#FFF" Width="50"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
