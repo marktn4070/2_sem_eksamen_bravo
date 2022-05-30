@@ -157,8 +157,16 @@ namespace _2_sem_eksamen_bravo
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer { CustomerID = sdr[0].ToString(), FirstName = sdr[1].ToString(), LastName = sdr[2].ToString(), 
-                        Registered = (bool)sdr[3], Gender = sdr[4].ToString(), Birth = sdr[5].ToString(), Phone = sdr[6].ToString(), Email = sdr[7].ToString(), RoadCode = sdr[8].ToString()});
+                    customer_list.Add(new Customer { 
+                        CustomerID = sdr[0].ToString(), 
+                        FirstName = sdr[1].ToString(), 
+                        LastName = sdr[2].ToString(), 
+                        Registered = (bool)sdr[3], 
+                        Gender = sdr[4].ToString(), 
+                        Birth = sdr[5].ToString(), 
+                        Phone = sdr[6].ToString(), 
+                        Email = sdr[7].ToString(), 
+                        RoadCode = sdr[8].ToString()});
                 }
                 return customer_list;
             }
@@ -188,34 +196,93 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public static List<string> GetMMessage() //Mark
+
+
+        public static List<Message> GetMMessage() //Mark
         {
-            List<string> Headline = new List<string>();
-            SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                SqlCommand command = new SqlCommand("SELECT DISTINCT MessageID FROM Message;", cnct);
-                cnct.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                while (reader.Read())
+                List<Message> message_list = new List<Message>();
+                SqlCommand cmd = new SqlCommand("SELECT * FROM Message", host);
+                DataTable dt = new DataTable(); //nødvendig?
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
                 {
-                    Headline.Add(reader[0].ToString());
+                    message_list.Add(new Message
+                    {
+                        MessageID = sdr[0].ToString(),
+                        Headline = sdr[1].ToString(),
+                        Subheadline = sdr[2].ToString(),
+                        Text = sdr[3].ToString(),
+                        Time = sdr[4].ToString(),
+                        Email = (bool)sdr[5],
+                        Sms = (bool)sdr[6]
+                    });
                 }
+                return message_list;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+}
+
+
+
+        public static DataTable SearchMessage(string startDate, string endDate) //Mark
+        {
+            SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+            try
+            {
+                SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Message WHERE Time between '{0}' and '{1}';", startDate, endDate), host);
+                DataTable dt = new DataTable();
+                host.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                dt.Load(sdr);
+                host.Close();
+                return dt;
             }
             catch (Exception)
             {
                 throw;
             }
-            finally
-            {
-                if (cnct != null)
-                {
-                    cnct.Close();
-                }
-            }
-            Headline.Sort();
-            return Headline;
         }
+
+
+
+        //public static List<string> GetMMessage_2() //Mark
+        //{
+        //    List<string> Headline = new List<string>();
+        //    SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
+        //    try
+        //    {
+        //        SqlCommand command = new SqlCommand("SELECT DISTINCT MessageID FROM Message;", cnct);
+        //        cnct.Open();
+        //        SqlDataReader reader = command.ExecuteReader();
+        //        while (reader.Read())
+        //        {
+        //            Headline.Add(reader[0].ToString());
+        //        }
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
+        //    finally
+        //    {
+        //        if (cnct != null)
+        //        {
+        //            cnct.Close();
+        //        }
+        //    }
+        //    Headline.Sort();
+        //    return Headline;
+        //}
+
+
+
 
 
         public static List<string> GetMunicipalities() //james
@@ -391,10 +458,10 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                //Directory.EnumerateFileSystemEntries(path).Any()
+                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count <= 0)
                 DirectoryInfo folder = new DirectoryInfo(path);
                 FileInfo[] txtExist = folder.GetFiles("*.txt");
-                if (txtExist.Length == 0 && count >= 0)
+                if (txtExist.Length == 0 && count <= 0)
                 {
                     throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }

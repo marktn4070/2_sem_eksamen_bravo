@@ -14,12 +14,12 @@
         <Button Content="Nulstil" x:Name="Clear_Btn" Margin="216,358,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
 
-        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,60,0,0" VerticalAlignment="Top" Width="105"/>
-        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="40,91,0,0" VerticalAlignment="Top"/>
-        <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="40,122,0,0" VerticalAlignment="Top"/>
-        <Label Content="Email" HorizontalAlignment="Left" Margin="40,153,0,0" VerticalAlignment="Top"/>
-        <Label Content="Fødselsdagsdato" HorizontalAlignment="Left" Margin="40,184,0,0" VerticalAlignment="Top"/>
-        <Label Content="Køn" HorizontalAlignment="Left" Margin="40,215,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fornavn" HorizontalAlignment="Left" Margin="40,60,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+        <Label Content="Efternavn" HorizontalAlignment="Left" Margin="40,91,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="40,122,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Email" HorizontalAlignment="Left" Margin="40,153,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Fødselsdagsdato" HorizontalAlignment="Left" Margin="40,184,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Køn" HorizontalAlignment="Left" Margin="40,215,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
         <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
         <RadioButton Name="Female"  Content="Kvinde" HorizontalAlignment="Left" Margin="211,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
