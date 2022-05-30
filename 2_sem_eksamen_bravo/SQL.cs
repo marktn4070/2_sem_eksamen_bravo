@@ -338,13 +338,7 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        //private void Clear()
-        //{
-        //    datagrid_deltager.SelectedIndex = -1;
-        //    LoadGrid_Runner();
-        //    LoadGrid_Route();
-        //    LoadGrid_Time();
-        //}
+     
 
         public static void DeleteCustomer(string customerID) //james
         {            
@@ -487,7 +481,7 @@ namespace _2_sem_eksamen_bravo
             return Names;
         }
 
-        public static void UpdateCustomer(Customer customer)
+        public static void UpdateCustomer(Customer customer) //james
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
 
