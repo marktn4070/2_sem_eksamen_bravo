@@ -9,7 +9,7 @@
     <Grid Height="600" Width="650" Margin="0,0,-6.8,-29.6">
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunde Detaljer" VerticalAlignment="Top" Height="50" Margin="121,0,120.6,0"/>
-        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="346,176,154,404" IsEnabled="False"/>
+        <CheckBox Name="Registered" Content="Markedsførings emails" Height="20" Width="150" Margin="346,102,154,478" IsEnabled="False"/>
         <Label Content="Fornavn" HorizontalAlignment="Left" Margin="134,43,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
         <Label Content="Efternavn" HorizontalAlignment="Left" Margin="134,96,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Mobil nummer" HorizontalAlignment="Left" Margin="134,138,0,0" VerticalAlignment="Top" FontWeight="Bold"/>

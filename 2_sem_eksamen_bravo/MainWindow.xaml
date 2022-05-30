@@ -13,11 +13,10 @@
         <Grid Height="65" Width="800" VerticalAlignment="top" Background="#f0f0f0">
 
 
-            <StackPanel Orientation="Horizontal" Width="400" Height="30" HorizontalAlignment="Center" VerticalAlignment="top" Margin="0 15 0 0">
+            <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center" VerticalAlignment="top" Margin="0 15 0 0">
                 <Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Kunder" Command="{Binding UpdateViewCommand}" CommandParameter="Customer" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_1"/>
                 <Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Beskeder" Command="{Binding UpdateViewCommand}" CommandParameter="Messages" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_2"/>
                 <Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Send besked" Command="{Binding UpdateViewCommand}" CommandParameter="SendMessage" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_3"/>
-                <!--<Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Importer adresser" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="ImpoterAddresser_Click"/>-->
             </StackPanel>
         </Grid>
 

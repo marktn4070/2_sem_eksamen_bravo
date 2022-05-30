@@ -394,6 +394,8 @@ namespace _2_sem_eksamen_bravo
             municipalities.Sort();
             return municipalities;
         }
+
+
         public static List<string> GetRoads(string municipality) //james
         {
             List<string> roads = new List<string>();
@@ -452,6 +454,8 @@ namespace _2_sem_eksamen_bravo
                 throw;
             }
         }
+
+
         public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
         {
 
@@ -533,7 +537,7 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
+                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count <= 0)
                 {
                     throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }
