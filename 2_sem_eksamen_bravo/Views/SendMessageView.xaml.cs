@@ -55,7 +55,6 @@ namespace _2_sem_eksamen_bravo.Views
                 MessageBox.Show("Mangler at udfylde tekstbox og eller at vælge en besked type");
                 //warning måske lave de dårlige felter røde
             }
-
         }
 
 
@@ -97,6 +96,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
             EmailGeo.IsEnabled = !EmailGeo.IsEnabled;
         }
+
         private void GeoUnchecked(object sender, RoutedEventArgs e)
         {
             if (!(bool)EmailGeo.IsChecked && !(bool)Sms.IsChecked)
@@ -105,6 +105,7 @@ namespace _2_sem_eksamen_bravo.Views
                 Vej.IsEnabled = false;
             }
         }
+
         private void GeoChecked(object sender, RoutedEventArgs e)
         {
            if (Kommune.IsEnabled == false)
