@@ -104,66 +104,54 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
         {
-            //string name_txt = time_Search.Text.ToString();
-            string name_txt = time_Search.Text.ToString();
-
-            if (name_txt != string.Empty)
+            DateTime SD = startDate_Search.SelectedDate.Value;
+            string startDate = SD.ToString("yyyy/MM/dd");
+            DateTime ED = endDate_Search.SelectedDate.Value;
+            string endDate = ED.ToString("yyyy/MM/dd");
+            try
             {
-                DataTable dt = SQL.SearchMessage(name_txt);
-                datagrid_message.ItemsSource = dt.DefaultView;
-                //time_Search.Background = Brushes.Transparent;
-                //string name_txt = name_txt;
-                ////name_txt = "";
-
-                int Search_items = datagrid_message.Items.Count;
-
-                if (Search_items == 0)
+                if (startDate != string.Empty && endDate != string.Empty)
                 {
-                    Search_message.Content = "Der er ingen resultater på din søgningen";
-                }
-                else if (Search_items == 1)
-                {
-                    Search_message.Content = Search_items + " resultat på søgningen af '" + name_txt + "'";
-                    Search_message.Foreground = Brushes.Black;
+                    if (DateTime.Compare(SD, ED) <= 0)
+                    {
+                        DataTable dt = SQL.SearchMessage(startDate, endDate);
+                        datagrid_message.ItemsSource = dt.DefaultView;
+                        //time_Search.Background = Brushes.Transparent;
+                        //string name_txt = name_txt;
+                        ////name_txt = "";
+
+                        int Search_items = datagrid_message.Items.Count;
+
+                        if (Search_items == 0)
+                        {
+                            Search_message.Content = "Der er ingen resultater på din søgningen";
+                        }
+                        else if (Search_items > 0)
+                        {
+                            Search_message.Content = Search_items + " resultaterne af søgningen fra '" + startDate + "' til '" + endDate + "'";
+                            Search_message.Foreground = Brushes.Black;
+                        }
+
+                        //ClearDataBtn.Visibility = Visibility.Visible;
+                        //SearchDataBtn.Visibility = Visibility.Hidden;
+                    }
+                    else
+                    {
+                        //måske skal beskeden ændres
+                        throw new ArgumentException("slut datoerne er før start datoerne");
+                    }
                 }
                 else
                 {
-                    Search_message.Content = Search_items + " resultater på søgningen af '" + name_txt + "'";
-                    Search_message.Foreground = Brushes.Black;
+                    Search_message.Content = "Der er ingen Dato sat i søgningsfelteterne";
+                    Search_message.Foreground = Brushes.Red;
                 }
-
-
-
-                //ClearDataBtn.Visibility = Visibility.Visible;
-                //SearchDataBtn.Visibility = Visibility.Hidden;
-
             }
-            else
+            catch (Exception ex)
             {
-
-                Search_message.Content = "Der er ingen tekst i søgningsfeltet";
-                Search_message.Foreground = Brushes.Red;
+                MessageBox.Show(ex.Message);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -72,6 +72,7 @@ namespace _2_sem_eksamen_bravo
             Male.IsChecked = false;
             Female.IsChecked = false;
             Other.IsChecked = false;
+
             Birthday_txt.Clear();
             Phone_txt.Clear();
             Email_txt.Clear();
@@ -237,6 +238,7 @@ namespace _2_sem_eksamen_bravo
                     }
                     try
                     {
+
                         SQL.UpdateCustomer(new Customer { FirstName = FirstName_txt.Text, LastName = LastName_txt.Text,
                             Registered = (bool)Registered.IsChecked, Birth = Birthday_txt.Text, CustomerID = currentID, Gender = gender,
                             Email = Email_txt.Text, Phone = Phone_txt.Text,

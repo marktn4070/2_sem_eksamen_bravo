@@ -194,9 +194,11 @@ namespace _2_sem_eksamen_bravo
                 int phone = 0;
                 if (IsValid())
                 {
+
                     int.Parse(Birthday_txt.Text);
                     int.Parse(Birthmonth_txt.Text);
                     int.Parse(Birthyear_txt.Text);
+
 
                     string gender = "";
 
