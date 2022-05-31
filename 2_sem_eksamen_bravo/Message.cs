@@ -8,7 +8,7 @@ namespace _2_sem_eksamen_bravo
 {
     public class Message
     {
-        public string MessageID { get; set; }
+        public int MessageID { get; set; }
         public string Headline { get; set; }
         public string Subheadline { get; set; }
         public string Text { get; set; }

@@ -15,6 +15,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions; // Skal bruges for at kunne bruge Regex
 using System.Configuration;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 namespace _2_sem_eksamen_bravo
 {
@@ -23,12 +25,17 @@ namespace _2_sem_eksamen_bravo
     /// </summary>
     public partial class Detail_message : Window
     {
-        private string currentID;
-        private string[] startAddress; //først vejnavn så kommunenavn
+        private int currentID;
+        private List<Customer> Customer_list = new List<Customer>();
+
 
         public Detail_message(Message message)
         {
+            currentID = message.MessageID;
             InitializeComponent();
+            LoadGrid_Customer();
+            Refresh();
+            Clear();
 
 
 
@@ -40,7 +47,7 @@ namespace _2_sem_eksamen_bravo
             {
                 Sms.IsChecked = true;
             }
-            currentID = message.MessageID;
+            
             Headline.Content = message.Headline;
             Subheadline.Content = message.Subheadline;
             Text.Content = message.Text;
@@ -56,21 +63,44 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        private void Window_Closed(object sender, EventArgs e)
-        {
-            DataChangedEventHandler handler = DataChanged;
 
-            if (handler != null)
+
+
+
+
+
+
+        public void LoadGrid_Customer()
+        {
+            try
             {
-                handler(this, new EventArgs());
+                Customer_list = SQL.GetCustomerGotMessage(currentID);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
-        public delegate void DataChangedEventHandler(object sender, EventArgs e);
-
-        public event DataChangedEventHandler DataChanged;
 
 
+        public CancelEventHandler Closing { get; private set; }
+
+        private void Refresh()
+        {
+            datagrid_message_receivers.ItemsSource = new ObservableCollection<Customer>(Customer_list);
+        }
+
+
+
+
+
+
+        private void Clear()
+        {
+            datagrid_message_receivers.SelectedIndex = -1;
+            LoadGrid_Customer();
+        }
 
     }
 }

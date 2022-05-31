@@ -79,7 +79,7 @@ namespace _2_sem_eksamen_bravo.Views
         {                
             try
             {
-                Customer_list = SQL.GetMCustomer();
+                Customer_list = SQL.GetCustomer();
             }
             catch (Exception ex)
             {
@@ -129,7 +129,6 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
-
             string selected_id = Customer_list[datagrid_customer.SelectedIndex].CustomerID;
             string selected_name = Customer_list[datagrid_customer.SelectedIndex].FirstName;
             int n = datagrid_customer.SelectedIndex;
@@ -140,6 +139,7 @@ namespace _2_sem_eksamen_bravo.Views
                 try
                 {
                     SQL.DeleteCustomer(selected_id);
+                    Refresh();
                     Clear();
                 }
                 catch (Exception ex)

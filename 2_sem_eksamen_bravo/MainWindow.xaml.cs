@@ -21,7 +21,7 @@ namespace _2_sem_eksamen_bravo
 /////// HEAD
     /// Interaction logic for MainWindow.xaml
 //////
-    /// Interaction logic for MainWindow.xamlerferfeddscdscs
+    /// Interaction logic for MainWindow.xamlerferfedd
 ////// master
     /// Interaction logic for MainWindow.xaml
 ////// Temporary merge branch 2
@@ -61,11 +61,6 @@ namespace _2_sem_eksamen_bravo
         public static void ShowError(Exception ex)
         {
             MessageBox.Show(ex.Message);
-        }
-
-        private void ImpoterAddresser_Click(object sender, RoutedEventArgs e) //Kevin
-        {
-            SQL.AdresseImpoter();
         }
     }
 }

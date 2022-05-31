@@ -100,16 +100,7 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
 
-        private SqlParameter CreateParam(string name, object value, SqlDbType type)
-        {
-            SqlParameter param = new SqlParameter(name, type);
-            param.Value = value;
-            return param;
-        }
-
-
-
-
+    
 
         private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
         {
