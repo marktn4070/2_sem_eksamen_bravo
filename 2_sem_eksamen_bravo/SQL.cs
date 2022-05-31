@@ -157,7 +157,7 @@ namespace _2_sem_eksamen_bravo
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer
+                    Customer currentCustomer = new Customer
                     {
                         CustomerID = sdr[0].ToString(),
                         FirstName = sdr[1].ToString(),
@@ -168,7 +168,9 @@ namespace _2_sem_eksamen_bravo
                         Phone = sdr[6].ToString(),
                         Email = sdr[7].ToString(),
                         RoadcodeID = sdr[8].ToString()
-                    });
+                    };
+                    currentCustomer.UpdateAddress();
+                    customer_list.Add(currentCustomer);
                 }
                 return customer_list;
             }
