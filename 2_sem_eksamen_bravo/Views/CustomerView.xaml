@@ -18,14 +18,14 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="30" Binding="{Binding CustomerID}"/>
-                <DataGridTextColumn Header="Fornavn" Width="70" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Fornavn" Width="50" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding LastName}"/>
                 <DataGridTextColumn Header="Tilmeldt" Width="55" Binding="{Binding Registered}"/>
                 <DataGridTextColumn Header="Køn" Width="45" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding Birth}"/>
                 <DataGridTextColumn Header="Mobil nr." Width="60" Binding="{Binding Phone}"/>
-                <DataGridTextColumn Header="E-mail" Width="140" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Kommune" Width="55" Binding="{Binding Kommune}"/>
+                <DataGridTextColumn Header="E-mail" Width="100" Binding="{Binding Email}"/>
+                <DataGridTextColumn Header="Kommune" Width="65" Binding="{Binding Kommune}"/>
                 <DataGridTextColumn Header="Vej" Width="55" Binding="{Binding Vej}"/>
 
                 <DataGridTemplateColumn Header="Detaljer">
