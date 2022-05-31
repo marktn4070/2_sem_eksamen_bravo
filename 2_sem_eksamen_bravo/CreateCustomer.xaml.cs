@@ -211,7 +211,7 @@ namespace _2_sem_eksamen_bravo
                     }
 
                     string birth = Birthyear.Text.Trim() + "-" + Birthmonth.Text.Trim() + "-" + Birthday.Text.Trim();
-
+                    phone = int.Parse(Phone.Text.Trim());
                     SQL.RegisterCustomer(FirstName.Text.Trim(), LastName.Text.Trim(), (bool)Registered.IsChecked, gender, birth, phone, Email.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
                     MessageBox.Show("Kunde oprettet!");
                     ClearAll();
