@@ -437,14 +437,6 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-        public class Address
-        {
-            public int RoadcodeID { get; set; }
-            public string Road { get; set; }
-            public int Zip { get; set; }
-            public string Municipality { get; set; }
-        }
-
         public static void AdresseImpoter() //Kevin
         {
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -458,9 +450,12 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count <= 0)
                 DirectoryInfo folder = new DirectoryInfo(path);
                 FileInfo[] txtExist = folder.GetFiles("*.txt");
+                if (true == Directory.EnumerateFileSystemEntries(path).Any() && txtExist.Length == 0)
+                {
+                    throw new ArgumentException("de satte filer er ikke tekst filer i dropzone mappen");
+                }
                 if (txtExist.Length == 0 && count <= 0)
                 {
                     throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");

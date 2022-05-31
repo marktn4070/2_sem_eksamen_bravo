@@ -64,6 +64,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Address.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
     <Compile Include="CreateCustomer.xaml.cs">
       <DependentUpon>CreateCustomer.xaml</DependentUpon>

@@ -36,7 +36,7 @@
 
 
 
-        <Label Name="Search_message" Margin="34,479,0,0" Height="31" Width="429" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
+        <Label Name="Search_message" Margin="58,35,0,0" Height="31" Width="429" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
 
         <Label Name="endDate_label" Content="Slut dato" Margin="484,71,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
         <DatePicker Name="endDate_Search"  Height="23" Width="206" Margin="484,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background = "Transparent"/>
