@@ -191,6 +191,7 @@ namespace _2_sem_eksamen_bravo
                 int phone = 0;
                 if (IsValid())
                 {
+                    Birthday.SelectedDate.Value.ToString("yyyy/MM/dd");
                     int.Parse(Birthday.Text);
                     int.Parse(Birthmonth.Text);
                     int.Parse(Birthyear.Text);

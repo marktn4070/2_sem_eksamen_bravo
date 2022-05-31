@@ -72,7 +72,7 @@ namespace _2_sem_eksamen_bravo
             Male.IsChecked = false;
             Female.IsChecked = false;
             Other.IsChecked = false;
-            C_Birth_txt.Clear();
+            //C_Birth_txt
             C_Phone_txt.Clear();
             C_Email_txt.Clear();
         }
@@ -164,7 +164,7 @@ namespace _2_sem_eksamen_bravo
                     try
                     {
                         SQL.UpdateCustomer(new Customer { FirstName = C_firstName_txt.Text, LastName = C_LastName_txt.Text,
-                            Registered = (bool)Registered.IsChecked, Birth = C_Birth_txt.Text, CustomerID = currentID, Gender = gender,
+                            Registered = (bool)Registered.IsChecked, Birth = C_Birth_txt.SelectedDate.Value.ToString("yyyy/MM/dd"), CustomerID = currentID, Gender = gender,
                             Email = C_Email_txt.Text, Phone = C_Phone_txt.Text,
                             RoadcodeID = SQL.GetRoadCode(Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString()).ToString() } );
                         MessageBox.Show("'" + C_firstName_txt.Text + " " + C_LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
