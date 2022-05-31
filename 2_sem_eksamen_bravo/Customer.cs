@@ -17,5 +17,14 @@ namespace _2_sem_eksamen_bravo
         public string Phone { get; set; }
         public string Email { get; set; }
         public string RoadcodeID { get; set; }
+        public string Kommune { get; set; }
+        public string Vej { get; set; }
+
+        public void UpdateAddress()
+        {
+            string[] startAddress = SQL.GetRoadAndMunicipalityNames(this.RoadcodeID); //first vej, second kommune
+            Vej = startAddress[0];
+            Kommune = startAddress[1];
+        }
     }
 }
