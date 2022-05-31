@@ -56,5 +56,6 @@
         <Button Content="Nulstil" x:Name="Clear_Btn" Margin="216,549,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
         <Button Content="Opdater" x:Name="Update_Btn" Margin="300,549,0,0" Width="70" Height="45" Click="Update_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
+
     </Grid>
 </Window>

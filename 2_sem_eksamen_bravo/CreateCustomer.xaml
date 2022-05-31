@@ -12,6 +12,7 @@
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opret kunde" VerticalAlignment="Top" Height="50"/>
 
 
+
         <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="40,53,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
         <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="40,106,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label Content="Mobil nr.:" HorizontalAlignment="Left" Margin="40,167,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.448,0.24"/>
