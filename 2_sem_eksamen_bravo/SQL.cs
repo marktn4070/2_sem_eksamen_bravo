@@ -180,34 +180,47 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static List<Customer> GetCustomerGotMessage() //Mark
+        public static List<Customer> GetCustomerGotMessage(int messageID) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                List<Customer> customer_list = new List<Customer>();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                SqlCommand getHistory = new SqlCommand(string.Format("SELECT * FROM Message_history WHERE MessageID LIKE {0}", messageID), host);
+                List<int> customerIDS = new List<int>();
+                
                 DataTable dt = new DataTable(); //nødvendig?
                 host.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while (sdr.Read())
+
+                SqlDataReader reader = getHistory.ExecuteReader();
+                while (reader.Read())
                 {
-                    customer_list.Add(new Customer
+                    customerIDS.Add((int)reader[1]);
+                }
+                List<Customer> customer_list = new List<Customer>();
+
+                foreach (int id in customerIDS)
+                {
+                    SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Customer WHERE CustomerID LIKE {0}", id), host);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
                     {
-                        CustomerID = sdr[0].ToString(),
-                        FirstName = sdr[1].ToString(),
-                        LastName = sdr[2].ToString(),
-                        Registered = (bool)sdr[3],
-                        Gender = sdr[4].ToString(),
-                        Birth = sdr[5].ToString(),
-                        Phone = sdr[6].ToString(),
-                        Email = sdr[7].ToString(),
-                        RoadCode = sdr[8].ToString()
-                    });
+                        customer_list.Add(new Customer
+                        {
+                            CustomerID = sdr[0].ToString(),
+                            FirstName = sdr[1].ToString(),
+                            LastName = sdr[2].ToString(),
+                            Registered = (bool)sdr[3],
+                            Gender = sdr[4].ToString(),
+                            Birth = sdr[5].ToString(),
+                            Phone = sdr[6].ToString(),
+                            Email = sdr[7].ToString(),
+                            RoadCode = sdr[8].ToString()
+                        });
+                    }
                 }
                 return customer_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -249,7 +262,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     message_list.Add(new Message
                     {
-                        MessageID = sdr[0].ToString(),
+                        MessageID = (int)sdr[0],
                         Headline = sdr[1].ToString(),
                         Subheadline = sdr[2].ToString(),
                         Text = sdr[3].ToString(),
@@ -291,7 +304,7 @@ namespace _2_sem_eksamen_bravo
                     {
                         message_list.Add(new Message
                         {
-                            MessageID = sdr[0].ToString(),
+                            MessageID = (int)sdr[0],
                             Headline = sdr[1].ToString(),
                             Subheadline = sdr[2].ToString(),
                             Text = sdr[3].ToString(),

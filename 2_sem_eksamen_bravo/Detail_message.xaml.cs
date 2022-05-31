@@ -25,13 +25,13 @@ namespace _2_sem_eksamen_bravo
     /// </summary>
     public partial class Detail_message : Window
     {
-        private string currentID;
-        private string[] startAddress; //først vejnavn så kommunenavn
+        private int currentID;
         private List<Customer> Customer_list = new List<Customer>();
 
 
         public Detail_message(Message message)
         {
+            currentID = message.MessageID;
             InitializeComponent();
             LoadGrid_Customer();
             Refresh();
@@ -47,7 +47,7 @@ namespace _2_sem_eksamen_bravo
             {
                 Sms.IsChecked = true;
             }
-            currentID = message.MessageID;
+            
             Headline.Content = message.Headline;
             Subheadline.Content = message.Subheadline;
             Text.Content = message.Text;
@@ -74,7 +74,7 @@ namespace _2_sem_eksamen_bravo
         {
             try
             {
-                Customer_list = SQL.GetCustomerGotMessage();
+                Customer_list = SQL.GetCustomerGotMessage(currentID);
             }
             catch (Exception ex)
             {
@@ -88,7 +88,7 @@ namespace _2_sem_eksamen_bravo
 
         private void Refresh()
         {
-            datagrid_customer.ItemsSource = new ObservableCollection<Customer>(Customer_list);
+            datagrid_message_receivers.ItemsSource = new ObservableCollection<Customer>(Customer_list);
         }
 
 
@@ -98,37 +98,9 @@ namespace _2_sem_eksamen_bravo
 
         private void Clear()
         {
-            datagrid_customer.SelectedIndex = -1;
+            datagrid_message_receivers.SelectedIndex = -1;
             LoadGrid_Customer();
         }
-
-
-
-
-
-        private SqlParameter CreateParam(string name, object value, SqlDbType type)
-        {
-            SqlParameter param = new SqlParameter(name, type);
-            param.Value = value;
-            return param;
-        }
-
-
-
-
-
-
-
-
-
-
-        //private void datagrid_customer()
-        //{
-
-        //}
-
-
-
 
     }
 }

@@ -33,7 +33,7 @@
 
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Modtagere af Beskeden" VerticalAlignment="Top" Height="50" Margin="199,288,209,0" Width="242"/>
-        <DataGrid x:Name="datagrid_customer" HorizontalAlignment="Left" Width="600" Height="180" Margin="25,335,0,85" AutoGenerateColumns="False" CanUserAddRows="False"
+        <DataGrid x:Name="datagrid_message_receivers" HorizontalAlignment="Left" Width="600" Height="180" Margin="25,335,0,85" AutoGenerateColumns="False" CanUserAddRows="False"
                 IsReadOnly="True" SelectionMode="Single">
 
             <DataGrid.Columns>
