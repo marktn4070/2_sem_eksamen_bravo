@@ -93,9 +93,9 @@ namespace _2_sem_eksamen_bravo
                 {
                     cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                     SqlCommand command = null;
-                    if (email) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
+                    if (email && !sms) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
                     {
-                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 0 AND RoadcodeID LIKE {0};", roadCode), cnct);
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 1 AND RoadcodeID LIKE {0};", roadCode), cnct);
                     }
                     else 
                     {
