@@ -167,7 +167,7 @@ namespace _2_sem_eksamen_bravo
                         Birth = sdr[5].ToString(),
                         Phone = sdr[6].ToString(),
                         Email = sdr[7].ToString(),
-                        RoadCode = sdr[8].ToString()
+                        RoadcodeID = sdr[8].ToString()
                     });
                 }
                 return customer_list;
@@ -214,7 +214,7 @@ namespace _2_sem_eksamen_bravo
                             Birth = sdr[5].ToString(),
                             Phone = sdr[6].ToString(),
                             Email = sdr[7].ToString(),
-                            RoadCode = sdr[8].ToString()
+                            RoadcodeID = sdr[8].ToString()
                         });
                     }
                 }
@@ -649,7 +649,7 @@ namespace _2_sem_eksamen_bravo
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
 
             host.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, RoadcodeID = '{4}' WHERE CustomerID LIKE '{5}';", customer.Registered, customer.Gender, customer.Birth, customer.Phone, customer.RoadCode, customer.CustomerID), host);
+            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, RoadcodeID = '{4}' WHERE CustomerID LIKE '{5}';", customer.Registered, customer.Gender, customer.Birth, customer.Phone, customer.RoadcodeID, customer.CustomerID), host);
             cmd.Parameters.Add(CreateParam("@First", customer.FirstName, SqlDbType.NVarChar));
             cmd.Parameters.Add(CreateParam("@Last", customer.LastName, SqlDbType.NVarChar));
             cmd.Parameters.Add(CreateParam("@Email", customer.Email, SqlDbType.NVarChar));

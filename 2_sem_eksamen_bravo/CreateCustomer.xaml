@@ -5,41 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:_2_sem_eksamen_bravo"
         mc:Ignorable="d"
-        Title="Opret kunde" Height="450" Width="400"
+        Title="Opret kunde" Height="650" Width="400"
         Closed="Window_Closed">
     <Grid>
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Opret kunde" VerticalAlignment="Top" Height="50"/>
-        <Button Content="Gem" x:Name="Update_Btn" Margin="300,358,0,0" Width="70" Height="45" Click="Create_Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
-        <Button Content="Nulstil" x:Name="Clear_Btn" Margin="216,358,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
 
-        <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="40,56,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
-        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="40,91,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Mobil nr.:" HorizontalAlignment="Left" Margin="40,122,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.448,0.24"/>
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="40,153,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Fødselsdag:" HorizontalAlignment="Left" Margin="40,184,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Køn:" HorizontalAlignment="Left" Margin="40,215,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="40,53,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="40,106,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Mobil nr.:" HorizontalAlignment="Left" Margin="40,167,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.448,0.24"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="40,228,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Fødselsdag:" HorizontalAlignment="Left" Margin="40,289,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Køn:" HorizontalAlignment="Left" Margin="40,343,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
 
-        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="145,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
-        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="209,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
-        <RadioButton Name ="Other" Content="Oplyser ikke" HorizontalAlignment="Left" Margin="289,221,0,0" VerticalAlignment="Top" GroupName="Gender"/>
-        <CheckBox Name="Registered" Content="Tilmeld markedsføring emails" Margin="145,250,32.6,144"/>
+        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="145,349,0,0" VerticalAlignment="Top" GroupName="Gender" Checked="Male_Checked"/>
+        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="209,349,0,0" VerticalAlignment="Top" GroupName="Gender" Checked="Female_Checked"/>
+        <RadioButton Name ="Other" Content="Oplyser ikke" HorizontalAlignment="Left" Margin="289,349,0,0" VerticalAlignment="Top" GroupName="Gender" Checked="Other_Checked"/>
+        <CheckBox Name="Registered" Content="Tilmeld markedsføring emails" Margin="145,384,32.6,210" Height="26"/>
 
-        <TextBox Name="FirstName" HorizontalAlignment="Left" Margin="145,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox Name="LastName" HorizontalAlignment="Left" Margin="145,99,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox Name="Phone" HorizontalAlignment="Left" Margin="145,130,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox Name="Email" HorizontalAlignment="Left" Margin="145,161,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192"/>
-        <TextBox Name="Birthday" HorizontalAlignment="Left" Margin="145,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthday" MaxLength="2" Width="20"/>
-        <TextBox Name="Birthmonth" HorizontalAlignment="Left" Margin="209,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthmonth" MaxLength="2" Width="20" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox Name="Birthyear" HorizontalAlignment="Left" Margin="289,192,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="4" Width="35"/>
-        <Label Content="Vælg vej:" Margin="40,307,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Vælg kommune:" Margin="40,271,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <ComboBox Name="Kommune" Height="23" Width="192" Margin="145,276,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
-        <ComboBox Name="Vej" Height="23" Width="192" Margin="145,307,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="False"/>
-        <Label Content="Dag" HorizontalAlignment="Left" Margin="163,192,0,0" VerticalAlignment="Top"/>
-        <Label Content="Måned" HorizontalAlignment="Left" Margin="229,192,0,0" VerticalAlignment="Top"/>
-        <Label Content="År" HorizontalAlignment="Left" Margin="324,192,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="FirstName_txt" HorizontalAlignment="Left" Margin="145,55,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="FirstName_txt_TextChanged"/>
+        <TextBox Name="LastName_txt" HorizontalAlignment="Left" Margin="145,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="LastName_txt_TextChanged"/>
+        <TextBox Name="Phone_txt" HorizontalAlignment="Left" Margin="145,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Phone_txt_TextChanged"/>
+        <TextBox Name="Email_txt" HorizontalAlignment="Left" Margin="145,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Email_txt_TextChanged"/>
+        <TextBox Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthday" MaxLength="2" Width="20"/>
+        <TextBox Name="Birthmonth_txt" HorizontalAlignment="Left" Margin="209,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthmonth" MaxLength="2" Width="20" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox Name="Birthyear_txt" HorizontalAlignment="Left" Margin="289,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="4" Width="35" TextChanged="Birthyear_txt_TextChanged"/>
+        <Label Content="Vælg vej:" Margin="40,495,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Vælg kommune:" Margin="40,429,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <ComboBox Name="Kommune" Height="23" Width="192" Margin="145,434,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
+        <ComboBox Name="Vej" Height="23" Width="192" Margin="145,495,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="False" SelectionChanged="Vej_SelectionChanged"/>
+        <Label Content="Dag" HorizontalAlignment="Left" Margin="163,296,0,0" VerticalAlignment="Top"/>
+        <Label Content="Måned" HorizontalAlignment="Left" Margin="229,296,0,0" VerticalAlignment="Top"/>
+        <Label Content="År" HorizontalAlignment="Left" Margin="324,296,0,0" VerticalAlignment="Top"/>
+
+
+
+        <TextBlock Name="FirstName__error" HorizontalAlignment="Left" Margin="145,74,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="LastName__error" HorizontalAlignment="Left" Margin="145,131,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Phone__error" HorizontalAlignment="Left" Margin="145,193,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Email__error" HorizontalAlignment="Left" Margin="145,253,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Birthday__error" HorizontalAlignment="Left" Margin="145,314,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+
+        <TextBlock Name="Gender__error" HorizontalAlignment="Left" Margin="145,370,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+
+        <TextBlock Name="Kommune__error" HorizontalAlignment="Left" Margin="145,457,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+
+        <TextBlock Name="Vej__error" HorizontalAlignment="Left" Margin="145,518,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+
+
+
+
+
+        <Button Content="Gem" x:Name="Update_Btn" Margin="300,549,0,0" Width="70" Height="45" Click="Create_Button_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
+        <Button Content="Nulstil" x:Name="Clear_Btn" Margin="216,549,0,0" Width="70" Height="45" Click="Clear_Btn_Click" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontSize="14" FontWeight="Bold"/>
 
     </Grid>
 </Window>

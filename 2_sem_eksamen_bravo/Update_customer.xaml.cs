@@ -41,8 +41,8 @@ namespace _2_sem_eksamen_bravo
                 MessageBox.Show(ex.Message); //måske gøre mere ud af den her..
             }
             currentID = customer.CustomerID;
-            C_firstName_txt.Text = customer.FirstName;
-            C_LastName_txt.Text = customer.LastName;
+            FirstName_txt.Text = customer.FirstName;
+            LastName_txt.Text = customer.LastName;
             Registered.IsChecked = customer.Registered;
             if (customer.Gender == "Male")
             {
@@ -56,9 +56,9 @@ namespace _2_sem_eksamen_bravo
             {
                 Other.IsChecked = true;
             }
-            C_Birth_txt.Text = customer.Birth;
-            C_Phone_txt.Text = customer.Phone;
-            C_Email_txt.Text = customer.Email;
+            Birthday_txt.Text = customer.Birth;
+            Phone_txt.Text = customer.Phone;
+            Email_txt.Text = customer.Email;
 
         }
 
@@ -66,15 +66,15 @@ namespace _2_sem_eksamen_bravo
         {
             Vej.ItemsSource = new List<string>();
             Kommune.SelectedItem = null;
-            C_firstName_txt.Clear();
-            C_LastName_txt.Clear();
+            FirstName_txt.Clear();
+            LastName_txt.Clear();
             Registered.IsChecked = false;
             Male.IsChecked = false;
             Female.IsChecked = false;
             Other.IsChecked = false;
-            C_Birth_txt.Clear();
-            C_Phone_txt.Clear();
-            C_Email_txt.Clear();
+            Birthday_txt.Clear();
+            Phone_txt.Clear();
+            Email_txt.Clear();
         }
 
         private void Clear_Btn_Click(object sender, RoutedEventArgs e)
@@ -82,60 +82,134 @@ namespace _2_sem_eksamen_bravo
             //spørg om sikker nok en god ide................
             ClearData();
         }
+
         public bool IsValid()
         {
+            //if (Birthday_txt.Text.Trim().Length == 2 && Birthmonth_txt.Text.Trim().Length == 2 && Birthyear_txt.Text.Trim().Length == 4)
+            //{
+            //    MessageBox.Show("Dato skal være i format 31-12-2000", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
+            //    return false;
+            //}
+
+
+
+            // Dato feltet
+            if (Birthday_txt.Text == string.Empty)
+            {
+                Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
+            }
+
+
+            //// Dato feltet
+            //if (Birthday_txt.Text == string.Empty)
+            //{
+            //    Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
+            //}
+
+
+            //// Måned feltet
+            //else if (Birthmonth_txt.Text == string.Empty)
+            //{
+            //    Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
+            //}
+
+
+            //// År feltet
+            //else if (Birthyear_txt.Text == string.Empty)
+            //{
+            //    Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
+            //}
+
+
+
+
+            ////DateTime.Now.Date
+            //else if (int.Parse(Birthday_txt.Text) < 1 || int.Parse(Birthday_txt.Text) > 31 || int.Parse(Birthmonth_txt.Text) < 1 || int.Parse(Birthmonth_txt.Text) > 12 || int.Parse(Birthyear_txt.Text) < 1850)
+            //{
+            //    Birthday__error.Text = "Invalid dato!";
+            //}
+
+
+            // Køn feltet
+            if (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked)
+            {
+                Gender__error.Text = "Køn skal vælges";
+            }
+
+            // Kommune feltet
+            if (Kommune.SelectedItem == null)
+            {
+                Kommune__error.Text = "Kommunenavn skal vælges";
+            }
+
+            // Vej feltet
             if (Vej.SelectedItem == null)
             {
-                MessageBox.Show("Der skal vælges en adresse!", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                Vej__error.Text = "Vejnavn skal vælges";
             }
-            //Fornavn feltet
-            if (C_firstName_txt.Text == string.Empty)
+
+
+            // Fornavn feltet
+            if (FirstName_txt.Text == string.Empty)
             {
-                MessageBox.Show("Navn skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                FirstName__error.Text = "Fornavn skal udfyldes";
             }
-            else if (Regex.IsMatch(C_firstName_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
+            else if (Regex.IsMatch(FirstName_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
             {
-                MessageBox.Show("Vær venlig at indtaste bogstaver ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                FirstName__error.Text = "Vær venligst at indtaste bogstaver ved 'Fornavn'";
             }
-            //Efternavn feltet
-            if (C_LastName_txt.Text == string.Empty)
+
+
+            // Efternavn feltet
+            if (LastName_txt.Text == string.Empty)
             {
-                MessageBox.Show("Navn skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                LastName__error.Text = "Efternavn skal udfyldes";
             }
-            else if (Regex.IsMatch(C_LastName_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
+            else if (Regex.IsMatch(LastName_txt.Text, "[^æøåÆØÅa-zA-Z ]"))
             {
-                MessageBox.Show("Vær venligst at indtaste bogstaver ved 'Navn'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                LastName__error.Text = "Vær venligst at indtaste bogstaver ved 'Efternavn'";
+            }
+
+
+            // Email feltet
+            if (Email_txt.Text == string.Empty)
+            {
+                Email__error.Text = "E-mail skal udfyldes";
+            }
+            else if (!Regex.IsMatch(Email_txt.Text, @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$"))
+            {
+                Email__error.Text = "Vær venligst at indtaste en korrekt e-mail adresse";
             }
 
             // Telefonnummer feltet
-            if (C_Phone_txt.Text == string.Empty)
+            if (Phone_txt.Text == string.Empty)
             {
-                MessageBox.Show("Telefon nr. skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
+                Phone__error.Text = "Telefon nr. skal udfyldes";
             }
-            else if (Regex.IsMatch(C_Phone_txt.Text, "[^0-9]"))
+            else if (Regex.IsMatch(Phone_txt.Text, "[^0-9]"))
             {
-                MessageBox.Show("Vær venligst at indtaste tal ved 'Telefon nr'", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                C_Phone_txt.Text = C_Phone_txt.Text.Remove(C_Phone_txt.Text.Length - 1);
+                Phone__error.Text = "Vær venligst at indtaste tal ved 'Telefon nr'";
+                Phone_txt.Text = Phone_txt.Text.Remove(Phone_txt.Text.Length - 1);
+            }
+
+
+            if (
+            Birthday_txt.Text == string.Empty ||
+            Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked ||
+            Kommune.SelectedItem == null ||
+            Vej.SelectedItem == null ||
+            FirstName_txt.Text == string.Empty ||
+            Regex.IsMatch(FirstName_txt.Text, "[^æøåÆØÅa-zA-Z ]") ||
+            LastName_txt.Text == string.Empty ||
+            Regex.IsMatch(LastName_txt.Text, "[^æøåÆØÅa-zA-Z ]") ||
+            Email_txt.Text == string.Empty ||
+            !Regex.IsMatch(Email_txt.Text, @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$") ||
+            Phone_txt.Text == string.Empty ||
+            Regex.IsMatch(Phone_txt.Text, "[^0-9]"))
+            {
                 return false;
             }
 
-            // Email feltet
-            if (C_Email_txt.Text == string.Empty)
-            {
-                MessageBox.Show("E-mail skal udfyldes", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
-            else if (!Regex.IsMatch(C_Email_txt.Text, @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$"))
-            {
-                MessageBox.Show("Vær venligst at indtaste en korrekt e-mail adresse", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-                return false;
-            }
             return true;
         }
 
@@ -163,11 +237,11 @@ namespace _2_sem_eksamen_bravo
                     }
                     try
                     {
-                        SQL.UpdateCustomer(new Customer { FirstName = C_firstName_txt.Text, LastName = C_LastName_txt.Text,
-                            Registered = (bool)Registered.IsChecked, Birth = C_Birth_txt.Text, CustomerID = currentID, Gender = gender,
-                            Email = C_Email_txt.Text, Phone = C_Phone_txt.Text,
+                        SQL.UpdateCustomer(new Customer { FirstName = FirstName_txt.Text, LastName = LastName_txt.Text,
+                            Registered = (bool)Registered.IsChecked, Birth = Birthday_txt.Text, CustomerID = currentID, Gender = gender,
+                            Email = Email_txt.Text, Phone = Phone_txt.Text,
                             RoadcodeID = SQL.GetRoadCode(Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString()).ToString() } );
-                        MessageBox.Show("'" + C_firstName_txt.Text + " " + C_LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
+                        MessageBox.Show("'" + FirstName_txt.Text + " " + LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (SqlException ex)
                     {
@@ -202,6 +276,9 @@ namespace _2_sem_eksamen_bravo
 
         private void Kommune_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Kommune__error.Text = "";
+
+
             if (Kommune.SelectedItem != null)
             {
                 Vej.IsEnabled = true;
@@ -214,5 +291,49 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
+        private void FirstName_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            FirstName__error.Text = "";
+        }
+
+        private void LastName_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            LastName__error.Text = "";
+        }
+
+        private void Phone_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Phone__error.Text = "";
+        }
+
+        private void Email_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Email__error.Text = "";
+        }
+
+        private void Birthday_txt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Birthday__error.Text = "";
+        }
+
+        private void Male_Checked(object sender, RoutedEventArgs e)
+        {
+            Gender__error.Text = "";
+        }
+
+        private void Female_Checked(object sender, RoutedEventArgs e)
+        {
+            Gender__error.Text = "";
+        }
+
+        private void Other_Checked(object sender, RoutedEventArgs e)
+        {
+            Gender__error.Text = "";
+        }
+
+        private void Vej_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Vej__error.Text = "";
+        }
     }
 }
