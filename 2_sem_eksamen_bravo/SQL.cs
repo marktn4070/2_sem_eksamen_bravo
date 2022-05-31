@@ -167,7 +167,7 @@ namespace _2_sem_eksamen_bravo
                         Birth = sdr[5].ToString(),
                         Phone = sdr[6].ToString(),
                         Email = sdr[7].ToString(),
-                        RoadcodeID = sdr[8].ToString()
+                        RoadCode = sdr[8].ToString()
                     });
                 }
                 return customer_list;
@@ -180,34 +180,47 @@ namespace _2_sem_eksamen_bravo
 
 
 
-        public static List<Customer> GetCustomerGotMessage() //Mark
+        public static List<Customer> GetCustomerGotMessage(int messageID) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
-                List<Customer> customer_list = new List<Customer>();
-                SqlCommand cmd = new SqlCommand("SELECT * FROM Customer", host);
+                SqlCommand getHistory = new SqlCommand(string.Format("SELECT * FROM Message_history WHERE MessageID LIKE {0}", messageID), host);
+                List<int> customerIDS = new List<int>();
+                
                 DataTable dt = new DataTable(); //nødvendig?
                 host.Open();
-                SqlDataReader sdr = cmd.ExecuteReader();
-                while (sdr.Read())
+
+                SqlDataReader reader = getHistory.ExecuteReader();
+                while (reader.Read())
                 {
-                    customer_list.Add(new Customer
+                    customerIDS.Add((int)reader[1]);
+                }
+                List<Customer> customer_list = new List<Customer>();
+
+                foreach (int id in customerIDS)
+                {
+                    SqlCommand cmd = new SqlCommand(string.Format("SELECT * FROM Customer WHERE CustomerID LIKE {0}", id), host);
+                    SqlDataReader sdr = cmd.ExecuteReader();
+                    while (sdr.Read())
                     {
-                        CustomerID = sdr[0].ToString(),
-                        FirstName = sdr[1].ToString(),
-                        LastName = sdr[2].ToString(),
-                        Registered = (bool)sdr[3],
-                        Gender = sdr[4].ToString(),
-                        Birth = sdr[5].ToString(),
-                        Phone = sdr[6].ToString(),
-                        Email = sdr[7].ToString(),
-                        RoadcodeID = sdr[8].ToString()
-                    });
+                        customer_list.Add(new Customer
+                        {
+                            CustomerID = sdr[0].ToString(),
+                            FirstName = sdr[1].ToString(),
+                            LastName = sdr[2].ToString(),
+                            Registered = (bool)sdr[3],
+                            Gender = sdr[4].ToString(),
+                            Birth = sdr[5].ToString(),
+                            Phone = sdr[6].ToString(),
+                            Email = sdr[7].ToString(),
+                            RoadCode = sdr[8].ToString()
+                        });
+                    }
                 }
                 return customer_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -249,7 +262,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     message_list.Add(new Message
                     {
-                        MessageID = sdr[0].ToString(),
+                        MessageID = (int)sdr[0],
                         Headline = sdr[1].ToString(),
                         Subheadline = sdr[2].ToString(),
                         Text = sdr[3].ToString(),
@@ -291,7 +304,7 @@ namespace _2_sem_eksamen_bravo
                     {
                         message_list.Add(new Message
                         {
-                            MessageID = sdr[0].ToString(),
+                            MessageID = (int)sdr[0],
                             Headline = sdr[1].ToString(),
                             Subheadline = sdr[2].ToString(),
                             Text = sdr[3].ToString(),
@@ -394,8 +407,6 @@ namespace _2_sem_eksamen_bravo
             municipalities.Sort();
             return municipalities;
         }
-
-
         public static List<string> GetRoads(string municipality) //james
         {
             List<string> roads = new List<string>();
@@ -454,8 +465,6 @@ namespace _2_sem_eksamen_bravo
                 throw;
             }
         }
-
-
         public static void RegisterCustomer(string firstName, string lastName, bool registered, string gender, string birth, int phone, string email, string municipality, string road) //james
         {
 
@@ -537,7 +546,7 @@ namespace _2_sem_eksamen_bravo
                 SqlCommand cmd = new SqlCommand("SELECT COUNT(*) from Address", connect);
                 int count = (int)cmd.ExecuteScalar();
                 connect.Close();
-                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count <= 0)
+                if (false == Directory.EnumerateFileSystemEntries(path).Any() && count >= 0)
                 {
                     throw new ArgumentException("Ingen adresser i databasen, tilføj postdistrikt filen til dropzone for at bruge programmet");
                 }
@@ -640,7 +649,7 @@ namespace _2_sem_eksamen_bravo
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
 
             host.Open();
-            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, RoadcodeID = '{4}' WHERE CustomerID LIKE '{5}';", customer.Registered, customer.Gender, customer.Birth, customer.Phone, customer.RoadcodeID, customer.CustomerID), host);
+            SqlCommand cmd = new SqlCommand(string.Format("UPDATE Customer SET FirstName = @First, LastName = @Last, Registered = '{0}', Gender = '{1}', Birth = '{2}', Phone = '{3}', Email = @Email, RoadcodeID = '{4}' WHERE CustomerID LIKE '{5}';", customer.Registered, customer.Gender, customer.Birth, customer.Phone, customer.RoadCode, customer.CustomerID), host);
             cmd.Parameters.Add(CreateParam("@First", customer.FirstName, SqlDbType.NVarChar));
             cmd.Parameters.Add(CreateParam("@Last", customer.LastName, SqlDbType.NVarChar));
             cmd.Parameters.Add(CreateParam("@Email", customer.Email, SqlDbType.NVarChar));
