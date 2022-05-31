@@ -14,7 +14,7 @@ namespace _2_sem_eksamen_bravo
 {
     static class SQL 
     {
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object roadName) //james
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object kommuneName, object roadName) //james
         {
             int addedMessagesId = 0;
             int howManyReceived = 0;
@@ -76,17 +76,7 @@ namespace _2_sem_eksamen_bravo
                 int roadCode = -1;
                 try //get roadcode
                 {
-
-                    SqlCommand cmd = new SqlCommand(
-                   string.Format("SELECT * FROM Address WHERE Road LIKE @Road"),
-                   cnct);
-                    cmd.Parameters.Add(CreateParam("@Road", roadName, SqlDbType.NVarChar));
-                    cnct.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        roadCode = (int)reader[0];
-                    }
+                    roadCode = GetRoadCode(kommuneName.ToString(), roadName.ToString());
                 }
                 catch (Exception)
                 {
