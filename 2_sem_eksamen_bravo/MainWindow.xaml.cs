@@ -41,7 +41,7 @@ namespace _2_sem_eksamen_bravo
 
             string View = "/Views/CustomerView.xaml";
             MainWindow_Loaded(View);
-
+            Menu_CustomerView.BorderBrush = Brushes.Black;
         }
 
 
@@ -50,18 +50,27 @@ namespace _2_sem_eksamen_bravo
         {
             string View = "/Views/CustomerView.xaml";
             MainWindow_Loaded(View);
+            Menu_CustomerView.BorderBrush = Brushes.Black;
+            Menu_MessagesView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+            Menu_SendMessageView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
         }
 
         private void Menu_Click_2(object sender, RoutedEventArgs e)
         {
             string View = "/Views/MessagesView.xaml";
             MainWindow_Loaded(View);
+            Menu_MessagesView.BorderBrush = Brushes.Black;
+            Menu_CustomerView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+            Menu_SendMessageView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
         }
 
         private void Menu_Click_3(object sender, RoutedEventArgs e)
         {
             string View = "/Views/SendMessageView.xaml";
             MainWindow_Loaded(View);
+            Menu_SendMessageView.BorderBrush = Brushes.Black;
+            Menu_MessagesView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+            Menu_CustomerView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
         }
 
         private void MainWindow_Loaded(string View)
