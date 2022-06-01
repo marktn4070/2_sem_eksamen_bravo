@@ -29,16 +29,11 @@
         <TextBox Name="LastName_txt" HorizontalAlignment="Left" Margin="145,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="LastName_txt_TextChanged"/>
         <TextBox Name="Phone_txt" HorizontalAlignment="Left" Margin="145,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Phone_txt_TextChanged"/>
         <TextBox Name="Email_txt" HorizontalAlignment="Left" Margin="145,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Email_txt_TextChanged"/>
-        <TextBox Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthday" MaxLength="2" Width="20"/>
-        <TextBox Name="Birthmonth_txt" HorizontalAlignment="Left" Margin="209,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" TextChanged="txb_TextChanged_Birthmonth" MaxLength="2" Width="20" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox Name="Birthyear_txt" HorizontalAlignment="Left" Margin="289,296,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="4" Width="35" TextChanged="Birthyear_txt_TextChanged"/>
+        <DatePicker Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,296,0,0" VerticalAlignment="Top" Width="192"/>
         <Label Content="Vælg vej:" Margin="40,495,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Vælg kommune:" Margin="40,429,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <ComboBox Name="Kommune" Height="23" Width="192" Margin="145,434,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
         <ComboBox Name="Vej" Height="23" Width="192" Margin="145,495,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="False" SelectionChanged="Vej_SelectionChanged"/>
-        <Label Content="Dag" HorizontalAlignment="Left" Margin="163,296,0,0" VerticalAlignment="Top"/>
-        <Label Content="Måned" HorizontalAlignment="Left" Margin="229,296,0,0" VerticalAlignment="Top"/>
-        <Label Content="År" HorizontalAlignment="Left" Margin="324,296,0,0" VerticalAlignment="Top"/>
 
 
 

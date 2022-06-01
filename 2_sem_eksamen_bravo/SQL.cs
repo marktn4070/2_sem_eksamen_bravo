@@ -164,7 +164,7 @@ namespace _2_sem_eksamen_bravo
                 }
                 return customer_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -265,7 +265,7 @@ namespace _2_sem_eksamen_bravo
                 }
                 return message_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }

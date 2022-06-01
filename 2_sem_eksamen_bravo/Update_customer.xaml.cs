@@ -73,7 +73,7 @@ namespace _2_sem_eksamen_bravo
             Female.IsChecked = false;
             Other.IsChecked = false;
 
-            Birthday_txt.Clear();
+            Birthday_txt.SelectedDate = null;
             Phone_txt.Clear();
             Email_txt.Clear();
         }
