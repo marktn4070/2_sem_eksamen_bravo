@@ -14,21 +14,21 @@
         <CheckBox x:Name="EmailGeo" Content="Geografiskt specifik (for email)" Margin="282,55,166,0" VerticalAlignment="Top" IsEnabled="False"/>
 
 
-        <Label x:Name="Headline" Height="23" Width="100" Margin="147,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-        <Label x:Name="Subheadline" Height="23" Width="100" Margin="147,163,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Headline" Height="23" Width="218" Margin="147,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Subheadline" Height="23" Width="218" Margin="147,163,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
 
 
-        <Label Content="Overskrift:" Margin="148,87,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Overskrift:" Margin="148,87,0,0" Height="25" Width="218" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Underoverskrift:" Margin="148,137,0,0" Height="25" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Besked:" Margin="148,191,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Vælg vej:" Margin="384,190,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Content="Vælg kommune:" Margin="384,136,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label Name="Kommune" Height="23" Width="100" Margin="384,161,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="False" Content="Mangler SELECT"/>
-        <Label Name="Vej" Height="23" Width="100" Margin="384,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="{Binding RoadcodeID}"/>
-        <Label x:Name="Text" Height="23" Width="100" Margin="148,217,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label Content="Vælg vej:" Margin="384,190,0,0" Height="25" Width="218" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Content="Vælg kommune:" Margin="384,136,0,0" Height="25" Width="218" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <Label Name="Kommune" Height="23" Width="218" Margin="384,161,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="False" Content="Mangler SELECT"/>
+        <Label Name="Vej" Height="23" Width="218" Margin="384,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="Mangler SELECT"/>
+        <Label x:Name="Text" Height="23" Width="218" Margin="148,217,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Tid:" Margin="388,87,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
-        <Label x:Name="Time" Height="23" Width="100" Margin="388,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Time" Height="23" Width="218" Margin="388,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
 
 
 

@@ -65,7 +65,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Address.cs" />
-    <Compile Include="Commands\UpdateViewCommand.cs" />
     <Compile Include="CreateCustomer.xaml.cs">
       <DependentUpon>CreateCustomer.xaml</DependentUpon>
     </Compile>
@@ -81,11 +80,6 @@
     <Compile Include="Update_customer.xaml.cs">
       <DependentUpon>Update_customer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SendMessageViewModel.cs" />
-    <Compile Include="ViewModels\MessagesViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\CustomerViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="Views\SendMessageView.xaml.cs">
       <DependentUpon>SendMessageView.xaml</DependentUpon>
     </Compile>

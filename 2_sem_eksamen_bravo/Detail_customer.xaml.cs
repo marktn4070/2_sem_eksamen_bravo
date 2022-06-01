@@ -54,9 +54,9 @@ namespace _2_sem_eksamen_bravo
             C_Birth_txt.Content = customer.Birth;
             C_Phone_txt.Content = customer.Phone;
             C_Email_txt.Content = customer.Email;
-            Kommune.Content = customer.Kommune;
-            Vej.Content = customer.Vej;
-            //Zip.Content = customer.Zip;
+            Kommune.Content = customer.Municipality;
+            Vej.Content = customer.Road;
+            Zip.Content = customer.Zip;
 
             LoadGrid_Message();
             Refresh();

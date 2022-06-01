@@ -25,21 +25,32 @@
                 <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding Birth}"/>
                 <DataGridTextColumn Header="Mobil nr." Width="60" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="E-mail" Width="100" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Kommune" Width="65" Binding="{Binding Kommune}"/>
-                <DataGridTextColumn Header="Vej" Width="55" Binding="{Binding Vej}"/>
+                <DataGridTextColumn Header="Vej" Width="55" Binding="{Binding Road}"/>
+                <DataGridTextColumn Header="Postnr." Width="40" Binding="{Binding Zip}"/>
+                <DataGridTextColumn Header="Kommune" Width="65" Binding="{Binding Municipality}"/>
 
-                <DataGridTemplateColumn Header="Detaljer">
+                <DataGridTemplateColumn Header="Handling">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnView" Content="Detaljer" Click="btn_Detail_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
+                            <ComboBox Width="20">
+                                <ComboBoxItem Width="57">
+                                    <Button Name="btnView" Content="Detaljer" Click="btn_Detail_Click" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" Width="50"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem Width="57">
+                                    <Button Name="btnUpdate" Content="Opdater" Click="btn_Update_Click" Background="#FF5C5959" BorderBrush="#FF5C5959" Foreground="#FFF" Width="50"/>
+                                </ComboBoxItem>
+                                <ComboBoxItem Width="57">
+                                    <Button Name="btnDelete" Content="Slet" Click="btn_Delete_Click"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>
+                                </ComboBoxItem>
+                            </ComboBox>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
-                <DataGridTemplateColumn Header="Opdater">
+                <!--<DataGridTemplateColumn Header="Opdater">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="btnView" Content="Opdater" Click="btn_Update_Click" Background="#FF5C5959" BorderBrush="#FF5C5959" Foreground="#FFF" Width="50"/>
+                            <Button Name="btnUpdate" Content="Opdater" Click="btn_Update_Click" Background="#FF5C5959" BorderBrush="#FF5C5959" Foreground="#FFF" Width="50"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -50,7 +61,7 @@
                             <Button Name="btnDelete" Content="Slet" Click="btn_Delete_Click"  Background="#FF852B2B" Foreground="#FFFFFF" Width="50"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+                </DataGridTemplateColumn>-->
 
             </DataGrid.Columns>
         </DataGrid>

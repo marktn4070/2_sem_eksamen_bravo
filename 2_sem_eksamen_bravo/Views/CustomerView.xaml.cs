@@ -228,6 +228,8 @@ namespace _2_sem_eksamen_bravo.Views
             Clear();
         }
 
+
+
         //private void datagrid_customer()
         //{
 

@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using _2_sem_eksamen_bravo.ViewModels;
 
 
 namespace _2_sem_eksamen_bravo
@@ -39,24 +38,37 @@ namespace _2_sem_eksamen_bravo
                 MessageBox.Show(ex.Message);
             }
             InitializeComponent();
-            DataContext = new MainViewModel();
-            this.MainContent.Content = new ViewModels.CustomerViewModel();
+
+            string View = "/Views/CustomerView.xaml";
+            MainWindow_Loaded(View);
+
         }
+
+
 
         private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
-            this.MainContent.Content = new ViewModels.CustomerViewModel();
+            string View = "/Views/CustomerView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void Menu_Click_2(object sender, RoutedEventArgs e)
         {
-            this.MainContent.Content = new ViewModels.MessagesViewModel();
+            string View = "/Views/MessagesView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void Menu_Click_3(object sender, RoutedEventArgs e)
         {
-            this.MainContent.Content = new ViewModels.SendMessageViewModel();
+            string View = "/Views/SendMessageView.xaml";
+            MainWindow_Loaded(View);
         }
+
+        private void MainWindow_Loaded(string View)
+        {
+            this.mainFrame.Navigate(new Uri(View, UriKind.Relative));
+        }
+
 
         public static void ShowError(Exception ex)
         {

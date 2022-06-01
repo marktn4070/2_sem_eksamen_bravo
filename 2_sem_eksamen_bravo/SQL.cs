@@ -662,7 +662,8 @@ namespace _2_sem_eksamen_bravo
 
         public static string[] GetRoadAndMunicipalityNames(string roadCode) //james
         {
-            string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            //string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            string[] names = new string[3]; //første vejnavn, næste kommunenavn
             try
             {
                 SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -674,7 +675,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     names[0] = reader[1].ToString();
                     names[1] = reader[3].ToString();
-                    //names[2] = reader[2].ToString();
+                    names[2] = reader[2].ToString();
                 }
                 host.Close();
                 return names;
