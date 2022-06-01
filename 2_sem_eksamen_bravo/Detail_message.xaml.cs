@@ -48,10 +48,10 @@ namespace _2_sem_eksamen_bravo
                 Sms.IsChecked = true;
             }
             
-            Headline.Content = message.Headline;
-            Subheadline.Content = message.Subheadline;
-            Text.Content = message.Text;
-            Time.Content = message.Time;
+            Headline.Text = message.Headline;
+            Subheadline.Text = message.Subheadline;
+            Text.Text = message.Text;
+            Time.Text = message.Time;
             if (message.Email == true)
             {
                 Email.IsChecked = true;

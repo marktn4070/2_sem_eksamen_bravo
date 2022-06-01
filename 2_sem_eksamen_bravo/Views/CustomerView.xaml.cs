@@ -39,19 +39,12 @@ namespace _2_sem_eksamen_bravo.Views
             Clear();
         }
 
-
-
         private void Btn_OpenCreateCustomerWindow_Click(object sender, RoutedEventArgs e)
         {
             CreateCustomer Window = new CreateCustomer();
             Window.DataChanged += CreateCustomer_Created;
             Window.ShowDialog();
-
         }
-
-
-
-        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
 
         public CancelEventHandler Closing { get; private set; }
 
@@ -61,18 +54,11 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
 
-        
-
-
-
         private void Clear()
         {
             datagrid_customer.SelectedIndex = -1;
             LoadGrid_Customer();
         }
-
-
-
 
 
         public void LoadGrid_Customer()
@@ -88,12 +74,10 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
 
-
         private void datagrid_customer_changed(object sender, SelectionChangedEventArgs e)
         {
             int n = datagrid_customer.SelectedIndex;
         }
-
 
 
         private void btn_Update_Click(object sender, RoutedEventArgs e)
@@ -106,6 +90,7 @@ namespace _2_sem_eksamen_bravo.Views
                 win2.ShowDialog();
             }
         }
+
         private void btn_Detail_Click(object sender, RoutedEventArgs e)
         {
             int n = datagrid_customer.SelectedIndex;
@@ -123,7 +108,6 @@ namespace _2_sem_eksamen_bravo.Views
             param.Value = value;
             return param;
         }
-
 
 
 
@@ -153,9 +137,9 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
+
         private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
         {
-            //string name_txt = cb_Search.Text.ToString();
             string name_txt = cb_Search.Text.ToString();
 
             if (name_txt != string.Empty)
@@ -184,8 +168,6 @@ namespace _2_sem_eksamen_bravo.Views
                     Search_message.Foreground = Brushes.Black;
                 }
 
-
-
                 //ClearDataBtn.Visibility = Visibility.Visible;
                 //SearchDataBtn.Visibility = Visibility.Hidden;
 
@@ -202,17 +184,12 @@ namespace _2_sem_eksamen_bravo.Views
         {
             cb_Search.ItemsSource = SQL.GetCustomerName();
 
-
-
             //if (cb_Search.SelectedItem == null)
             //{
             //    // do something
             //    Search_test.Content = cb_Search.SelectedItem;
             //}
-
         }
-
-
 
 
         private void CreateCustomer_Created(object sender, EventArgs e)
@@ -228,8 +205,6 @@ namespace _2_sem_eksamen_bravo.Views
             Refresh();
             Clear();
         }
-
-
 
         //private void datagrid_customer()
         //{

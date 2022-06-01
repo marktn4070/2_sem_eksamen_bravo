@@ -87,57 +87,63 @@ namespace _2_sem_eksamen_bravo.Views
             if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate != null)
             {
                 DateTime SD = startDate_Search.SelectedDate.Value;
-                string startDate = SD.ToString("yyyy/MM/dd");
-                DateTime ED = endDate_Search.SelectedDate.Value;
-                string endDate = ED.ToString("yyyy/MM/dd");
-                try
+            string startDate = SD.ToString("yyyy/MM/dd");
+            DateTime ED = endDate_Search.SelectedDate.Value;
+            string endDate = ED.ToString("yyyy/MM/dd");
+            try
+            {
+                if (DateTime.Compare(SD, ED) <= 0)
                 {
-                    if (startDate != string.Empty && endDate != string.Empty)
+                    DataTable dt = SQL.SearchMessage(startDate, endDate);
+                    datagrid_message.ItemsSource = dt.DefaultView;
+                    //time_Search.Background = Brushes.Transparent;
+                    //string name_txt = name_txt;
+                    ////name_txt = "";
+
+                    int Search_items = datagrid_message.Items.Count;
+
+                    if (Search_items == 0)
                     {
-                        if (DateTime.Compare(SD, ED) <= 0)
-                        {
-                            DataTable dt = SQL.SearchMessage(startDate, endDate);
-                            datagrid_message.ItemsSource = dt.DefaultView;
-                            //time_Search.Background = Brushes.Transparent;
-                            //string name_txt = name_txt;
-                            ////name_txt = "";
-
-                            int Search_items = datagrid_message.Items.Count;
-
-                            if (Search_items == 0)
-                            {
-                                Search_message.Content = "Der er ingen resultater på din søgningen";
-                            }
-                            else if (Search_items > 0)
-                            {
-                                Search_message.Content = Search_items + " resultaterne af søgningen fra '" + startDate + "' til '" + endDate + "'";
-                                Search_message.Foreground = Brushes.Black;
-                            }
-                            //ClearDataBtn.Visibility = Visibility.Visible;
-                            //SearchDataBtn.Visibility = Visibility.Hidden;
-                        }
-                        else
-                        {
-                            //måske skal beskeden ændres
-                            throw new ArgumentException("slut datoerne er før start datoerne");
-                        }
+                    Search_message.Content = "Der er ingen resultater på din søgningen";
+                    }
+                    else if (Search_items == 1)
+                    {
+                    Search_message.Content = Search_items + " resultat af søgningen fra '" + startDate + "' til '" + endDate + "'";
+                    Search_message.Foreground = Brushes.Black;
+                    }
+                    else if (Search_items > 1)
+                    {
+                        Search_message.Content = Search_items + " resultater af søgningen fra '" + startDate + "' til '" + endDate + "'";
+                        Search_message.Foreground = Brushes.Black;
+                    }
+                    //ClearDataBtn.Visibility = Visibility.Visible;
+                    //SearchDataBtn.Visibility = Visibility.Hidden;
                     }
                     else
                     {
-                        Search_message.Content = "Der er ingen Dato sat i søgningsfelteterne";
+                        //måske skal beskeden ændres
+                        //throw new ArgumentException("slut datoerne er før start datoerne");
+                        Search_message.Content = "Slut datoen er før start datoen";
                         Search_message.Foreground = Brushes.Red;
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
+                    }
                 }
-            }
+                else if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate == null ||
+                startDate_Search.SelectedDate == null && endDate_Search.SelectedDate != null)
+                {
+                    Search_message.Content = "Der er ingen dato i en af søgningsfelteterne";
+                    Search_message.Foreground = Brushes.Red;
+                }
             else
             {
-
+                Search_message.Content = "Der er ingen dato i søgningsfelteterne";
+                Search_message.Foreground = Brushes.Red;
             }
-            
+
         }
 
 

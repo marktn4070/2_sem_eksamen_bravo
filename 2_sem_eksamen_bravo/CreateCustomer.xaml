@@ -29,7 +29,7 @@
         <TextBox Name="LastName_txt" HorizontalAlignment="Left" Margin="145,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="LastName_txt_TextChanged"/>
         <TextBox Name="Phone_txt" HorizontalAlignment="Left" Margin="145,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Phone_txt_TextChanged"/>
         <TextBox Name="Email_txt" HorizontalAlignment="Left" Margin="145,236,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Email_txt_TextChanged"/>
-        <DatePicker Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,296,0,0" VerticalAlignment="Top" Width="192"/>
+        <DatePicker Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,296,0,0" VerticalAlignment="Top" Width="192" SelectedDateChanged="Birthday_txt_TextChanged"/>
         <Label Content="Vælg vej:" Margin="40,495,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Vælg kommune:" Margin="40,429,0,0" Height="26" Width="105" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <ComboBox Name="Kommune" Height="23" Width="192" Margin="145,434,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged" IsTextSearchEnabled="True" IsEditable="True"/>
@@ -37,13 +37,13 @@
 
 
 
-        <TextBlock Name="FirstName__error" HorizontalAlignment="Left" Margin="145,74,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="FirstName__error" HorizontalAlignment="Left" Margin="145,73,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Name="LastName__error" HorizontalAlignment="Left" Margin="145,131,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Name="Phone__error" HorizontalAlignment="Left" Margin="145,193,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Name="Email__error" HorizontalAlignment="Left" Margin="145,253,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
-        <TextBlock Name="Birthday__error" HorizontalAlignment="Left" Margin="145,314,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Birthday__error" HorizontalAlignment="Left" Margin="145,318,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
 
-        <TextBlock Name="Gender__error" HorizontalAlignment="Left" Margin="145,370,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Gender__error" HorizontalAlignment="Left" Margin="145,362,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
 
         <TextBlock Name="Kommune__error" HorizontalAlignment="Left" Margin="145,457,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
 

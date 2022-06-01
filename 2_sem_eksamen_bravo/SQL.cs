@@ -197,7 +197,7 @@ namespace _2_sem_eksamen_bravo
                     SqlDataReader sdr = cmd.ExecuteReader();
                     while (sdr.Read())
                     {
-                        customer_list.Add(new Customer
+                        Customer currentCustomer = new Customer
                         {
                             CustomerID = sdr[0].ToString(),
                             FirstName = sdr[1].ToString(),
@@ -208,7 +208,9 @@ namespace _2_sem_eksamen_bravo
                             Phone = sdr[6].ToString(),
                             Email = sdr[7].ToString(),
                             RoadcodeID = sdr[8].ToString()
-                        });
+                        };
+                        currentCustomer.UpdateAddress();
+                        customer_list.Add(currentCustomer);
                     }
                 }
                 host.Close();
@@ -280,6 +282,7 @@ namespace _2_sem_eksamen_bravo
                         Time = sdr[4].ToString(),
                         Email = (bool)sdr[5],
                         Sms = (bool)sdr[6]
+
                     });
                 }
                 return message_list;

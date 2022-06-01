@@ -44,7 +44,7 @@ namespace _2_sem_eksamen_bravo
             // Dato feltet
             if (Birthday_txt.SelectedDate == null)
             {
-                Birthday__error.Text = "Fødseldags dato er ikke udfyldt";
+                Birthday__error.Text = "Fødselsdagsdato er ikke udfyldt";
             }
 
             // Køn feltet
@@ -235,7 +235,7 @@ namespace _2_sem_eksamen_bravo
             Email__error.Text = "";
         }
 
-        private void Birthyear_txt_TextChanged(object sender, TextChangedEventArgs e)
+        private void Birthday_txt_TextChanged(object sender, SelectionChangedEventArgs e)
         {
             Birthday__error.Text = "";
         }

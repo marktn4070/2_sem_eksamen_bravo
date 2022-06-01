@@ -13,42 +13,42 @@
         </Grid.RowDefinitions>
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Kunde Detaljer" VerticalAlignment="Top" Height="50" Margin="250,0"/>
-        <CheckBox Name="Registered" Content="Tilmeldt markedsføring emails" Height="20" Margin="119,134,313,286" IsEnabled="False" Grid.Row="1"/>
-        <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="139,46,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
-        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="134,102,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Mobil nr.:" HorizontalAlignment="Left" Margin="134,4,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.549,-0.695" Grid.Row="1"/>
-        <Label Content="Email:" HorizontalAlignment="Left" Margin="134,66,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
-        <Label Content="Fødselsdag:" HorizontalAlignment="Left" Margin="336,46,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Label Content="Køn:" HorizontalAlignment="Left" Margin="337,102,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.517,0.26"/>
+        <CheckBox Name="Registered" Content="Tilmeldt markedsføring emails" Height="20" Margin="109,132,323,288" IsEnabled="False" Grid.Row="1"/>
+        <Label Content="Fornavn:" HorizontalAlignment="Left" Margin="129,44,0,0" VerticalAlignment="Top" Width="105" FontWeight="Bold"/>
+        <Label Content="Efternavn:" HorizontalAlignment="Left" Margin="124,100,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Mobil nr.:" HorizontalAlignment="Left" Margin="124,2,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.549,-0.695" Grid.Row="1"/>
+        <Label Content="Email:" HorizontalAlignment="Left" Margin="124,64,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+        <Label Content="Fødselsdag:" HorizontalAlignment="Left" Margin="326,44,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Køn:" HorizontalAlignment="Left" Margin="327,100,0,0" VerticalAlignment="Top" FontWeight="Bold" RenderTransformOrigin="0.517,0.26"/>
 
-        <Label Content="Kommune:" HorizontalAlignment="Left" Margin="338,4,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
-        <Label Content="Vej:" HorizontalAlignment="Left" Margin="338,66,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
-        <Label Content="Zip:" HorizontalAlignment="Left" Margin="338,128,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+        <Label Content="Vej:" HorizontalAlignment="Left" Margin="328,2,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+        <Label Content="Post nr.:" HorizontalAlignment="Left" Margin="328,64,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
+        <Label Content="Kommune:" HorizontalAlignment="Left" Margin="328,126,0,0" VerticalAlignment="Top" FontWeight="Bold" Grid.Row="1"/>
 
-        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="341,128,0,0" VerticalAlignment="Top" GroupName="Gender" IsEnabled="False"/>
-        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="401,128,0,0" VerticalAlignment="Top" GroupName="Gender" RenderTransformOrigin="0.34,0.487" IsEnabled="False"/>
-        <RadioButton Name="Other" Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="465,128,0,0" VerticalAlignment="Top" GroupName="Gender" IsEnabled="False"/>
+        <RadioButton Name="Male" Content="Mand" HorizontalAlignment="Left" Margin="341,123,0,0" VerticalAlignment="Top" GroupName="Gender" IsEnabled="False"/>
+        <RadioButton Name="Female" Content="Kvinde" HorizontalAlignment="Left" Margin="401,123,0,0" VerticalAlignment="Top" GroupName="Gender" RenderTransformOrigin="0.34,0.487" IsEnabled="False"/>
+        <RadioButton Name="Other" Content="Vil ikke oplyse" HorizontalAlignment="Left" Margin="465,123,0,0" VerticalAlignment="Top" GroupName="Gender" IsEnabled="False"/>
 
-        <Label x:Name="C_firstName_txt" HorizontalAlignment="Left" Height="26" Margin="139,65,0,0" VerticalAlignment="Top" Width="192"/>
-        <Label x:Name="C_LastName_txt" HorizontalAlignment="Left" Height="26" Margin="139,121,0,0" VerticalAlignment="Top" Width="192"/>
-        <Label x:Name="C_Phone_txt" HorizontalAlignment="Left" Height="26" Margin="139,21,0,0" VerticalAlignment="Top" Width="192" Grid.Row="1"/>
-        <Label x:Name="C_Email_txt" HorizontalAlignment="Left" Height="26" Margin="139,84,0,0" VerticalAlignment="Top" Width="192" Grid.Row="1"/>
+        <TextBlock x:Name="C_firstName_txt" HorizontalAlignment="Left" Height="26" Margin="139,65,0,0" VerticalAlignment="Top" Width="192"/>
+        <TextBlock x:Name="C_LastName_txt" HorizontalAlignment="Left" Height="26" Margin="139,121,0,0" VerticalAlignment="Top" Width="192"/>
+        <TextBlock x:Name="C_Phone_txt" HorizontalAlignment="Left" Height="26" Margin="139,21,0,0" VerticalAlignment="Top" Width="192" Grid.Row="1"/>
+        <TextBlock x:Name="C_Email_txt" HorizontalAlignment="Left" Height="26" Margin="139,84,0,0" VerticalAlignment="Top" Width="192" Grid.Row="1"/>
 
-        <Label Name="C_Birth_txt" Height="26" Width="192" Margin="336,66,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Label Name="Kommune" Height="26" Width="217" Margin="338,21,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Content="" Grid.Row="1"/>
-        <Label Name="Vej" Height="26" Width="218" Margin="341,83,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  Content="" Grid.Row="1"/>
-        <Label Name="Zip" Height="26" Width="218" Margin="341,146,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  Content="" Grid.Row="1"/>
+        <TextBlock Name="C_Birth_txt" Height="26" Width="192" Margin="336,66,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <TextBlock Name="Vej" Height="26" Width="217" Margin="338,21,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1"/>
+        <TextBlock Name="Zip" Height="26" Width="218" Margin="341,83,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Row="1"/>
+        <TextBlock Name="Kommune" Height="26" Width="218" Margin="341,146,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  Grid.Row="1"/>
 
 
         <Label FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Content="Beskeder i indbakke" VerticalAlignment="Top" Height="50" Margin="220,194,230,0" Width="200" Grid.Row="1"/>
 
-        <DataGrid x:Name="datagrid_message" HorizontalAlignment="Left" Width="600" Height="150" Margin="20,236,0,54" AutoGenerateColumns="False" CanUserAddRows="False"
+        <DataGrid x:Name="datagrid_message" HorizontalAlignment="Left" Width="620" Height="150" Margin="10,236,0,54" AutoGenerateColumns="False" CanUserAddRows="False"
                 IsReadOnly="True" SelectionMode="Single"  SelectionChanged="datagrid_message_changed" Grid.Row="1" >
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="30" Binding="{Binding MessageID}"/>
                 <DataGridTextColumn Header="Overskrift" Width="120" Binding="{Binding Headline}"/>
-                <DataGridTextColumn Header="Underoverskrift" Width="190" Binding="{Binding Subheadline}"/>
+                <DataGridTextColumn Header="Underoverskrift" Width="210" Binding="{Binding Subheadline}"/>
                 <DataGridTextColumn Header="Tid" Width="115" Binding="{Binding Time}"/>
                 <DataGridTextColumn Header="E-mail" Width="45" Binding="{Binding Email}"/>
                 <DataGridTextColumn Header="Sms" Width="35" Binding="{Binding Sms}"/>

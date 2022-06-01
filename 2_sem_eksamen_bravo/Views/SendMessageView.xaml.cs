@@ -52,7 +52,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
             else
             {
-                MessageBox.Show("Mangler at udfylde tekstbox og eller at vælge en besked type");
+                MessageBox.Show("Mangler at udfylde tekstbox og/eller at vælge en besked type");
                 //warning måske lave de dårlige felter røde
             }
         }

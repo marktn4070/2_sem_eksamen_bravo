@@ -36,8 +36,8 @@ namespace _2_sem_eksamen_bravo
             InitializeComponent();
 
             currentID = customer.CustomerID;
-            C_firstName_txt.Content = customer.FirstName;
-            C_LastName_txt.Content = customer.LastName;
+            C_firstName_txt.Text = customer.FirstName;
+            C_LastName_txt.Text = customer.LastName;
             Registered.IsChecked = customer.Registered;
             if (customer.Gender == "Male")
             {
@@ -51,12 +51,12 @@ namespace _2_sem_eksamen_bravo
             {
                 Other.IsChecked = true;
             }
-            C_Birth_txt.Content = customer.Birth;
-            C_Phone_txt.Content = customer.Phone;
-            C_Email_txt.Content = customer.Email;
-            Kommune.Content = customer.Municipality;
-            Vej.Content = customer.Road;
-            Zip.Content = customer.Zip;
+            C_Birth_txt.Text = customer.Birth;
+            C_Phone_txt.Text = customer.Phone;
+            C_Email_txt.Text = customer.Email;
+            Kommune.Text = customer.Municipality;
+            Vej.Text = customer.Road;
+            Zip.Text = customer.Zip;
 
             LoadGrid_Message();
             Refresh();

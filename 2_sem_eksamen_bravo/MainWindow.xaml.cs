@@ -37,51 +37,49 @@ namespace _2_sem_eksamen_bravo
             {
                 MessageBox.Show(ex.Message);
             }
+
             InitializeComponent();
+
+            Menu_CustomerView.BorderBrush = Brushes.Black;
 
             string View = "/Views/CustomerView.xaml";
             MainWindow_Loaded(View);
-            Menu_CustomerView.BorderBrush = Brushes.Black;
         }
-
 
 
         private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
-            string View = "/Views/CustomerView.xaml";
-            MainWindow_Loaded(View);
             Menu_CustomerView.BorderBrush = Brushes.Black;
             Menu_MessagesView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
             Menu_SendMessageView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+
+            string View = "/Views/CustomerView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void Menu_Click_2(object sender, RoutedEventArgs e)
         {
-            string View = "/Views/MessagesView.xaml";
-            MainWindow_Loaded(View);
             Menu_MessagesView.BorderBrush = Brushes.Black;
             Menu_CustomerView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
             Menu_SendMessageView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+
+            string View = "/Views/MessagesView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void Menu_Click_3(object sender, RoutedEventArgs e)
         {
-            string View = "/Views/SendMessageView.xaml";
-            MainWindow_Loaded(View);
             Menu_SendMessageView.BorderBrush = Brushes.Black;
             Menu_MessagesView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
             Menu_CustomerView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+
+            string View = "/Views/SendMessageView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void MainWindow_Loaded(string View)
         {
             this.mainFrame.Navigate(new Uri(View, UriKind.Relative));
-        }
-
-
-        public static void ShowError(Exception ex)
-        {
-            MessageBox.Show(ex.Message);
         }
     }
 }

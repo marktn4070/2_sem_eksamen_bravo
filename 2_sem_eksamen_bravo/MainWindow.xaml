@@ -8,14 +8,9 @@
         Title="Hjem Is" Height="600" Width="800" MaxHeight="600" MaxWidth="800">
     <Grid Height="600" Width="800" >
 
-        <!--<ContentControl Name="MainContent" Content="{Binding SelectedViewModel}" Margin="0,80,-0.4,0"/>-->
 
         <Frame x:Name="mainFrame" 
                NavigationUIVisibility="Hidden" Margin="0,65,0,0"/>
-        <!--<Frame x:Name="mainFrame_2" 
-               NavigationUIVisibility="Hidden"/>
-        <Frame x:Name="mainFrame_3" 
-               NavigationUIVisibility="Hidden"/>-->
         <Grid Height="65" Width="800" VerticalAlignment="top" Background="#f0f0f0">
 
 
