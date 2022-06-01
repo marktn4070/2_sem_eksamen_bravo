@@ -674,6 +674,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     names[0] = reader[1].ToString();
                     names[1] = reader[3].ToString();
+                    //names[2] = reader[2].ToString();
                 }
                 host.Close();
                 return names;

@@ -25,7 +25,7 @@
         <Label Content="Vælg vej:" Margin="384,190,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Content="Vælg kommune:" Margin="384,136,0,0" Height="25" Width="100" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label Name="Kommune" Height="23" Width="100" Margin="384,161,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"  IsEnabled="False" Content="Mangler SELECT"/>
-        <Label Name="Vej" Height="23" Width="100" Margin="384,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="Mangler SELECT"/>
+        <Label Name="Vej" Height="23" Width="100" Margin="384,215,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsEnabled="False" Content="{Binding RoadcodeID}"/>
         <Label x:Name="Text" Height="23" Width="100" Margin="148,217,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label Content="Tid:" Margin="388,87,0,0" Height="25" Width="60" VerticalAlignment="Top" HorizontalAlignment="Left" FontWeight="Bold"/>
         <Label x:Name="Time" Height="23" Width="100" Margin="388,113,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>

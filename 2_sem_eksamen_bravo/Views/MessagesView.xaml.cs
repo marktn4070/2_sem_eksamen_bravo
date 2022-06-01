@@ -38,13 +38,6 @@ namespace _2_sem_eksamen_bravo.Views
             Clear();
         }
 
-
-
-
-
-
-        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
-
         public CancelEventHandler Closing { get; private set; }
 
         private void Refresh()
@@ -53,19 +46,11 @@ namespace _2_sem_eksamen_bravo.Views
         }
 
 
-
-
-
-
         private void Clear()
         {
             datagrid_message.SelectedIndex = -1;
             LoadGrid_Message();
         }
-
-
-
-
 
         public void LoadGrid_Message()
         {
@@ -79,13 +64,10 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
-
-
         private void datagrid_message_changed(object sender, SelectionChangedEventArgs e)
         {
             int n = datagrid_message.SelectedIndex;
         }
-
 
 
         private void btn_Detail_Click(object sender, RoutedEventArgs e)
@@ -98,8 +80,6 @@ namespace _2_sem_eksamen_bravo.Views
                 win2.ShowDialog();
             }
         }
-
-
     
 
         private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
@@ -131,7 +111,6 @@ namespace _2_sem_eksamen_bravo.Views
                             Search_message.Content = Search_items + " resultaterne af søgningen fra '" + startDate + "' til '" + endDate + "'";
                             Search_message.Foreground = Brushes.Black;
                         }
-
                         //ClearDataBtn.Visibility = Visibility.Visible;
                         //SearchDataBtn.Visibility = Visibility.Hidden;
                     }
@@ -153,20 +132,6 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
-
-
-
-
-
-
-
-
-
-
-
-        private void Button_Click_22(object sender, RoutedEventArgs e)
-        {
-        }
 
 
 
@@ -203,6 +168,5 @@ namespace _2_sem_eksamen_bravo.Views
             Subheadline = subheadline;
             Time = time;
         }
-
     }
 }

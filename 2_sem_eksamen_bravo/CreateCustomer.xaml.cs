@@ -47,10 +47,6 @@ namespace _2_sem_eksamen_bravo
                 Birthday__error.Text = "Fødseldags dato er ikke udfyldt";
             }
 
-
-            
-
-
             // Køn feltet
             if (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked)
             {
@@ -69,7 +65,6 @@ namespace _2_sem_eksamen_bravo
                 Vej__error.Text = "Vejnavn skal vælges";
             }
 
-
             // Fornavn feltet
             if (FirstName_txt.Text == string.Empty)
             {
@@ -80,7 +75,6 @@ namespace _2_sem_eksamen_bravo
                 FirstName__error.Text = "Vær venligst at indtaste bogstaver ved 'Fornavn'";
             }
 
-
             // Efternavn feltet
             if (LastName_txt.Text == string.Empty)
             {
@@ -90,7 +84,6 @@ namespace _2_sem_eksamen_bravo
             {
                 LastName__error.Text = "Vær venligst at indtaste bogstaver ved 'Efternavn'";
             }
-
 
             // Email feltet
             if (Email_txt.Text == string.Empty)
@@ -142,8 +135,6 @@ namespace _2_sem_eksamen_bravo
                 int phone = 0;
                 if (IsValid())
                 {
-
-
                     string gender = "";
 
                     if ((bool)Male.IsChecked)
@@ -159,8 +150,16 @@ namespace _2_sem_eksamen_bravo
                         gender = "Other";
                     }
 
+
+                    string birthday = "";
+                    if (Birthday_txt.SelectedDate != null)
+                    {
+                        DateTime SD = Birthday_txt.SelectedDate.Value;
+                        birthday = SD.ToString("yyyy/MM/dd");
+                    }
+
                     phone = int.Parse(Phone_txt.Text.Trim());
-                    SQL.RegisterCustomer(FirstName_txt.Text.Trim(), LastName_txt.Text.Trim(), (bool)Registered.IsChecked, gender, Birthday_txt.ToString(), phone, Email_txt.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
+                    SQL.RegisterCustomer(FirstName_txt.Text.Trim(), LastName_txt.Text.Trim(), (bool)Registered.IsChecked, gender, birthday, phone, Email_txt.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
                     MessageBox.Show("Kunde oprettet!");
                     ClearAll();
                 }

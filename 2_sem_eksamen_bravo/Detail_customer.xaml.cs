@@ -56,6 +56,7 @@ namespace _2_sem_eksamen_bravo
             C_Email_txt.Content = customer.Email;
             Kommune.Content = customer.Kommune;
             Vej.Content = customer.Vej;
+            //Zip.Content = customer.Zip;
 
             LoadGrid_Message();
             Refresh();
