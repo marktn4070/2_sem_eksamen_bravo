@@ -18,18 +18,18 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Width="30" Binding="{Binding CustomerID}"/>
-                <DataGridTextColumn Header="Fornavn" Width="50" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Fornavn" Width="60" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Efternavn" Width="70" Binding="{Binding LastName}"/>
-                <DataGridTextColumn Header="Tilmeldt" Width="55" Binding="{Binding Registered}"/>
+                <DataGridTextColumn Header="Tilmeldt" Width="52" Binding="{Binding Registered}"/>
                 <DataGridTextColumn Header="Køn" Width="45" Binding="{Binding Gender}"/>
                 <DataGridTextColumn Header="Fødselsdag" Width="70" Binding="{Binding Birth}"/>
                 <DataGridTextColumn Header="Mobil nr." Width="60" Binding="{Binding Phone}"/>
                 <DataGridTextColumn Header="E-mail" Width="100" Binding="{Binding Email}"/>
-                <DataGridTextColumn Header="Vej" Width="55" Binding="{Binding Road}"/>
-                <DataGridTextColumn Header="Postnr." Width="40" Binding="{Binding Zip}"/>
+                <DataGridTextColumn Header="Vej" Width="120" Binding="{Binding Road}"/>
+                <DataGridTextColumn Header="Post nr." Width="50" Binding="{Binding Zip}"/>
                 <DataGridTextColumn Header="Kommune" Width="65" Binding="{Binding Municipality}"/>
 
-                <DataGridTemplateColumn Header="Handling">
+                <DataGridTemplateColumn Header="Knap">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ComboBox Width="20">
@@ -65,15 +65,15 @@
 
             </DataGrid.Columns>
         </DataGrid>
-               
-
-        
 
 
-        
-        <Label Name="Search_message" Content="Søg efter 'Fornavn' og 'Efternavn'" Margin="474,71,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
-        <ComboBox Name="cb_Search"  Height="23" Width="206" Margin="484,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" Background = "Transparent"/>
-        <Button Content="Søg" Margin="708,102,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
+
+
+
+
+        <Label Name="Search_message" Content="Søg efter 'Fornavn' og 'Efternavn'" Margin="484,111,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
+        <ComboBox Name="cb_Search"  Height="23" Width="206" Margin="484,92,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" Background = "Transparent"/>
+        <Button Content="Søg" Margin="708,92,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
 
 
     </Grid>
