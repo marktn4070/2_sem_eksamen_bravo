@@ -19,6 +19,7 @@ namespace _2_sem_eksamen_bravo
         public string RoadcodeID { get; set; }
         public string Kommune { get; set; }
         public string Vej { get; set; }
+        public string Zip { get; set; }
 
         public void UpdateAddress()
         {
