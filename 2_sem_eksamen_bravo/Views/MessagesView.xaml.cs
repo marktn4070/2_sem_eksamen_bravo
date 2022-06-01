@@ -84,52 +84,60 @@ namespace _2_sem_eksamen_bravo.Views
 
         private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
         {
-            DateTime SD = startDate_Search.SelectedDate.Value;
-            string startDate = SD.ToString("yyyy/MM/dd");
-            DateTime ED = endDate_Search.SelectedDate.Value;
-            string endDate = ED.ToString("yyyy/MM/dd");
-            try
+            if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate != null)
             {
-                if (startDate != string.Empty && endDate != string.Empty)
+                DateTime SD = startDate_Search.SelectedDate.Value;
+                string startDate = SD.ToString("yyyy/MM/dd");
+                DateTime ED = endDate_Search.SelectedDate.Value;
+                string endDate = ED.ToString("yyyy/MM/dd");
+                try
                 {
-                    if (DateTime.Compare(SD, ED) <= 0)
+                    if (startDate != string.Empty && endDate != string.Empty)
                     {
-                        DataTable dt = SQL.SearchMessage(startDate, endDate);
-                        datagrid_message.ItemsSource = dt.DefaultView;
-                        //time_Search.Background = Brushes.Transparent;
-                        //string name_txt = name_txt;
-                        ////name_txt = "";
-
-                        int Search_items = datagrid_message.Items.Count;
-
-                        if (Search_items == 0)
+                        if (DateTime.Compare(SD, ED) <= 0)
                         {
-                            Search_message.Content = "Der er ingen resultater på din søgningen";
+                            DataTable dt = SQL.SearchMessage(startDate, endDate);
+                            datagrid_message.ItemsSource = dt.DefaultView;
+                            //time_Search.Background = Brushes.Transparent;
+                            //string name_txt = name_txt;
+                            ////name_txt = "";
+
+                            int Search_items = datagrid_message.Items.Count;
+
+                            if (Search_items == 0)
+                            {
+                                Search_message.Content = "Der er ingen resultater på din søgningen";
+                            }
+                            else if (Search_items > 0)
+                            {
+                                Search_message.Content = Search_items + " resultaterne af søgningen fra '" + startDate + "' til '" + endDate + "'";
+                                Search_message.Foreground = Brushes.Black;
+                            }
+                            //ClearDataBtn.Visibility = Visibility.Visible;
+                            //SearchDataBtn.Visibility = Visibility.Hidden;
                         }
-                        else if (Search_items > 0)
+                        else
                         {
-                            Search_message.Content = Search_items + " resultaterne af søgningen fra '" + startDate + "' til '" + endDate + "'";
-                            Search_message.Foreground = Brushes.Black;
+                            //måske skal beskeden ændres
+                            throw new ArgumentException("slut datoerne er før start datoerne");
                         }
-                        //ClearDataBtn.Visibility = Visibility.Visible;
-                        //SearchDataBtn.Visibility = Visibility.Hidden;
                     }
                     else
                     {
-                        //måske skal beskeden ændres
-                        throw new ArgumentException("slut datoerne er før start datoerne");
+                        Search_message.Content = "Der er ingen Dato sat i søgningsfelteterne";
+                        Search_message.Foreground = Brushes.Red;
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Search_message.Content = "Der er ingen Dato sat i søgningsfelteterne";
-                    Search_message.Foreground = Brushes.Red;
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
+
             }
+            
         }
 
 
