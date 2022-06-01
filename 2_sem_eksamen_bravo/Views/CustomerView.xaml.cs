@@ -160,12 +160,13 @@ namespace _2_sem_eksamen_bravo.Views
 
             if (name_txt != string.Empty)
             {
-                Clear(); //?
+                
                 Customer_list = SQL.SearchCustomer(name_txt);
                 //cb_Search.Background = Brushes.Transparent;
                 //string name_txt = name_txt;
                 ////name_txt = "";
 
+                datagrid_customer.ItemsSource = Customer_list;
                 int Search_items = datagrid_customer.Items.Count;
 
                 if (Search_items == 0)
