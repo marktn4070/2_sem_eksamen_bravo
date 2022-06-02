@@ -145,42 +145,5 @@ namespace _2_sem_eksamen_bravo.Views
             }
 
         }
-
-
-
-
-        SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-
-        public void GetMMessage_not_done()
-        {
-            //List<string> Headline = SQL.GetMMessage_2();
-            var products = new List<Product>();
-
-            for (int i = 0; i < 5; i++)
-            {
-                int j = i + 1;
-                //products.Add(new Product("Product 1", 205.46, "/Assets/1.jpg"));
-                products.Add(new Product("Headline " + j, "Subheadline", "Time"));
-            }
-
-            //if (products.Count > 0)
-                //ListViewProducts.ItemsSource = products;
-        }
-    }
-
-
-
-    public class Product
-    {
-        public string Headline_Btn { get; set; }
-        public string Subheadline { get; set; }
-        public string Time { get; set; }
-
-        public Product(string headline_btn, string subheadline, string time)
-        {
-            Headline_Btn = headline_btn;
-            Subheadline = subheadline;
-            Time = time;
-        }
     }
 }
