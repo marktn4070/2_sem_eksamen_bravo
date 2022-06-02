@@ -86,7 +86,7 @@ namespace _2_sem_eksamen_bravo.Views
         {
             if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate != null)
             {
-                DateTime SD = startDate_Search.SelectedDate.Value;
+            DateTime SD = startDate_Search.SelectedDate.Value;
             string startDate = SD.ToString("yyyy/MM/dd");
             DateTime ED = endDate_Search.SelectedDate.Value;
             string endDate = ED.ToString("yyyy/MM/dd");
