@@ -117,6 +117,7 @@ namespace _2_sem_eksamen_bravo.Views
                 try
                 {
                     SQL.DeleteCustomer(selected_id);
+                    LoadGrid_Customer();
                     Refresh();
                     Clear();
                 }
