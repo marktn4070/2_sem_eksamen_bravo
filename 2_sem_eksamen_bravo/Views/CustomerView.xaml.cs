@@ -102,15 +102,6 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
-        private SqlParameter CreateParam(string name, object value, SqlDbType type)
-        {
-            SqlParameter param = new SqlParameter(name, type);
-            param.Value = value;
-            return param;
-        }
-
-
-
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
             string selected_id = Customer_list[datagrid_customer.SelectedIndex].CustomerID;
@@ -169,10 +160,6 @@ namespace _2_sem_eksamen_bravo.Views
                     Search_message.Content = Search_items + " resultater på søgningen af '" + name_txt + "'";
                     Search_message.Foreground = Brushes.Black;
                 }
-
-                //ClearDataBtn.Visibility = Visibility.Visible;
-                //SearchDataBtn.Visibility = Visibility.Hidden;
-
             }
             else
             {
@@ -185,12 +172,6 @@ namespace _2_sem_eksamen_bravo.Views
         private void cb_LoadName() //Kevin
         {
             cb_Search.ItemsSource = SQL.GetCustomerName();
-
-            //if (cb_Search.SelectedItem == null)
-            //{
-            //    // do something
-            //    Search_test.Content = cb_Search.SelectedItem;
-            //}
         }
 
 
@@ -207,10 +188,5 @@ namespace _2_sem_eksamen_bravo.Views
             Refresh();
             Clear();
         }
-
-        //private void datagrid_customer()
-        //{
-
-        //}
     }
 }
