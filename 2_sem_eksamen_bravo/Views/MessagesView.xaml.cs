@@ -130,14 +130,14 @@ namespace _2_sem_eksamen_bravo.Views
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                    }
                 }
-                else if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate == null ||
-                startDate_Search.SelectedDate == null && endDate_Search.SelectedDate != null)
-                {
-                    Search_message.Content = "Der er ingen dato i en af søgningsfelteterne";
-                    Search_message.Foreground = Brushes.Red;
-                }
+            }
+            else if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate == null ||
+            startDate_Search.SelectedDate == null && endDate_Search.SelectedDate != null)
+            {
+                Search_message.Content = "Der er ingen dato i en af søgningsfelteterne";
+                Search_message.Foreground = Brushes.Red;
+            }
             else
             {
                 Search_message.Content = "Der er ingen dato i søgningsfelteterne";
