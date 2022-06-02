@@ -86,51 +86,11 @@ namespace _2_sem_eksamen_bravo
 
         public bool IsValid()
         {
-            //if (Birthday_txt.Text.Trim().Length == 2 && Birthmonth_txt.Text.Trim().Length == 2 && Birthyear_txt.Text.Trim().Length == 4)
-            //{
-            //    MessageBox.Show("Dato skal være i format 31-12-2000", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return false;
-            //}
-
-
-
-            // Dato feltet
+           // Dato feltet
             if (Birthday_txt.Text == string.Empty)
             {
                 Birthday__error.Text = "Fødselsdagsdato er ikke udfyldt";
             }
-
-
-            //// Dato feltet
-            //if (Birthday_txt.Text == string.Empty)
-            //{
-            //    Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
-            //}
-
-
-            //// Måned feltet
-            //else if (Birthmonth_txt.Text == string.Empty)
-            //{
-            //    Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
-            //}
-
-
-            //// År feltet
-            //else if (Birthyear_txt.Text == string.Empty)
-            //{
-            //    Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
-            //}
-
-
-
-
-            ////DateTime.Now.Date
-            //else if (int.Parse(Birthday_txt.Text) < 1 || int.Parse(Birthday_txt.Text) > 31 || int.Parse(Birthmonth_txt.Text) < 1 || int.Parse(Birthmonth_txt.Text) > 12 || int.Parse(Birthyear_txt.Text) < 1850)
-            //{
-            //    Birthday__error.Text = "Invalid dato!";
-            //}
-
-
             // Køn feltet
             if (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked)
             {
@@ -148,7 +108,6 @@ namespace _2_sem_eksamen_bravo
             {
                 Vej__error.Text = "Vejnavn skal vælges";
             }
-
 
             // Fornavn feltet
             if (FirstName_txt.Text == string.Empty)
