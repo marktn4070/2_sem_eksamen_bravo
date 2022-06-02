@@ -33,15 +33,7 @@ namespace _2_sem_eksamen_bravo
 
 
         public bool IsValid()
-        {
-            //if (Birthday_txt.Text.Trim().Length == 2 && Birthmonth_txt.Text.Trim().Length == 2 && Birthyear_txt.Text.Trim().Length == 4)
-            //{
-            //    MessageBox.Show("Dato skal være i format 31-12-2000", "Failed", MessageBoxButton.OK, MessageBoxImage.Error);
-            //    return false;
-            //}
-
-
-            // Dato feltet
+        {   // Dato feltet
             if (Birthday_txt.SelectedDate == null)
             {
                 Birthday__error.Text = "Fødselsdagsdato er ikke udfyldt";
