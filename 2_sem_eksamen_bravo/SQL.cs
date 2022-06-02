@@ -14,7 +14,7 @@ namespace _2_sem_eksamen_bravo
 {
     static class SQL 
     {
-        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object roadName) //james
+        public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object kommuneName, object roadName) //james
         {
             int addedMessagesId = 0;
             int howManyReceived = 0;
@@ -76,17 +76,7 @@ namespace _2_sem_eksamen_bravo
                 int roadCode = -1;
                 try //get roadcode
                 {
-
-                    SqlCommand cmd = new SqlCommand(
-                   string.Format("SELECT * FROM Address WHERE Road LIKE @Road"),
-                   cnct);
-                    cmd.Parameters.Add(CreateParam("@Road", roadName, SqlDbType.NVarChar));
-                    cnct.Open();
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    while (reader.Read())
-                    {
-                        roadCode = (int)reader[0];
-                    }
+                    roadCode = GetRoadCode(kommuneName.ToString(), roadName.ToString());
                 }
                 catch (Exception)
                 {
@@ -103,9 +93,9 @@ namespace _2_sem_eksamen_bravo
                 {
                     cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
                     SqlCommand command = null;
-                    if (email) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
+                    if (email && !sms) //gemmer kun for dem der ikke har email hvis email allerede er blevet gemt i historik
                     {
-                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 0 AND RoadcodeID LIKE {0};", roadCode), cnct);
+                        command = new SqlCommand(string.Format("SELECT * FROM Customer WHERE Registered LIKE 1 AND RoadcodeID LIKE {0};", roadCode), cnct);
                     }
                     else 
                     {
@@ -157,7 +147,7 @@ namespace _2_sem_eksamen_bravo
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
-                    customer_list.Add(new Customer
+                    Customer currentCustomer = new Customer
                     {
                         CustomerID = sdr[0].ToString(),
                         FirstName = sdr[1].ToString(),
@@ -168,11 +158,14 @@ namespace _2_sem_eksamen_bravo
                         Phone = sdr[6].ToString(),
                         Email = sdr[7].ToString(),
                         RoadcodeID = sdr[8].ToString()
-                    });
+                    };
+                    currentCustomer.UpdateAddress();
+                    customer_list.Add(currentCustomer);
                 }
+                host.Close();
                 return customer_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -204,7 +197,7 @@ namespace _2_sem_eksamen_bravo
                     SqlDataReader sdr = cmd.ExecuteReader();
                     while (sdr.Read())
                     {
-                        customer_list.Add(new Customer
+                        Customer currentCustomer = new Customer
                         {
                             CustomerID = sdr[0].ToString(),
                             FirstName = sdr[1].ToString(),
@@ -215,9 +208,12 @@ namespace _2_sem_eksamen_bravo
                             Phone = sdr[6].ToString(),
                             Email = sdr[7].ToString(),
                             RoadcodeID = sdr[8].ToString()
-                        });
+                        };
+                        currentCustomer.UpdateAddress();
+                        customer_list.Add(currentCustomer);
                     }
                 }
+                host.Close();
                 return customer_list;
             }
             catch (Exception)
@@ -227,18 +223,35 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        public static DataTable SearchCustomer(string name) //Mark
+        public static List<Customer> SearchCustomer(string name) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
+                List<Customer> customer_list = new List<Customer>();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name + "%' or FirstName like '%" + name + "%' or LastName like '%" + name + "%'", host);
                 DataTable dt = new DataTable();
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
-                dt.Load(sdr);
+                while (sdr.Read())
+                {
+                    Customer currentCustomer = new Customer
+                    {
+                        CustomerID = sdr[0].ToString(),
+                        FirstName = sdr[1].ToString(),
+                        LastName = sdr[2].ToString(),
+                        Registered = (bool)sdr[3],
+                        Gender = sdr[4].ToString(),
+                        Birth = sdr[5].ToString(),
+                        Phone = sdr[6].ToString(),
+                        Email = sdr[7].ToString(),
+                        RoadcodeID = sdr[8].ToString()
+                    };
+                    currentCustomer.UpdateAddress();
+                    customer_list.Add(currentCustomer);
+                }
                 host.Close();
-                return dt;
+                return customer_list;
             }
             catch (Exception)
             {
@@ -269,11 +282,12 @@ namespace _2_sem_eksamen_bravo
                         Time = sdr[4].ToString(),
                         Email = (bool)sdr[5],
                         Sms = (bool)sdr[6]
+
                     });
                 }
                 return message_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -670,7 +684,8 @@ namespace _2_sem_eksamen_bravo
 
         public static string[] GetRoadAndMunicipalityNames(string roadCode) //james
         {
-            string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            //string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            string[] names = new string[3]; //første vejnavn, næste kommunenavn
             try
             {
                 SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -682,6 +697,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     names[0] = reader[1].ToString();
                     names[1] = reader[3].ToString();
+                    names[2] = reader[2].ToString();
                 }
                 host.Close();
                 return names;

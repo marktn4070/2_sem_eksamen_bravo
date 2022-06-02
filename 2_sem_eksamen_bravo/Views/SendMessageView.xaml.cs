@@ -41,7 +41,7 @@ namespace _2_sem_eksamen_bravo.Views
                 }
                 if ((((bool)Sms.IsChecked && Vej.SelectedItem != null) || (!(bool)Sms.IsChecked) || ((bool)EmailGeo.IsChecked) && Vej.SelectedItem != null))
                 {
-                    int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked, (bool)EmailGeo.IsChecked, Vej.SelectedItem);
+                    int howManyReceived = MessageEmulator.SaveMessage(Headline.Text, Subheadline.Text, Message.Text, (bool)Sms.IsChecked, (bool)Email.IsChecked, (bool)EmailGeo.IsChecked, Kommune.SelectedItem, Vej.SelectedItem);
                     ClearAll();
                     MessageBox.Show(string.Format("Sendt til {0} modtagere!", howManyReceived));
                 }
@@ -52,7 +52,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
             else
             {
-                MessageBox.Show("Mangler at udfylde tekstbox og eller at vælge en besked type");
+                MessageBox.Show("Mangler at udfylde tekstbox og/eller at vælge en besked type");
                 //warning måske lave de dårlige felter røde
             }
         }

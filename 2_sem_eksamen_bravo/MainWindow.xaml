@@ -8,15 +8,16 @@
         Title="Hjem Is" Height="600" Width="800" MaxHeight="600" MaxWidth="800">
     <Grid Height="600" Width="800" >
 
-        <ContentControl Name="MainContent" Content="{Binding SelectedViewModel}" Margin="0,80,-0.4,0"/>
 
+        <Frame x:Name="mainFrame" 
+               NavigationUIVisibility="Hidden" Margin="0,65,0,0"/>
         <Grid Height="65" Width="800" VerticalAlignment="top" Background="#f0f0f0">
 
 
             <StackPanel Orientation="Horizontal" Height="30" HorizontalAlignment="Center" VerticalAlignment="top" Margin="0 15 0 0">
-                <Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Kunder" Command="{Binding UpdateViewCommand}" CommandParameter="Customer" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_1"/>
-                <Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Beskeder" Command="{Binding UpdateViewCommand}" CommandParameter="Messages" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_2"/>
-                <Button HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Send besked" Command="{Binding UpdateViewCommand}" CommandParameter="SendMessage" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_3"/>
+                <Button x:Name="Menu_CustomerView" HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Kunder" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_1"/>
+                <Button x:Name="Menu_MessagesView" HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Beskeder" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_2"/>
+                <Button x:Name="Menu_SendMessageView" HorizontalAlignment="Center" Margin="0" Width="100" Height="30" Content="Send besked" VerticalAlignment="Bottom" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" FontWeight="Bold" Click="Menu_Click_3"/>
             </StackPanel>
         </Grid>
 
