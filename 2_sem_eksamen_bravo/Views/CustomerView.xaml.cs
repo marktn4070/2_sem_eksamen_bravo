@@ -114,7 +114,9 @@ namespace _2_sem_eksamen_bravo.Views
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
             string selected_id = Customer_list[datagrid_customer.SelectedIndex].CustomerID;
-            string selected_name = Customer_list[datagrid_customer.SelectedIndex].FirstName;
+            string selected_firstname = Customer_list[datagrid_customer.SelectedIndex].FirstName;
+            string selected_lastname = Customer_list[datagrid_customer.SelectedIndex].LastName;
+            string selected_name = selected_firstname + " " + selected_lastname;
             int n = datagrid_customer.SelectedIndex;
 
             var Result = MessageBox.Show("Er du sikker på, at du vil slette kunden '" + selected_name + "'?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning);
