@@ -18,6 +18,7 @@ namespace _2_sem_eksamen_bravo.Views
     /// <summary>
     /// Interaction logic for SendMessageView.xaml
     /// </summary>
+    #region Coded by James
     public partial class SendMessageView : UserControl
     {
         public SendMessageView()
@@ -114,4 +115,5 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
     }
+    #endregion
 }

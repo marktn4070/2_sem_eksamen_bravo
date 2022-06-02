@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2_sem_eksamen_bravo
 {
+    #region Coded by Kevin
     public class Address
     {
         public int RoadcodeID { get; set; }
@@ -13,4 +14,5 @@ namespace _2_sem_eksamen_bravo
         public int Zip { get; set; }
         public string Municipality { get; set; }
     }
+    #endregion
 }

@@ -29,24 +29,13 @@ namespace _2_sem_eksamen_bravo
     {
         public MainWindow()
         {
-            try
-            {
-                SQL.AdresseImpoter();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
+            Adressimport();
             InitializeComponent();
-
             Menu_CustomerView.BorderBrush = Brushes.Black;
-
-            string View = "/Views/CustomerView.xaml";
-            MainWindow_Loaded(View);
+            MainWindow_Loaded("/Views/CustomerView.xaml");
         }
 
-
+        #region Coded by Mark
         private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
             Menu_CustomerView.BorderBrush = Brushes.Black;
@@ -81,5 +70,20 @@ namespace _2_sem_eksamen_bravo
         {
             this.mainFrame.Navigate(new Uri(View, UriKind.Relative));
         }
+        #endregion
+
+        #region Coded by Kevin
+        public void Adressimport()
+        {
+            try
+            {
+                SQL.AdresseImpoter();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
     }
 }

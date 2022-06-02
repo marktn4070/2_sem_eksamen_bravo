@@ -23,6 +23,7 @@ namespace _2_sem_eksamen_bravo
     /// <summary>
     /// Interaction logic for Detail_message.xaml
     /// </summary>
+    #region Coded by Mark
     public partial class Detail_message : Window
     {
         private int currentID;
@@ -36,8 +37,6 @@ namespace _2_sem_eksamen_bravo
             LoadGrid_Customer();
             Refresh();
             Clear();
-
-
 
             if (message.Email == true)
             {
@@ -62,14 +61,6 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-
-
-
-
-
-
-
-
         public void LoadGrid_Customer()
         {
             try
@@ -82,8 +73,6 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-
-
         public CancelEventHandler Closing { get; private set; }
 
         private void Refresh()
@@ -91,16 +80,11 @@ namespace _2_sem_eksamen_bravo
             datagrid_message_receivers.ItemsSource = new ObservableCollection<Customer>(Customer_list);
         }
 
-
-
-
-
-
         private void Clear()
         {
             datagrid_message_receivers.SelectedIndex = -1;
             LoadGrid_Customer();
         }
-
     }
+#endregion
 }

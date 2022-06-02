@@ -26,6 +26,7 @@ namespace _2_sem_eksamen_bravo
     /// <summary>
     /// Interaction logic for Detail_customer.xaml
     /// </summary>
+    #region Coded by Mark
     public partial class Detail_customer : Window
     {
         private string currentID;
@@ -63,13 +64,6 @@ namespace _2_sem_eksamen_bravo
             Clear();
         }
 
-
-
-
-
-
-        //SqlConnection host = new SqlConnection(@"Data Source=.;Initial Catalog=Golf; Integrated Security=True");
-
         public CancelEventHandler Closing { get; private set; }
 
         private void Refresh()
@@ -77,17 +71,11 @@ namespace _2_sem_eksamen_bravo
             datagrid_message.ItemsSource = new ObservableCollection<Message>(Message_list);
         }
 
-
-
         private void Clear()
         {
             datagrid_message.SelectedIndex = -1;
             LoadGrid_Message();
         }
-
-
-
-
 
         public void LoadGrid_Message()
         {
@@ -101,40 +89,25 @@ namespace _2_sem_eksamen_bravo
             }
         }
 
-
         private void btn_Detail_Click(object sender, RoutedEventArgs e)
         {
             int n = datagrid_message.SelectedIndex;
             if (n >= 0)
             {
                 Detail_message win2 = new Detail_message(Message_list[n]);
-                //win2.DataChanged += DetailMessage_Detaild;
                 win2.ShowDialog();
             }
         }
-
 
         private void datagrid_message_changed(object sender, SelectionChangedEventArgs e)
         {
             int n = datagrid_message.SelectedIndex;
         }
 
-
-
-        private SqlParameter CreateParam(string name, object value, SqlDbType type)
-        {
-            SqlParameter param = new SqlParameter(name, type);
-            param.Value = value;
-            return param;
-        }
-
-
-
-
-
         public delegate void DataChangedEventHandler(object sender, EventArgs e);
 
         public event DataChangedEventHandler DataChanged;
 
     }
+    #endregion
 }

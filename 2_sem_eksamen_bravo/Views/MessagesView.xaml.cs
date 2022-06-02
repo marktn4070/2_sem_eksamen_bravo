@@ -28,6 +28,7 @@ namespace _2_sem_eksamen_bravo.Views
     /// </summary>
     public partial class MessagesView : UserControl
     {
+        #region Coded by mark
         private List<Message> Message_list = new List<Message>();
 
         public MessagesView()
@@ -80,8 +81,9 @@ namespace _2_sem_eksamen_bravo.Views
                 win2.ShowDialog();
             }
         }
-    
+        #endregion
 
+        #region Coded by Kevin
         private void Search_Click(object sender, RoutedEventArgs e) //til sql klasse
         {
             if (startDate_Search.SelectedDate != null && endDate_Search.SelectedDate != null)
@@ -145,7 +147,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
 
         }
-
+        #endregion
 
 
 

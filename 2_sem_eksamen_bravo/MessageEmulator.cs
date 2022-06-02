@@ -12,6 +12,7 @@ namespace _2_sem_eksamen_bravo
 {
     static class MessageEmulator
     {
+        #region Coded by James
         public static string path = Directory.GetCurrentDirectory();
 
         public static void EmulateSendSms(string headline, string subheadline, string message)
@@ -45,11 +46,13 @@ namespace _2_sem_eksamen_bravo
         {
             return SQL.SaveMessage(headline, subheadline, message, sms, email, emailGeo, kommuneName, roadName);
         }
+        #endregion
 
+        #region Coded by Kevin
         public static void CreateFolder()
         {
             Directory.CreateDirectory(path.Remove(path.IndexOf(@"\bin")) + @"\logs");
         }
-
+        #endregion
     }
 }
