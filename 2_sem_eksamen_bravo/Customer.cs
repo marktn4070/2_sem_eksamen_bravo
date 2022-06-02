@@ -8,6 +8,7 @@ namespace _2_sem_eksamen_bravo
 {
     public class Customer
     {
+        #region Coded by Mark
         public string CustomerID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -20,7 +21,9 @@ namespace _2_sem_eksamen_bravo
         public string Municipality { get; set; }
         public string Road { get; set; }
         public string Zip { get; set; }
+        #endregion
 
+        #region Coded by James
         public void UpdateAddress()
         {
             string[] startAddress = SQL.GetRoadAndMunicipalityNames(this.RoadcodeID); //first vej, second kommune, third postnummer
@@ -28,5 +31,6 @@ namespace _2_sem_eksamen_bravo
             Municipality = startAddress[1];
             Zip = startAddress[2];
         }
+        #endregion
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace _2_sem_eksamen_bravo
 {
+    #region Coded by Mark
     public class Message
     {
         public int MessageID { get; set; }
@@ -16,4 +17,5 @@ namespace _2_sem_eksamen_bravo
         public bool Email { get; set; }
         public bool Sms { get; set; }
     }
+    #endregion
 }

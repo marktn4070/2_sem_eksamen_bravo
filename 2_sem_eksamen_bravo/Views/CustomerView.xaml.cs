@@ -26,9 +26,10 @@ namespace _2_sem_eksamen_bravo.Views
     /// <summary>
     /// Interaction logic for CustomerView.xamldcs
     /// </summary>
+
+    #region Coded by Mark
     public partial class CustomerView : UserControl
     {
-
         private List<Customer> Customer_list = new List<Customer>();
         public CustomerView()
         {
@@ -169,7 +170,7 @@ namespace _2_sem_eksamen_bravo.Views
             }
         }
 
-        private void cb_LoadName() //Kevin
+        private void cb_LoadName()
         {
             cb_Search.ItemsSource = SQL.GetCustomerName();
         }
@@ -189,4 +190,5 @@ namespace _2_sem_eksamen_bravo.Views
             Clear();
         }
     }
+    #endregion
 }

@@ -21,6 +21,7 @@ namespace _2_sem_eksamen_bravo
     /// <summary>
     /// Interaction logic for Update_customer.xaml
     /// </summary>
+    #region Coded by Mark
     public partial class Update_customer : Window
     {
         private string currentID;
@@ -297,4 +298,5 @@ namespace _2_sem_eksamen_bravo
             Vej__error.Text = "";
         }
     }
+    #endregion
 }

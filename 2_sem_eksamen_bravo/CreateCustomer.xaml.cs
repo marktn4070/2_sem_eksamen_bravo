@@ -28,10 +28,10 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-     
 
 
 
+        #region Coded by Mark
         public bool IsValid()
         {   // Dato feltet
             if (Birthday_txt.SelectedDate == null)
@@ -118,8 +118,9 @@ namespace _2_sem_eksamen_bravo
 
             return true;
         }
+        #endregion
 
-
+        #region Coded by James
         private void Create_Button_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -200,8 +201,9 @@ namespace _2_sem_eksamen_bravo
                 Vej.ItemsSource = new List<string>();
             }
         }
+        #endregion
 
-
+        #region Coded by Mark
         public delegate void DataChangedEventHandler(object sender, EventArgs e);
 
         public event DataChangedEventHandler DataChanged;
@@ -262,5 +264,6 @@ namespace _2_sem_eksamen_bravo
                 handler(this, new EventArgs());
             }
         }
+        #endregion
     }
 }
