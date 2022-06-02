@@ -14,6 +14,7 @@ namespace _2_sem_eksamen_bravo
 {
     static class SQL 
     {
+        #region Coded by James
         public static int SaveMessage(string headline, string subheadline, string message, bool sms, bool email, bool emailGeo, object kommuneName, object roadName) //james
         {
             int addedMessagesId = 0;
@@ -131,10 +132,9 @@ namespace _2_sem_eksamen_bravo
             param.Value = value;
             return param;
         }
+        #endregion
 
-
-
-
+        #region Coded by Mark
         public static List<Customer> GetCustomer() //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -357,6 +357,9 @@ namespace _2_sem_eksamen_bravo
                 throw;
             }
         }
+        #endregion
+
+        #region Coded by James
         public static List<string> GetMunicipalities() //james
         {
             List<string> municipalities = new List<string>();
@@ -502,7 +505,9 @@ namespace _2_sem_eksamen_bravo
                 if (connection != null) connection.Close();
             }
         }
+        #endregion
 
+        #region Coded by Kevin
         public static void AdresseImpoter() //Kevin
         {
             SqlConnection connect = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -619,7 +624,9 @@ namespace _2_sem_eksamen_bravo
             }
             return Names;
         }
+        #endregion
 
+        #region Coded by James
         public static void UpdateCustomer(Customer customer) //james
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -670,5 +677,6 @@ namespace _2_sem_eksamen_bravo
                 throw;
             }
         }
+        #endregion
     }
 }
