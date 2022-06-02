@@ -30,7 +30,7 @@
         <TextBox x:Name="LastName_txt" HorizontalAlignment="Left" Margin="145,113,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="LastName_txt_TextChanged"/>
         <TextBox x:Name="Phone_txt" HorizontalAlignment="Left" Margin="145,174,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Phone_txt_TextChanged"/>
         <TextBox x:Name="Email_txt" HorizontalAlignment="Left" Margin="145,235,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="192" TextChanged="Email_txt_TextChanged"/>
-        <TextBox x:Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" MaxLength="2" Width="192" TextChanged="Birthday_txt_TextChanged"/>
+        <DatePicker x:Name="Birthday_txt" HorizontalAlignment="Left" Margin="145,295,0,0" Text="" VerticalAlignment="Top" Width="192" SelectedDateChanged="Birthday_txt_TextChanged"/>
 
         <ComboBox Name="Kommune" Height="23" Width="192" Margin="145,434,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectionChanged="Kommune_SelectionChanged"  IsTextSearchEnabled="True" IsEditable="True"/>
         <ComboBox Name="Vej" Height="23" Width="192" Margin="145,495,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" IsTextSearchEnabled="True" IsEditable="True" IsEnabled="True" SelectionChanged="Vej_SelectionChanged"/>
@@ -38,12 +38,12 @@
 
 
         <TextBlock Name="FirstName__error" HorizontalAlignment="Left" Margin="145,74,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
-        <TextBlock Name="LastName__error" HorizontalAlignment="Left" Margin="145,131,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
-        <TextBlock Name="Phone__error" HorizontalAlignment="Left" Margin="145,193,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="LastName__error" HorizontalAlignment="Left" Margin="145,130,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Phone__error" HorizontalAlignment="Left" Margin="145,192,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
         <TextBlock Name="Email__error" HorizontalAlignment="Left" Margin="145,253,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
-        <TextBlock Name="Birthday__error" HorizontalAlignment="Left" Margin="145,314,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Birthday__error" HorizontalAlignment="Left" Margin="145,318,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
 
-        <TextBlock Name="Gender__error" HorizontalAlignment="Left" Margin="145,370,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
+        <TextBlock Name="Gender__error" HorizontalAlignment="Left" Margin="145,361,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
 
         <TextBlock Name="Kommune__error" HorizontalAlignment="Left" Margin="145,457,0,0" Text="" VerticalAlignment="Top" Width="239" FontSize="10" FontWeight="Normal" FontFamily="Segoe UI Semibold"  Foreground="#FFE51313"  TextWrapping="Wrap"/>
 

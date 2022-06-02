@@ -12,7 +12,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using _2_sem_eksamen_bravo.ViewModels;
 
 
 namespace _2_sem_eksamen_bravo
@@ -21,7 +20,7 @@ namespace _2_sem_eksamen_bravo
 /////// HEAD
     /// Interaction logic for MainWindow.xaml
 //////
-    /// Interaction logic for MainWindow.xamlerf
+    /// Interaction logic for MainWindow.xamlerfdsjcsddsedff
 ////// master
     /// Interaction logic for MainWindow.xaml
 ////// Temporary merge branch 2
@@ -38,29 +37,49 @@ namespace _2_sem_eksamen_bravo
             {
                 MessageBox.Show(ex.Message);
             }
+
             InitializeComponent();
-            DataContext = new MainViewModel();
-            this.MainContent.Content = new ViewModels.CustomerViewModel();
+
+            Menu_CustomerView.BorderBrush = Brushes.Black;
+
+            string View = "/Views/CustomerView.xaml";
+            MainWindow_Loaded(View);
         }
+
 
         private void Menu_Click_1(object sender, RoutedEventArgs e)
         {
-            this.MainContent.Content = new ViewModels.CustomerViewModel();
+            Menu_CustomerView.BorderBrush = Brushes.Black;
+            Menu_MessagesView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+            Menu_SendMessageView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+
+            string View = "/Views/CustomerView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void Menu_Click_2(object sender, RoutedEventArgs e)
         {
-            this.MainContent.Content = new ViewModels.MessagesViewModel();
+            Menu_MessagesView.BorderBrush = Brushes.Black;
+            Menu_CustomerView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+            Menu_SendMessageView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+
+            string View = "/Views/MessagesView.xaml";
+            MainWindow_Loaded(View);
         }
 
         private void Menu_Click_3(object sender, RoutedEventArgs e)
         {
-            this.MainContent.Content = new ViewModels.SendMessageViewModel();
+            Menu_SendMessageView.BorderBrush = Brushes.Black;
+            Menu_MessagesView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+            Menu_CustomerView.BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#FFCDDAFF");
+
+            string View = "/Views/SendMessageView.xaml";
+            MainWindow_Loaded(View);
         }
 
-        public static void ShowError(Exception ex)
+        private void MainWindow_Loaded(string View)
         {
-            MessageBox.Show(ex.Message);
+            this.mainFrame.Navigate(new Uri(View, UriKind.Relative));
         }
     }
 }

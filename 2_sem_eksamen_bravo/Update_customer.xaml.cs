@@ -73,7 +73,7 @@ namespace _2_sem_eksamen_bravo
             Female.IsChecked = false;
             Other.IsChecked = false;
 
-            Birthday_txt.Clear();
+            Birthday_txt.SelectedDate = null;
             Phone_txt.Clear();
             Email_txt.Clear();
         }
@@ -97,7 +97,7 @@ namespace _2_sem_eksamen_bravo
             // Dato feltet
             if (Birthday_txt.Text == string.Empty)
             {
-                Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
+                Birthday__error.Text = "Fødselsdagsdato er ikke udfyldt";
             }
 
 
@@ -313,7 +313,7 @@ namespace _2_sem_eksamen_bravo
             Email__error.Text = "";
         }
 
-        private void Birthday_txt_TextChanged(object sender, TextChangedEventArgs e)
+        private void Birthday_txt_TextChanged(object sender, SelectionChangedEventArgs e)
         {
             Birthday__error.Text = "";
         }

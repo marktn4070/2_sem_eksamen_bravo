@@ -28,38 +28,7 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        private void txb_TextChanged_Birthday(object sender, TextChangedEventArgs e) //mark
-        {
-            Birthday__error.Text = "";
-
-            int time = Birthday_txt.Text.Length;
-
-            if (Birthday_txt.Text == "" || Birthmonth_txt.Text == "" || Birthyear_txt.Text == "")
-            {
-                if (time == 2)
-                {
-                    Birthday_txt.Text.Remove(time - 1);
-                    Keyboard.Focus(Birthmonth_txt);
-                }
-            }
-        }
-
-        private void txb_TextChanged_Birthmonth(object sender, TextChangedEventArgs e) //mark
-        {
-            Birthday__error.Text = "";
-
-
-            int time = Birthmonth_txt.Text.Length;
-
-            if (Birthday_txt.Text == "" || Birthmonth_txt.Text == "" || Birthyear_txt.Text == "")
-            {
-                if (time == 2)
-                {
-                    Birthmonth_txt.Text.Remove(time - 1);
-                    Keyboard.Focus(Birthyear_txt);
-                }
-            }
-        }
+     
 
 
 
@@ -73,32 +42,10 @@ namespace _2_sem_eksamen_bravo
 
 
             // Dato feltet
-            if (Birthday_txt.Text == string.Empty)
+            if (Birthday_txt.SelectedDate == null)
             {
-                Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
+                Birthday__error.Text = "Fødselsdagsdato er ikke udfyldt";
             }
-
-
-            // Måned feltet
-            else if ( Birthmonth_txt.Text == string.Empty)
-            {
-                Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
-            }
-
-
-            // År feltet
-            else if (Birthyear_txt.Text == string.Empty)
-            {
-                Birthday__error.Text = "Fødseldag dato, måned eller år er ikke udfyldet";
-            }
-
-
-            //DateTime.Now.Date
-            else if (int.Parse(Birthday_txt.Text) < 1 || int.Parse(Birthday_txt.Text) > 31 || int.Parse(Birthmonth_txt.Text) < 1 || int.Parse(Birthmonth_txt.Text) > 12 || int.Parse(Birthyear_txt.Text) < 1850)
-            {
-                Birthday__error.Text = "Invalid dato!";
-            }
-
 
             // Køn feltet
             if (Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked)
@@ -118,7 +65,6 @@ namespace _2_sem_eksamen_bravo
                 Vej__error.Text = "Vejnavn skal vælges";
             }
 
-
             // Fornavn feltet
             if (FirstName_txt.Text == string.Empty)
             {
@@ -129,7 +75,6 @@ namespace _2_sem_eksamen_bravo
                 FirstName__error.Text = "Vær venligst at indtaste bogstaver ved 'Fornavn'";
             }
 
-
             // Efternavn feltet
             if (LastName_txt.Text == string.Empty)
             {
@@ -139,7 +84,6 @@ namespace _2_sem_eksamen_bravo
             {
                 LastName__error.Text = "Vær venligst at indtaste bogstaver ved 'Efternavn'";
             }
-
 
             // Email feltet
             if (Email_txt.Text == string.Empty)
@@ -164,10 +108,7 @@ namespace _2_sem_eksamen_bravo
 
 
             if (
-            Birthday_txt.Text == string.Empty ||
-            Birthmonth_txt.Text == string.Empty ||
-            Birthyear_txt.Text == string.Empty ||
-            int.Parse(Birthday_txt.Text) < 1 || int.Parse(Birthday_txt.Text) > 31 || int.Parse(Birthmonth_txt.Text) < 1 || int.Parse(Birthmonth_txt.Text) > 12 || int.Parse(Birthyear_txt.Text) < 1850 ||
+            Birthday_txt.SelectedDate == null ||
             Male.IsChecked == Female.IsChecked && Female.IsChecked == Other.IsChecked ||
             Kommune.SelectedItem == null ||
             Vej.SelectedItem == null ||
@@ -194,12 +135,6 @@ namespace _2_sem_eksamen_bravo
                 int phone = 0;
                 if (IsValid())
                 {
-
-                    int.Parse(Birthday_txt.Text);
-                    int.Parse(Birthmonth_txt.Text);
-                    int.Parse(Birthyear_txt.Text);
-
-
                     string gender = "";
 
                     if ((bool)Male.IsChecked)
@@ -215,9 +150,16 @@ namespace _2_sem_eksamen_bravo
                         gender = "Other";
                     }
 
-                    string birth = Birthyear_txt.Text.Trim() + "-" + Birthmonth_txt.Text.Trim() + "-" + Birthday_txt.Text.Trim();
+
+                    string birthday = "";
+                    if (Birthday_txt.SelectedDate != null)
+                    {
+                        DateTime SD = Birthday_txt.SelectedDate.Value;
+                        birthday = SD.ToString("yyyy/MM/dd");
+                    }
+
                     phone = int.Parse(Phone_txt.Text.Trim());
-                    SQL.RegisterCustomer(FirstName_txt.Text.Trim(), LastName_txt.Text.Trim(), (bool)Registered.IsChecked, gender, birth, phone, Email_txt.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
+                    SQL.RegisterCustomer(FirstName_txt.Text.Trim(), LastName_txt.Text.Trim(), (bool)Registered.IsChecked, gender, birthday, phone, Email_txt.Text.Trim(), Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString());
                     MessageBox.Show("Kunde oprettet!");
                     ClearAll();
                 }
@@ -243,9 +185,7 @@ namespace _2_sem_eksamen_bravo
             LastName_txt.Text = "";
             Phone_txt.Text = "";
             Email_txt.Text = "";
-            Birthday_txt.Text = "";
-            Birthmonth_txt.Text = "";
-            Birthyear_txt.Text = "";
+            Birthday_txt.SelectedDate = null;
             Male.IsChecked = false;
             Female.IsChecked = false;
             Other.IsChecked = false;
@@ -295,7 +235,7 @@ namespace _2_sem_eksamen_bravo
             Email__error.Text = "";
         }
 
-        private void Birthyear_txt_TextChanged(object sender, TextChangedEventArgs e)
+        private void Birthday_txt_TextChanged(object sender, SelectionChangedEventArgs e)
         {
             Birthday__error.Text = "";
         }

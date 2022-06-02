@@ -162,9 +162,10 @@ namespace _2_sem_eksamen_bravo
                     currentCustomer.UpdateAddress();
                     customer_list.Add(currentCustomer);
                 }
+                host.Close();
                 return customer_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -196,7 +197,7 @@ namespace _2_sem_eksamen_bravo
                     SqlDataReader sdr = cmd.ExecuteReader();
                     while (sdr.Read())
                     {
-                        customer_list.Add(new Customer
+                        Customer currentCustomer = new Customer
                         {
                             CustomerID = sdr[0].ToString(),
                             FirstName = sdr[1].ToString(),
@@ -207,9 +208,12 @@ namespace _2_sem_eksamen_bravo
                             Phone = sdr[6].ToString(),
                             Email = sdr[7].ToString(),
                             RoadcodeID = sdr[8].ToString()
-                        });
+                        };
+                        currentCustomer.UpdateAddress();
+                        customer_list.Add(currentCustomer);
                     }
                 }
+                host.Close();
                 return customer_list;
             }
             catch (Exception)
@@ -219,18 +223,35 @@ namespace _2_sem_eksamen_bravo
         }
 
 
-        public static DataTable SearchCustomer(string name) //Mark
+        public static List<Customer> SearchCustomer(string name) //Mark
         {
             SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
             try
             {
+                List<Customer> customer_list = new List<Customer>();
                 SqlCommand cmd = new SqlCommand("SELECT * FROM Customer WHERE FirstName + ' ' + LastName like '%" + name + "%' or FirstName like '%" + name + "%' or LastName like '%" + name + "%'", host);
                 DataTable dt = new DataTable();
                 host.Open();
                 SqlDataReader sdr = cmd.ExecuteReader();
-                dt.Load(sdr);
+                while (sdr.Read())
+                {
+                    Customer currentCustomer = new Customer
+                    {
+                        CustomerID = sdr[0].ToString(),
+                        FirstName = sdr[1].ToString(),
+                        LastName = sdr[2].ToString(),
+                        Registered = (bool)sdr[3],
+                        Gender = sdr[4].ToString(),
+                        Birth = sdr[5].ToString(),
+                        Phone = sdr[6].ToString(),
+                        Email = sdr[7].ToString(),
+                        RoadcodeID = sdr[8].ToString()
+                    };
+                    currentCustomer.UpdateAddress();
+                    customer_list.Add(currentCustomer);
+                }
                 host.Close();
-                return dt;
+                return customer_list;
             }
             catch (Exception)
             {
@@ -261,11 +282,12 @@ namespace _2_sem_eksamen_bravo
                         Time = sdr[4].ToString(),
                         Email = (bool)sdr[5],
                         Sms = (bool)sdr[6]
+
                     });
                 }
                 return message_list;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 throw;
             }
@@ -662,7 +684,8 @@ namespace _2_sem_eksamen_bravo
 
         public static string[] GetRoadAndMunicipalityNames(string roadCode) //james
         {
-            string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            //string[] names = new string[2]; //første vejnavn, næste kommunenavn
+            string[] names = new string[3]; //første vejnavn, næste kommunenavn
             try
             {
                 SqlConnection host = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -674,6 +697,7 @@ namespace _2_sem_eksamen_bravo
                 {
                     names[0] = reader[1].ToString();
                     names[1] = reader[3].ToString();
+                    names[2] = reader[2].ToString();
                 }
                 host.Close();
                 return names;

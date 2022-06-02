@@ -35,15 +35,15 @@
 
 
 
-        <Label Name="Search_message" Margin="58,35,0,0" Height="31" Width="429" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
+        <Label Name="Search_message" Margin="257,112,0,0" Height="31" Width="429" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
 
-        <Label Name="endDate_label" Content="Slut dato" Margin="484,71,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
-        <DatePicker Name="endDate_Search"  Height="23" Width="206" Margin="484,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background = "Transparent"/>
+        <Label Name="endDate_label" Content="Slut dato:" Margin="484,69,0,0" Height="31" Width="229" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <DatePicker Name="endDate_Search"  Height="23" Width="206" Margin="484,92,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background = "Transparent"/>
 
-        <Label Name="startDate_label" Content="Start dato" Margin="256,71,0,0" Height="31" Width="192" VerticalAlignment="Top" HorizontalAlignment="Left" FontStyle="Italic"/>
-        <DatePicker Name="startDate_Search"  Height="23" Width="206" Margin="257,102,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background = "Transparent"/>
+        <Label Name="startDate_label" Content="Start dato:" Margin="256,69,0,0" Height="31" Width="192" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <DatePicker Name="startDate_Search"  Height="23" Width="206" Margin="257,92,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Background = "Transparent"/>
 
-        <Button Content="Søg" Margin="708,102,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
+        <Button Content="Søg" Margin="708,92,0,0" Width="70" Height="23" RenderTransformOrigin="0.504,0.504" VerticalAlignment="Top" HorizontalAlignment="Left" Background="#FFCDDAFF" BorderBrush="#FFCDDAFF" Foreground="#000" FontWeight="Bold" Click="Search_Click"/>
 
 
     </Grid>
