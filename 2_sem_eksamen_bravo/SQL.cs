@@ -357,42 +357,6 @@ namespace _2_sem_eksamen_bravo
                 throw;
             }
         }
-
-
-
-        //public static List<string> GetMMessage_2() //Mark
-        //{
-        //    List<string> Headline = new List<string>();
-        //    SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
-        //    try
-        //    {
-        //        SqlCommand command = new SqlCommand("SELECT DISTINCT MessageID FROM Message;", cnct);
-        //        cnct.Open();
-        //        SqlDataReader reader = command.ExecuteReader();
-        //        while (reader.Read())
-        //        {
-        //            Headline.Add(reader[0].ToString());
-        //        }
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    finally
-        //    {
-        //        if (cnct != null)
-        //        {
-        //            cnct.Close();
-        //        }
-        //    }
-        //    Headline.Sort();
-        //    return Headline;
-        //}
-
-
-
-
-
         public static List<string> GetMunicipalities() //james
         {
             List<string> municipalities = new List<string>();
@@ -421,7 +385,7 @@ namespace _2_sem_eksamen_bravo
             municipalities.Sort();
             return municipalities;
         }
-        public static List<string> GetRoads(string municipality) //james
+        public static List<string> GetRoads(string municipality) //James
         {
             List<string> roads = new List<string>();
             SqlConnection cnct = new SqlConnection(ConfigurationManager.ConnectionStrings["host"].ConnectionString);
@@ -453,7 +417,7 @@ namespace _2_sem_eksamen_bravo
             return roads;
         }
 
-        public static int GetRoadCode(string municipality, string road)
+        public static int GetRoadCode(string municipality, string road) //James
         {
             int roadCode = 0;
             SqlConnection cnct = null;
