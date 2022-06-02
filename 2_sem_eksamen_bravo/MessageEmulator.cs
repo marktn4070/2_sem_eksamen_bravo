@@ -16,16 +16,18 @@ namespace _2_sem_eksamen_bravo
 
         public static void EmulateSendSms(string headline, string subheadline, string message)
         {
+            CreateFolder();
             //Husk at lave en mappe for de filer der bliver gemt
-            using (StreamWriter w = new StreamWriter(path.Remove(path.IndexOf(@"\bin")) + @"\log" + DateTime.Now.ToString("yyyyddMMHHmmss") + ".txt"))
+            using (StreamWriter w = new StreamWriter(path.Remove(path.IndexOf(@"\bin")) + @"\logs\log" + DateTime.Now.ToString("yyyyddMMHHmmss") + ".txt"))
             {
                 w.Write(headline + "\n \n" + subheadline + "\n \n" + message);
             }
         }
         public static void EmulateSendEmail(string headline, string subheadline, string message)
         {
+            CreateFolder();
             //Husk at lave en mappe for de filer der bliver gemt
-            using (StreamWriter w = new StreamWriter(path.Remove(path.IndexOf(@"\bin")) + @"\log" + DateTime.Now.ToString("yyyyddMMHHmmss") + ".html"))
+            using (StreamWriter w = new StreamWriter(path.Remove(path.IndexOf(@"\bin")) + @"\logs\log" + DateTime.Now.ToString("yyyyddMMHHmmss") + ".html"))
             {
                 w.Write(@" <!DOCTYPE html>
                 <html>
@@ -43,6 +45,11 @@ namespace _2_sem_eksamen_bravo
         {
             return SQL.SaveMessage(headline, subheadline, message, sms, email, emailGeo, kommuneName, roadName);
         }
-       
+
+        public static void CreateFolder()
+        {
+            Directory.CreateDirectory(path.Remove(path.IndexOf(@"\bin")) + @"\logs");
+        }
+
     }
 }
