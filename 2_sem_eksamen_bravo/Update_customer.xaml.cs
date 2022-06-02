@@ -196,11 +196,20 @@ namespace _2_sem_eksamen_bravo
                     {
                         gender = "Other";
                     }
+
+                    string birthday = "";
+                    if (Birthday_txt.SelectedDate != null)
+                    {
+                        DateTime SD = Birthday_txt.SelectedDate.Value;
+                        birthday = SD.ToString("yyyy/MM/dd");
+                    }
+
+
                     try
                     {
 
                         SQL.UpdateCustomer(new Customer { FirstName = FirstName_txt.Text, LastName = LastName_txt.Text,
-                            Registered = (bool)Registered.IsChecked, Birth = Birthday_txt.Text, CustomerID = currentID, Gender = gender,
+                            Registered = (bool)Registered.IsChecked, Birth = birthday, CustomerID = currentID, Gender = gender,
                             Email = Email_txt.Text, Phone = Phone_txt.Text,
                             RoadcodeID = SQL.GetRoadCode(Kommune.SelectedItem.ToString(), Vej.SelectedItem.ToString()).ToString() } );
                         MessageBox.Show("'" + FirstName_txt.Text + " " + LastName_txt.Text + " er opdateret", "Updated", MessageBoxButton.OK, MessageBoxImage.Information);
